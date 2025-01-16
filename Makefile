@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/15 12:22:27 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/16 09:43:32 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,17 +20,18 @@ RM 				= rm -rf
 # Directories
 MYLIB_DIR	 	= ./mylib
 MLX42_DIR		= ./MLX42
-MAN_DIR 		= ./sources/mandatory
-BN_DIR			= ./sources/bonus
+SRC_DIR			= ./sources
+MAN_DIR 		= $(SRC_DIR)/mandatory
+BN_DIR			= $(SRC_DIR)/bonus
 MAP_DIR			= map
 UTILS_DIR		= utils
 
 # Source files by directory
-MAN_FILES 		= 	
+MAN_FILES 		= 	read_map.c
 
 BN_FILES 		= 	
 
-MAN_SRCS		= 	main.c 	$(addprefix $(MAN_DIR)/, $(MAN_FILES)) 
+MAN_SRCS		= 	$(SRC_DIR)/main.c 	$(addprefix $(MAN_DIR)/, $(MAN_FILES)) 
 
 BN_SRCS			= 	main_bonus.c 	$(addprefix $(BN_DIR)/, $(BN_FILES)) 
 
