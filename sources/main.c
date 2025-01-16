@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/16 09:56:32 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/16 10:29:33 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int32_t	validate_path(char *path)
 	return (fd);
 }
 
-int	main(int argc, char **argv)
+int32_t	main(int argc, char **argv)
 {
 	// t_cub3d		cub;
 	t_map		map;
@@ -51,7 +51,8 @@ int	main(int argc, char **argv)
 	}
 	ft_bzero(&map, sizeof(map));
 	fd = validate_path(argv[1]);
-	read_map(&element, &map, fd);
+	if (read_map(&element, &map, fd))
+		return (EXIT_FAILURE);
 	// ft_bzero(&cub, sizeof(cub));
 	// cub.map = &map;
 	// start_cub3d(&cub);

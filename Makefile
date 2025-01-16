@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/16 09:43:32 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/16 11:08:49 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ MAP_DIR			= map
 UTILS_DIR		= utils
 
 # Source files by directory
-MAN_FILES 		= 	read_map.c
+MAN_FILES 		= 	read_map.c	read_line.c errors.c
 
 BN_FILES 		= 	
 

@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:15:37 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/16 09:58:53 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/16 11:06:04 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <errno.h>
 # include <string.h>
 # include "MLX42.h"
+
+# define BUFFER_SIZE 1000
 
 typedef enum e_obj_type
 {
@@ -61,12 +63,12 @@ typedef struct s_element
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	int		floor_red;
-	int		floor_green;
-	int		floor_blue;
-	int		ceiling_red;
-	int		ceiling_green;
-	int		ceiling_blue;
+	int32_t		floor_red;
+	int32_t		floor_green;
+	int32_t		floor_blue;
+	int32_t		ceiling_red;
+	int32_t		ceiling_green;
+	int32_t		ceiling_blue;
 }	t_element;
 
 typedef struct s_cub3d
@@ -82,8 +84,13 @@ typedef struct s_cub3d
 //		GAME		//
 
 //		MAP			//
-void	read_map(t_element *element, t_map *map, int32_t fd);
+int32_t	read_map(t_element *element, t_map *map, int32_t fd);
 
 //		UTILS		//
+
+//		ERROR		//
+int32_t error_int(char *message);
+char 	*error_str(char **str, char *message)
+char	*bad_alloc(char **str)
 
 #endif
