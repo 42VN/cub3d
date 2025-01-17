@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   am_load_png.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/16 17:38:46 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/16 17:29:36 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/16 17:48:47 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
-#include "libft.h"
 #include "asset_manager.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+mlx_image_t	*am_load_png(mlx_t *mlx, char *path)
 {
-	mlx_t			*mlx;
-	t_asset_manager	am;
-}	t_cub3d;
-
-#endif
+	mlx_texture_t	*texture;
+	mlx_image_t		*img;
+	
+	if (!mlx || !path)
+		return (ft_error_ret("am_load_png: Invalid parameter(s)", 0));
+	texture = mlx_load_png(path);
+	if (!texture)
+		return (ft_error_ret("mlx_load_png", 0));
+	img = mlx_texture_to_image(mlx, texture);
+	if (!img)
+		return (ft_error_ret("mlx_texture_to_image", 0));
+	return (img);
+}

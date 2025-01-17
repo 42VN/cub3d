@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   am_load_sprite.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/16 17:50:26 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/16 17:50:43 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/16 17:52:36 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "asset_manager.h"
 
-void	cub32_init(t_cub3d *cub)
+t_sprite	*am_load_png(mlx_t *mlx, char *path)
 {
-	t_asset_manager	*am;
-
-	ft_bzero(cub, sizeof(t_cub3d));
-	am = &cub->am;
 
 }

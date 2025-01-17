@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   utility.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/16 17:50:26 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/16 17:37:30 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef UTILITY_H
+#define UTILITY_H
 
-void	cub32_init(t_cub3d *cub)
-{
-	t_asset_manager	*am;
+int	ft_error_ret(char *str, int return_code);
 
-	ft_bzero(cub, sizeof(t_cub3d));
-	am = &cub->am;
-
-}
+#endif

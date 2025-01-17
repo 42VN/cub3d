@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/16 17:50:26 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/16 17:35:22 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/16 17:36:56 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-
-void	cub32_init(t_cub3d *cub)
+int	ft_error_ret(char *str, int return_code)
 {
-	t_asset_manager	*am;
-
-	ft_bzero(cub, sizeof(t_cub3d));
-	am = &cub->am;
-
+	ft_printf_fd(2, "cub3d: %s\n", str);
+	return (return_code);
 }

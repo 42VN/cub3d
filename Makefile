@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/16 16:21:43 by ktieu            ###   ########.fr        #
+#    Updated: 2025/01/16 17:37:53 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,30 +14,31 @@
 CC 				= cc
 CFLAGS 			= -g
 MLX42_FLAGS		= -ldl -lglfw -pthread -lm
-INCLUDES 		= -I./includes -I./libs/libft/includes -I./libs/MLX42/include/MLX42
+INCLUDES 		= -I./includes -I./libs/libft -I./libs/MLX42/include/MLX42
 RM 				= rm -rf
 
 # Directories
-SRC_DIR 		= srcs
-LIB_DIR 		= libs
-OBJ_DIR			= obj
-LIB_DIR 		= libs
-LIBFT_DIR	 	= $(LIB_DIR)/libft
-MLX42_DIR		= $(LIB_DIR)/MLX42
-MAP_DIR			= map
-UTILS_DIR		= $(SRC_DIR)/utility
-CUB3D_DIR		= $(SRC_DIR)/cub3d
+SRC_DIR 			= srcs
+LIB_DIR 			= libs
+OBJ_DIR				= obj
+LIB_DIR 			= libs
+LIBFT_DIR	 		= $(LIB_DIR)/libft
+MLX42_DIR			= $(LIB_DIR)/MLX42
+MAP_DIR				= ./assets/map
+UTILS_DIR			= $(SRC_DIR)/utility
+CUB3D_DIR			= $(SRC_DIR)/cub3d
+ASSET_MANAGER_DIR	= $(SRC_DIR)/asset_manager
+
 
 # Source files by directory
-
-CUB3D_FILES		=	init.c
-UTIL_FILES		=	
-
+CUB3D_FILES			=	init.c
+UTIL_FILES			=	ft_error_ret.cc
+ASSET_MANAGER_FILES	=	am_load_png.c
 
 SRC_FILES		= 	./srcs/main.c \
 					$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
-					$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) 
-
+					$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \
+					$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) 
 
 # Library
 LIBFT 			= $(LIBFT_DIR)/libft.a

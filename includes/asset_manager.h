@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   asset_manager.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/16 17:50:26 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/16 17:48:56 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef ASSET_MANAGER_H
+#define ASSET_MANAGER_H
 
-void	cub32_init(t_cub3d *cub)
+#include "utility.h"
+# include "MLX42.h"
+
+typedef struct s_sprite
 {
-	t_asset_manager	*am;
+	mlx_image_t	**frames;
+	uint32_t	frame_w;
+	uint32_t	frame_h;
+	uint32_t	rows;
+	uint32_t	cols;
+}	t_sprite;
 
-	ft_bzero(cub, sizeof(t_cub3d));
-	am = &cub->am;
+typedef struct s_asset_manager
+{
+	mlx_image_t	*walls[4];
+	mlx_image_t	*door;
+	t_sprite	*sprite_weapon;
+}	t_asset_manager;
 
-}
+mlx_image_t	*am_load_png(mlx_t *mlx, char *path);
+
+#endif
