@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   am_load_png.c                                      :+:      :+:    :+:   */
+/*   am_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 17:29:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/16 17:48:47 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/17 17:38:36 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/17 17:54:34 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asset_manager.h"
 
-mlx_image_t	*am_load_png(mlx_t *mlx, char *path)
+static void	am_free_sprite(mlx_t *mlx, t_sprite *s)
 {
-	mlx_texture_t	*texture;
-	mlx_image_t		*img;
-	
-	if (!mlx || !path)
-		return (ft_error_ret("am_load_png: Invalid parameter(s)", 0));
-	texture = mlx_load_png(path);
-	if (!texture)
-		return (ft_error_ret("mlx_load_png", 0));
-	img = mlx_texture_to_image(mlx, texture);
-	if (!img)
-		return (ft_error_ret("mlx_texture_to_image", 0));
-	return (img);
+	int	i;
+
+	i = 0;
+	if (s)
+	{
+		while (s->frames[i])
+		{
+			mlx_delete_image(mlx, s->frames[i]);
+			++i;
+		}
+		free(s);
+	}
+}
+
+void	am_free(mlx_t *mlx, t_asset_manager *am)
+{
+	if (am)
+	{
+		if (am->sprite_weapon)
+		{
+			am_free_sprite(mlx, am->sprite_weapon);
+		}
+		free(am);
+	}
 }

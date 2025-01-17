@@ -6,15 +6,28 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/16 17:48:56 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/17 17:56:11 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASSET_MANAGER_H
 #define ASSET_MANAGER_H
 
-#include "utility.h"
+# include "utility.h"
 # include "MLX42.h"
+
+typedef enum e_sprite_dir
+{
+	DIR_HORIZONTAL,
+	DIR_VERTICAL
+}	e_sprite_dir;
+
+typedef struct s_sprite_options
+{
+	uint32_t		rows;
+	uint32_t		cols;
+	e_sprite_dir	dir
+}	t_sprite_options;
 
 typedef struct s_sprite
 {
@@ -32,6 +45,9 @@ typedef struct s_asset_manager
 	t_sprite	*sprite_weapon;
 }	t_asset_manager;
 
-mlx_image_t	*am_load_png(mlx_t *mlx, char *path);
+
+void		am_free(mlx_t *mlx, t_asset_manager *am);
+mlx_image_t	*am_load_img(mlx_t *mlx, char *path);
+t_sprite	*am_load_sprite(mlx_t *mlx, t_sprite_options options, char *path);
 
 #endif

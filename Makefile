@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/16 17:37:53 by ktieu            ###   ########.fr        #
+#    Updated: 2025/01/17 15:28:28 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,15 +25,17 @@ LIB_DIR 			= libs
 LIBFT_DIR	 		= $(LIB_DIR)/libft
 MLX42_DIR			= $(LIB_DIR)/MLX42
 MAP_DIR				= ./assets/map
-UTILS_DIR			= $(SRC_DIR)/utility
 CUB3D_DIR			= $(SRC_DIR)/cub3d
+MAP_DIR				= $(SRC_DIR)/map
+UTILS_DIR			= $(SRC_DIR)/utility
 ASSET_MANAGER_DIR	= $(SRC_DIR)/asset_manager
 
 
 # Source files by directory
 CUB3D_FILES			=	init.c
-UTIL_FILES			=	ft_error_ret.cc
-ASSET_MANAGER_FILES	=	am_load_png.c
+UTIL_FILES			=	ft_error.c ft_readline.c
+MAP_FILES			=	read_file.c
+ASSET_MANAGER_FILES	=	am_load_img.c am_load_sprite.c
 
 SRC_FILES		= 	./srcs/main.c \
 					$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
