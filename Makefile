@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/16 11:08:49 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/17 13:19:56 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,19 +21,26 @@ RM 				= rm -rf
 MYLIB_DIR	 	= ./mylib
 MLX42_DIR		= ./MLX42
 SRC_DIR			= ./sources
-MAN_DIR 		= $(SRC_DIR)/mandatory
-BN_DIR			= $(SRC_DIR)/bonus
-MAP_DIR			= map
-UTILS_DIR		= utils
+
+MAP_DIR			= $(SRC_DIR)/map
+ERROR_DIR		= $(SRC_DIR)/errors
+UTILS_DIR		= $(SRC_DIR)/utils
 
 # Source files by directory
-MAN_FILES 		= 	read_map.c	read_line.c errors.c
+MAP_FILES 		= 	read_map.c	read_element.c read_file.c
+
+ERROR_FILES 	= 	errors.c
+
+UTILS_FILES 	= 	read_line.c set_color.c
 
 BN_FILES 		= 	
 
-MAN_SRCS		= 	$(SRC_DIR)/main.c 	$(addprefix $(MAN_DIR)/, $(MAN_FILES)) 
+MAN_SRCS		= 	$(SRC_DIR)/main.c 	\
+					$(addprefix $(MAP_DIR)/, $(MAP_FILES)) \
+					$(addprefix $(ERROR_DIR)/, $(ERROR_FILES)) \
+					$(addprefix $(UTILS_DIR)/, $(UTILS_FILES))					
 
-BN_SRCS			= 	main_bonus.c 	$(addprefix $(BN_DIR)/, $(BN_FILES)) 
+BN_SRCS			= 	
 
 # Library
 MYLIB 			= $(MYLIB_DIR)/mylib.a

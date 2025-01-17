@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:15:37 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/16 11:06:04 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/17 13:20:43 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,17 @@ typedef enum e_elem_type
 
 typedef struct s_point
 {
-	int32_t	row;
-	int32_t	col;
+	int	row;
+	int	col;
 }	t_point;
 
-typedef struct s_map
+typedef struct s_color
 {
-	char	**arr;
-	int32_t	rows;
-	int32_t	cols;
-	int32_t	e_paths;
-	t_point	start;
-}	t_map;
+	int	red;
+	int	green;
+	int	blue;
+	int	done;
+}	t_color;
 
 typedef struct s_element
 {
@@ -63,13 +62,19 @@ typedef struct s_element
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	int32_t		floor_red;
-	int32_t		floor_green;
-	int32_t		floor_blue;
-	int32_t		ceiling_red;
-	int32_t		ceiling_green;
-	int32_t		ceiling_blue;
+	t_color	floor;
+	t_color	ceiling;
+	int		done;
 }	t_element;
+
+
+typedef struct s_map
+{
+	char	**arr;
+	int		max_rows;
+	int		max_cols;
+	t_point	start;
+}	t_map;
 
 typedef struct s_cub3d
 {
@@ -84,13 +89,17 @@ typedef struct s_cub3d
 //		GAME		//
 
 //		MAP			//
-int32_t	read_map(t_element *element, t_map *map, int32_t fd);
+int		read_file(t_element *element, t_map *map, int fd);
+int 	read_element(t_element *element, char *line);
 
 //		UTILS		//
+char	*read_line(int fd, int size);
+void	set_color(t_color color, char **array);
 
 //		ERROR		//
-int32_t error_int(char *message);
-char 	*error_str(char **str, char *message)
-char	*bad_alloc(char **str)
+int 	error_int(char *message);
+char 	*error_str(char **str, char *message);
+char	*bad_alloc(char **str);
+int		read_elem_error(t_element *element, char *line, int fd);
 
 #endif
