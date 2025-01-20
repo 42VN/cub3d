@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_readline.c                                     :+:      :+:    :+:   */
+/*   ft_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 14:18:44 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/17 14:20:02 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/16 10:39:40 by hitran            #+#    #+#             */
+/*   Updated: 2025/01/20 14:04:17 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utility.h"
+#include "cub3d.h"
 
 static char	*realloc_buffer(char *buffer, int size)
 {
@@ -27,7 +27,7 @@ static char	*realloc_buffer(char *buffer, int size)
 	return (new_buffer);
 }
 
-char	*ft_readline(int fd, int size)
+char	*ft_readline(int fd, int *eof, int size)
 {
 	int		byte;
 	char	c;
@@ -37,12 +37,14 @@ char	*ft_readline(int fd, int size)
 	index = 0;
 	line = (char *)ft_calloc(size, sizeof(char));
 	if (!line)
-		return (bad_alloc(NULL));
+		return (ft_error_str_ret(NULL, "ft_calloc: Memory allocation failed."));
 	while (1)
 	{
 		byte = read(fd, &c, 1);
 		if (byte == -1)
-			return (error_str(&line, "Reading failed."));
+			return (ft_error_str_ret(line, "Reading failed."));
+		if (byte == 0)
+			*eof = 1;
 		if (byte == 0 || c == '\n')
 			break ;
 		line[index++] = c;
@@ -51,9 +53,8 @@ char	*ft_readline(int fd, int size)
 			size += BUFFER_SIZE;
 			line = realloc_buffer(line, size);
 			if (!line)
-				return (bad_alloc(&line));
+				return (ft_error_str_ret(NULL, "Memory allocation failed."));
 		}
 	}
-	line[index] = '\0';
 	return (line);
 }

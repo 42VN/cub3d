@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 17:51:23 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:26:32 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/20 16:30:06 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/20 16:30:13 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "map.h"
 
-void	cub3d_free(t_cub3d *c)
+void	print_map(t_map *map)
 {
-	if (c)
-	{
-		am_free(c->mlx, &c->am);
-		clean_elems(c->element);
-		clean_map(c->map);
-	}
+	if (!map || !map->arr)
+		return ;
+	printf("Map: \n");
+	while (*(map->arr))
+		printf("%s\n", *(map->arr++));
 }

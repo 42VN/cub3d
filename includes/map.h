@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/17 14:43:36 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/20 16:31:11 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define MAP_H
 
 # include "MLX42.h"
+# include "utility.h"
 
+#include "utility.h"
 
 typedef enum e_obj_type
 {
@@ -43,46 +45,51 @@ typedef struct s_point
 	int	col;
 }	t_point;
 
-typedef struct s_color
-{
-	int	red;
-	int	green;
-	int	blue;
-	int	done;
-}	t_color;
-
 typedef struct s_element
 {
-	char		*no_path;
-	char		*so_path;
-	char		*we_path;
-	char		*ea_path;
-	uint32_t	floor_color;
-	uint32_t	ceilling_color;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	t_color	floor;
+	t_color	ceiling;
 	int		done;
 }	t_element;
 
 
 typedef struct s_map
 {
-	char	**arr;
-	int		max_rows;
-	int		max_cols;
-	t_point	start;
+	char		**arr;
+	int			size;
+	int			max_rows;
+	int			max_cols;
+	t_point		start;
+	t_obj_type	direction;
 }	t_map;
 
-//		MAP			//
+//--------------------------------------------
+// CLEAN
+//--------------------------------------------
+void	clean_elems(t_element *element);
+void	clean_map(t_map *map);
+
+//--------------------------------------------
+// READ
+//--------------------------------------------
 int		read_file(t_element *element, t_map *map, int fd);
 int 	read_element(t_element *element, char *line);
+int		read_map(t_map *map, char *line);
 
-//		UTILS		//
-char	*read_line(int fd, int size);
-void	set_color(t_color color, char **array);
-
-//		ERROR		//
-int 	error_int(char *message);
-char 	*error_str(char **str, char *message);
-char	*bad_alloc(char **str);
+//--------------------------------------------
+// ERROR
+//--------------------------------------------
+int		read_map_error(t_element *element, t_map *map, char *line, int fd);
 int		read_elem_error(t_element *element, char *line, int fd);
+
+//--------------------------------------------
+// DEBUG
+//--------------------------------------------
+void	print_elements(t_element *elem);
+void	print_map(t_map *map);
 
 #endif

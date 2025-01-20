@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:38:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/17 17:54:34 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/20 16:26:43 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ void	am_free(mlx_t *mlx, t_asset_manager *am)
 		{
 			am_free_sprite(mlx, am->sprite_weapon);
 		}
-		free(am);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/17 17:56:11 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/20 13:59:07 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_sprite_options
 {
 	uint32_t		rows;
 	uint32_t		cols;
-	e_sprite_dir	dir
+	e_sprite_dir	dir;
 }	t_sprite_options;
 
 typedef struct s_sprite

@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   map_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 17:51:23 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:26:32 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/20 16:15:03 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/20 16:15:52 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "map.h"
 
-void	cub3d_free(t_cub3d *c)
+int	read_map_error(t_element *element, t_map *map, char *line, int fd)
 {
-	if (c)
-	{
-		am_free(c->mlx, &c->am);
-		clean_elems(c->element);
-		clean_map(c->map);
-	}
+	clean_elems(element);
+	clean_map(map);
+	if (line)
+		free(line);
+	close(fd);
+	return (EXIT_FAILURE);
+}
+
+int	read_elem_error(t_element *element, char *line, int fd)
+{
+	clean_elems(element);
+	if (line)
+		free(line);
+	close(fd);
+	return (EXIT_FAILURE);
 }

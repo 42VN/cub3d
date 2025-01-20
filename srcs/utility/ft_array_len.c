@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_array_len.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 17:51:23 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:26:32 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/20 16:17:54 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/20 16:19:45 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "utility.h"
 
-void	cub3d_free(t_cub3d *c)
+int	ft_array_len(char **array)
 {
-	if (c)
-	{
-		am_free(c->mlx, &c->am);
-		clean_elems(c->element);
-		clean_map(c->map);
-	}
+	int	len;
+
+	len = 0;
+	if (!array)
+		return (0);
+	while (array[len])
+		len++;
+	return (len);
 }

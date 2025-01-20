@@ -6,16 +6,31 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:19:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/16 16:35:48 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/20 14:54:50 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
-	t_cub3d	cub3d;
-	
-	
-	return (0);
+	t_cub3d		cub;
+	t_map		map;
+	t_element	element;
+	int		fd;
+
+	if (argc != 2)
+		return (ft_error_ret("Usage: ./cub3D [map_path]/[map_name].cub", EXIT_FAILURE));
+	ft_bzero(&map, sizeof(map));
+	ft_bzero(&element, sizeof(element));
+	fd = ft_validate_map_path(argv[1]);
+	if (fd == -1)
+		return (EXIT_FAILURE);
+	if (read_file(&element, &map, fd))
+		return (EXIT_FAILURE);
+	ft_bzero(&cub, sizeof(cub));
+	cub.map = &map;
+	cub.element = &element;
+	cub3d_free(&cub);
+	return (EXIT_SUCCESS);
 }

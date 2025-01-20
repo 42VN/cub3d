@@ -6,33 +6,56 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/17 14:18:02 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/20 16:29:27 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	process_line(t_element *element, t_map *map, char *line, int fd)
+{
+	if (!element->done)
+	{
+		if (read_element(element, line) == EXIT_FAILURE)
+			return (read_elem_error(element, line, fd));
+	}
+	else if (element->done)
+	{
+		if (!line[0] && !map->arr)
+			return (EXIT_SUCCESS);
+		else if (!line[0] && map->arr)
+		{
+			ft_error_ret("Map contains empty lines.", EXIT_FAILURE);
+			return (read_map_error(element, map, line, fd));
+		}
+		else if (read_map(map, line) == EXIT_FAILURE)
+			return (read_map_error(element, map, line, fd));
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	read_file(t_element *element, t_map *map, int fd)
 {
 	char	*line;
+	int		eof;
 
+	eof = 0;
 	while (1)
 	{
-		line = read_line(fd, BUFFER_SIZE);
+		line = ft_readline(fd, &eof, BUFFER_SIZE);
 		if (!line)
 			return (EXIT_FAILURE);
-		if (!element->done)
+		if (eof)
 		{
-			if (read_element(element, line) == EXIT_FAILURE)
-				return (read_elem_error(element, line, fd));
+			free(line);
+			break ;
 		}
-		else
-		{
-			(void)map;
-			// if (read_map(element, line) == EXIT_FAILURE)
-			// 	return (read_map_error(element, map, line, fd));
-		}
+		if (process_line(element, map, line, fd) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
 		free(line);
 	}
+	close(fd);
+	print_elements(element);
+	print_map(map);
 	return (EXIT_SUCCESS);
 }

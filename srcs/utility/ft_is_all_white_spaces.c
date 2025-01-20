@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_is_all_white_spaces.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 17:51:23 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:26:32 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/20 14:52:26 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/20 14:52:41 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "utility.h"
 
-void	cub3d_free(t_cub3d *c)
+int	ft_is_all_white_spaces(char *s)
 {
-	if (c)
+	while (*s)
 	{
-		am_free(c->mlx, &c->am);
-		clean_elems(c->element);
-		clean_map(c->map);
+		if (*s != 32 && (*s < 9 || *s > 13))
+			return (0);
+		s++;
 	}
+	return (1);
 }

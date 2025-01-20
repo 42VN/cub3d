@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/17 15:28:28 by ktieu            ###   ########.fr        #
+#    Updated: 2025/01/20 16:31:42 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ OBJ_DIR				= obj
 LIB_DIR 			= libs
 LIBFT_DIR	 		= $(LIB_DIR)/libft
 MLX42_DIR			= $(LIB_DIR)/MLX42
-MAP_DIR				= ./assets/map
 CUB3D_DIR			= $(SRC_DIR)/cub3d
 MAP_DIR				= $(SRC_DIR)/map
 UTILS_DIR			= $(SRC_DIR)/utility
@@ -32,15 +31,23 @@ ASSET_MANAGER_DIR	= $(SRC_DIR)/asset_manager
 
 
 # Source files by directory
-CUB3D_FILES			=	init.c
-UTIL_FILES			=	ft_error.c ft_readline.c
-MAP_FILES			=	read_file.c
-ASSET_MANAGER_FILES	=	am_load_img.c am_load_sprite.c
+CUB3D_FILES			=	init.c free.c
+
+UTIL_FILES			=	ft_error.c ft_readline.c ft_set_color.c ft_validate_path.c \
+						ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c
+						
+MAP_FILES			=	read_file.c read_element.c read_map.c \
+						clean_elems.c clean_map.c \
+						print_elements.c print_map.c \
+						map_error.c
+ 
+ASSET_MANAGER_FILES	=	am_load_img.c am_load_sprite.c am_free.c
 
 SRC_FILES		= 	./srcs/main.c \
 					$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
 					$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \
-					$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) 
+					$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) \
+					$(addprefix $(MAP_DIR)/, $(MAP_FILES))
 
 # Library
 LIBFT 			= $(LIBFT_DIR)/libft.a

@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:50:43 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/17 17:33:37 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/20 14:38:42 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,16 @@ t_sprite	*am_load_sprite(mlx_t *mlx, t_sprite_options options, char *path)
 
 	img = am_load_img(mlx, path);
 	if (!img)
-		return (ft_error_ret("am_load_sprite: am_load_img", 0));
+	{
+		ft_error("am_load_sprite: am_load_img");
+		return (NULL);
+	}
 	res = (t_sprite *)ft_calloc(1, sizeof(t_sprite));
 	if (!res)
 	{
 		mlx_delete_image(mlx, img);
-		return (ft_error_ret("am_load_sprite: ft_calloc", 0));
+		ft_error("am_load_sprite: ft_calloc");
+		return (NULL);
 	}
 	return (res);
 	
