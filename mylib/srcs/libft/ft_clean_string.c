@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_triptr.c                                   :+:      :+:    :+:   */
+/*   ft_clean_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:35:40 by hitran            #+#    #+#             */
-/*   Updated: 2024/07/14 15:29:22 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/20 10:09:01 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mylib.h"
 
-void	ft_free_triptr(char ***str)
+void	ft_clean_string(char **str)
 {
-	int	i;
-
-	i = 0;
-	if (*str)
+	if (str && *str)
 	{
-		while ((*str)[i] != NULL)
-			free((*str)[i++]);
 		free(*str);
 		*str = NULL;
 	}

@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:15:37 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/17 14:11:23 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/20 12:56:52 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,17 @@ int		read_file(t_element *element, t_map *map, int fd);
 int 	read_element(t_element *element, char *line);
 
 //		UTILS		//
-char	*read_line(int fd, int size);
-void	set_color(t_color color, char **array);
+char	*read_line(int fd, int *eof, int size);
+void	set_color(t_color *color, char **array);
+int		validate_map_path(char *path);
+int		validate_elem_path(char *path);
 
 //		ERROR		//
-int 	error_int(char *message);
-char 	*error_str(char **str, char *message);
-char	*bad_alloc(char **str);
+int 	error_int(char *message1, char *message2);
+char 	*error_str(char *str, char *message);
 int		read_elem_error(t_element *element, char *line, int fd);
+
+//TEST
+void	print_elements(t_element *elem);
 
 #endif

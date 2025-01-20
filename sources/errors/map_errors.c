@@ -6,46 +6,44 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:10:18 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/17 13:15:57 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/20 13:02:05 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int error_int(char *message)
+int error_int(char *message1, char *message2)
 {
-	ft_printf_fd(2, "Error\n%s\n", message);
+	ft_printf_fd(2, "Error\n");
+	if (message1)
+		ft_printf_fd(2, "%s: ", message1);
+	ft_printf_fd(2, "%s\n", message2);
 	return (EXIT_FAILURE);
 }
 
-char	*error_str(char **str, char *message)
+char	*error_str(char *str, char *message)
 {
 	ft_printf_fd(2, "Error\n%s\n", message);
-	if (str && *str)
-	{
-		free (*str);
-		*str = NULL;
-	}
+	if (str)
+		free (str);
 	return (NULL);
-}
-
-char	*bad_alloc(char **str)
-{
-	return (error_str(str, "Memory allocation failed."));
 }
 
 int	read_elem_error(t_element *element, char *line, int fd)
 {
-	if (element->no_path)
-		ft_free_strptr(&element->no_path);
-	if (element->so_path)
-		ft_free_strptr(&element->so_path);
-	if (element->we_path)
-		ft_free_strptr(&element->we_path);
-	if (element->ea_path)
-		ft_free_strptr(&element->ea_path);
+	clean_elems(element);
 	if (line)
-		ft_free_strptr(&line);
+		free(line);
+	close(fd);
+	return (EXIT_FAILURE);
+}
+
+int	read_map_error(t_element *element, t_map *map, char *line, int fd)
+{
+	clean_elems(element);
+	clean_map(map);
+	if (line)
+		free(line);
 	close(fd);
 	return (EXIT_FAILURE);
 }

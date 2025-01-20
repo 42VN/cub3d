@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_strptr.c                                   :+:      :+:    :+:   */
+/*   ft_clean_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:35:40 by hitran            #+#    #+#             */
-/*   Updated: 2024/07/14 15:26:49 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/20 09:58:08 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mylib.h"
 
-void	ft_free_strptr(char **str)
+void	ft_clean_array(char ***str)
 {
 	int	i;
 
 	i = 0;
-	if (str)
+	if (*str)
 	{
-		while (!str[i])
-			free(str[i++]);
-		free(str);
+		while ((*str)[i] != NULL)
+			free((*str)[i++]);
+		free(*str);
+		*str = NULL;
 	}
 }

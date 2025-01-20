@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:15:51 by hitran            #+#    #+#             */
-/*   Updated: 2024/08/16 15:20:55 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/20 09:59:40 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**ft_matrix_dup(char **matrix, int row)
 		res[i] = ft_strdup(matrix[i]);
 		if (!res[i])
 		{
-			ft_free_triptr(&res);
+			ft_clean_array(&res);
 			return (NULL);
 		}
 	}

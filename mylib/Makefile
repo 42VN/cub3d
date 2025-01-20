@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 18:50:22 by hitran            #+#    #+#              #
-#    Updated: 2025/01/17 10:46:08 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/20 10:10:19 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,11 @@ LIBFT_FILES		=	ft_isalpha.c		ft_isdigit.c		ft_isalnum.c	\
 					ft_lstsize.c		ft_lstlast.c		ft_lstadd_back.c \
 					ft_lstdelone.c 		ft_lstclear.c 		ft_lstiter.c	\
 					ft_lstadd_front.c	ft_strcpy.c			ft_strcmp.c		\
-					ft_max.c			ft_free_array.c		ft_free_strptr.c \
-					ft_free_triptr.c	ft_free_return.c 	ft_matrix_dup.c \
+					ft_max.c			ft_free_array.c		ft_clean_string.c \
+					ft_clean_array.c	ft_free_return.c 	ft_matrix_dup.c \
 					ft_matrixlen.c 		ft_count_char.c		ft_array_len.c \
-					ft_is_white_space.c	ft_is_all_white_spaces.c 
+					ft_is_white_space.c	ft_is_all_white_spaces.c
+					
 					
 PRINTF_FILES	=	ft_printf_fd.c		ft_putbase_fd.c		ft_putchar_fd.c	\
 					ft_putstr_fd.c		ft_putaddr_fd.c		ft_putnbr_fd.c	\

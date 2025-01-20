@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:07:44 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/17 10:45:49 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/20 10:10:36 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ char	*ft_strcpy(char *dest, char *src);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_max(int a, int b);
 void	ft_free_array(size_t i, char **array);
-void	ft_free_strptr(char **strptr);
-void	ft_free_triptr(char ***strptr);
 int		ft_is_all_white_spaces(char *s);
 int		ft_is_white_space(char c);
 char	*ft_free_return(char *str);
@@ -82,6 +80,9 @@ char	**ft_matrix_dup(char **matrix, int row);
 size_t	ft_matrixlen(char **matrix);
 int		ft_count_char(const char *s, char c);
 int		ft_array_len(char **array);
+void	ft_clean_array(char ***str);
+void	ft_clean_string(char **str);
+
 
 //printf_fd_fd_fd
 int		ft_printf_fd(int fd, const char *str, ...);
