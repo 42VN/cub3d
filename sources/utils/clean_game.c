@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:49:36 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/20 12:57:10 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/20 15:38:47 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	clean_map(t_map *map)
 {
 	if (!map || !map->arr)
 		return ;
-	ft_clean_array(&map->arr);
+	// printf("free map arr\n");
+	ft_clean_array(&(map->arr));
 }
 
 void	clean_game(t_cub3d *cub)

@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:15:37 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/20 12:56:52 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/20 15:11:56 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,18 @@ typedef struct s_element
 
 typedef struct s_map
 {
-	char	**arr;
-	int		max_rows;
-	int		max_cols;
-	t_point	start;
+	char		**arr;
+	int			size;
+	int			max_rows;
+	int			max_cols;
+	t_point		start;
+	t_obj_type	direction;
 }	t_map;
 
 //		MAP			//
 int		read_file(t_element *element, t_map *map, int fd);
 int 	read_element(t_element *element, char *line);
+int		read_map(t_map *map, char *line);
 
 //		UTILS		//
 char	*read_line(int fd, int *eof, int size);
@@ -84,8 +87,10 @@ int		validate_elem_path(char *path);
 int 	error_int(char *message1, char *message2);
 char 	*error_str(char *str, char *message);
 int		read_elem_error(t_element *element, char *line, int fd);
+int		read_map_error(t_element *element, t_map *map, char *line, int fd);
 
 //TEST
 void	print_elements(t_element *elem);
+void	print_map(t_map *map);
 
 #endif

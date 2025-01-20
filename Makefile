@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/20 13:36:16 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/20 14:45:42 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ MAP_FILES 		= 	read_map.c	read_element.c read_file.c
 
 ERROR_FILES 	= 	map_errors.c
 
-UTILS_FILES 	= 	read_line.c set_color.c print_elements.c validate_path.c \
+UTILS_FILES 	= 	read_line.c set_color.c print_map.c validate_path.c \
 					clean_game.c
 
 BN_FILES 		= 	
