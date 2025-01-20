@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/20 16:31:42 by ktieu            ###   ########.fr        #
+#    Updated: 2025/01/20 17:00:36 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,9 @@ MAP_FILES			=	read_file.c read_element.c read_map.c \
 						print_elements.c print_map.c \
 						map_error.c
  
-ASSET_MANAGER_FILES	=	am_load_img.c am_load_sprite.c am_free.c
+ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c am_free.c
 
-SRC_FILES		= 	./srcs/main.c \
+SRC_FILES		= 	./srcs/test_main.c \
 					$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
 					$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \
 					$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) \

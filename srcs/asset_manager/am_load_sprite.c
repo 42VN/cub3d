@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:50:43 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 14:38:42 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/20 17:00:36 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ t_sprite	*am_load_sprite(mlx_t *mlx, t_sprite_options options, char *path)
 	mlx_image_t	*img;
 	t_sprite	*res;
 
-	img = am_load_img(mlx, path);
+	img = am_load_png(mlx, path);
 	if (!img)
 	{
-		ft_error("am_load_sprite: am_load_img");
+		ft_error("am_load_sprite: am_load_png");
 		return (NULL);
 	}
 	res = (t_sprite *)ft_calloc(1, sizeof(t_sprite));

@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:52:36 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/20 16:51:38 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "cub3d.h"
 
-# define WIDTH 1280
-# define HEIGHT 960
-
-#include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
-
-
-typedef struct s_cub3d
+int	cub3d_init(t_cub3d *cub)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
+	t_asset_manager	*am;
 
-int		cub3d_init(t_cub3d *cub);
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	ft_bzero(cub, sizeof(t_cub3d));
+	am = &cub->am;
+	// am->sprite_weapon = am_load_sprite(
+	// 	cub->mlx,
+	// 	(t_sprite){  }, "assets/sprites/weapons.png")
+	return (1);
+}

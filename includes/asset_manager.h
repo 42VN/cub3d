@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 13:59:07 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/20 17:00:36 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_asset_manager
 
 
 void		am_free(mlx_t *mlx, t_asset_manager *am);
-mlx_image_t	*am_load_img(mlx_t *mlx, char *path);
+mlx_image_t	*am_load_png(mlx_t *mlx, char *path);
 t_sprite	*am_load_sprite(mlx_t *mlx, t_sprite_options options, char *path);
 
 #endif
