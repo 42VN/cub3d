@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/18 16:05:33 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/25 09:50:46 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
 #include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+void	*ft_calloc(size_t count, size_t size)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
+	void	*res;
+	size_t	total;
 
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	total = count * size;
+	if (count > 0 && size > 0 && count != (total / size))
+		return (NULL);
+	res = malloc(count * size);
+	if (!res)
+		return (0);
+	ft_bzero(res, (count * size));
+	return (res);
+}

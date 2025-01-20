@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/18 13:43:40 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/18 14:32:20 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
 #include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
+	i = 0;
+	while (i < n)
+	{
+		if (str1[i] != str2[i])
+		{
+			return (str1[i] - str2[i]);
+		}
+		i++;
+	}
+	return (0);
+}

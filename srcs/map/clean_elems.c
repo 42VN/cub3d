@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   clean_elems.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
+/*   Created: 2025/01/20 13:45:01 by ktieu             #+#    #+#             */
 /*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
-#include "libft.h"
-#include "asset_manager.h"
 #include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+void	clean_elems(t_element *element)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
-
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	if (!element)
+		return ;
+	if (element->no_path)
+		free(element->no_path);
+	if (element->so_path)
+		free(element->so_path);
+	if (element->we_path)
+		free(element->we_path);
+	if (element->ea_path)
+		free(element->ea_path);
+}

@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/16 14:54:51 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/16 14:59:33 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
-#include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
-
-
-typedef struct s_cub3d
+int	ft_isalnum(int c)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
-
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')
+		|| (c >= '0' && c <= '9'))
+	{
+		return (1);
+	}
+	return (0);
+}

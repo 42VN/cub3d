@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   print_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
+/*   Created: 2025/01/20 13:46:15 by ktieu             #+#    #+#             */
 /*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
-#include "libft.h"
-#include "asset_manager.h"
 #include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+void	print_elements(t_element *elem)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
-
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	printf("NO path: %s\n", elem->no_path);
+	printf("SO path: %s\n", elem->so_path);
+	printf("WE path: %s\n", elem->we_path);
+	printf("EA path: %s\n", elem->ea_path);
+	printf("FL color: %d, %d, %d\n", elem->floor.red,
+			elem->floor.green, elem->floor.blue);
+	printf("CE color: %d, %d, %d\n", elem->ceiling.red,
+			elem->ceiling.green, elem->ceiling.blue);
+	if (elem->done)
+		printf("Parsing done");
+}

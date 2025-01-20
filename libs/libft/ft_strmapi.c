@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/20 14:06:46 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/20 14:40:15 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
 #include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+char	*ft_strmapi(char const *s, char (*f)(unsigned
+int, char))
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
+	size_t			len;
+	unsigned int	index;
+	char			*res;
+	char			*res_ptr;
 
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	if (!s)
+		return (0);
+	index = 0;
+	len = ft_strlen(s);
+	res = (char *) malloc (sizeof(char) * (len + 1));
+	if (!res)
+		return (0);
+	res_ptr = res;
+	while (*s)
+	{
+		*res_ptr = f(index, *s);
+		index++;
+		s++;
+		res_ptr++;
+	}
+	*res_ptr = '\0';
+	return (res);
+}

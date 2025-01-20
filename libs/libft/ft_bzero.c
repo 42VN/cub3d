@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/17 10:09:45 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/17 14:16:19 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
 #include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+void	ft_bzero(void *s, size_t n)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
-
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	while (n-- > 0)
+	{
+		*(unsigned char *) s = 0;
+		s++;
+	}
+}

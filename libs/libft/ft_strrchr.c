@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/18 11:31:12 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/18 12:56:18 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
-#include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
-
-
-typedef struct s_cub3d
+char	*ft_strrchr(const char *s, int c)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
+	char	*tmp;
 
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	tmp = 0;
+	while (*s)
+	{
+		if (*s == (char) c)
+		{
+			tmp = (char *) s;
+		}
+		s++;
+	}
+	if (*s == (char) c)
+	{
+		return ((char *)s);
+	}
+	return ((char *)tmp);
+}

@@ -3,48 +3,54 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
+#    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/20 14:45:42 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/20 16:31:42 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC 				= cc
-CFLAGS 			= -Wall -Wextra -Werror
+CFLAGS 			= -g
 MLX42_FLAGS		= -ldl -lglfw -pthread -lm
-INCLUDES 		= -I./includes -I./mylib/includes -I./MLX42/include/MLX42
+INCLUDES 		= -I./includes -I./libs/libft -I./libs/MLX42/include/MLX42
 RM 				= rm -rf
 
 # Directories
-MYLIB_DIR	 	= ./mylib
-MLX42_DIR		= ./MLX42
-SRC_DIR			= ./sources
+SRC_DIR 			= srcs
+LIB_DIR 			= libs
+OBJ_DIR				= obj
+LIB_DIR 			= libs
+LIBFT_DIR	 		= $(LIB_DIR)/libft
+MLX42_DIR			= $(LIB_DIR)/MLX42
+CUB3D_DIR			= $(SRC_DIR)/cub3d
+MAP_DIR				= $(SRC_DIR)/map
+UTILS_DIR			= $(SRC_DIR)/utility
+ASSET_MANAGER_DIR	= $(SRC_DIR)/asset_manager
 
-MAP_DIR			= $(SRC_DIR)/map
-ERROR_DIR		= $(SRC_DIR)/errors
-UTILS_DIR		= $(SRC_DIR)/utils
 
 # Source files by directory
-MAP_FILES 		= 	read_map.c	read_element.c read_file.c 
+CUB3D_FILES			=	init.c free.c
 
-ERROR_FILES 	= 	map_errors.c
+UTIL_FILES			=	ft_error.c ft_readline.c ft_set_color.c ft_validate_path.c \
+						ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c
+						
+MAP_FILES			=	read_file.c read_element.c read_map.c \
+						clean_elems.c clean_map.c \
+						print_elements.c print_map.c \
+						map_error.c
+ 
+ASSET_MANAGER_FILES	=	am_load_img.c am_load_sprite.c am_free.c
 
-UTILS_FILES 	= 	read_line.c set_color.c print_map.c validate_path.c \
-					clean_game.c
-
-BN_FILES 		= 	
-
-MAN_SRCS		= 	$(SRC_DIR)/main.c 	\
-					$(addprefix $(MAP_DIR)/, $(MAP_FILES)) \
-					$(addprefix $(ERROR_DIR)/, $(ERROR_FILES)) \
-					$(addprefix $(UTILS_DIR)/, $(UTILS_FILES))					
-
-BN_SRCS			= 	
+SRC_FILES		= 	./srcs/main.c \
+					$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
+					$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \
+					$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) \
+					$(addprefix $(MAP_DIR)/, $(MAP_FILES))
 
 # Library
-MYLIB 			= $(MYLIB_DIR)/mylib.a
+LIBFT 			= $(LIBFT_DIR)/libft.a
 MLX42			= $(MLX42_DIR)/build/libmlx42.a
 
 # Executables
@@ -54,19 +60,14 @@ NAME 			= cub3D
 all : mandatory
 
 mandatory : .mandatory
-.mandatory: $(MYLIB) $(MLX42) $(MAN_SRCS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(MAN_SRCS) $(MYLIB) $(MLX42) $(MLX42_FLAGS) -o $(NAME)
+.mandatory: $(LIBFT) $(MLX42) $(SRC_FILES)
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_FILES) $(LIBFT) $(MLX42) $(MLX42_FLAGS) -o $(NAME)
 	@touch .mandatory
 	@$(RM) .bonus
 
-bonus: .bonus
-.bonus: $(MYLIB) $(MLX42) $(BN_SRCS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(BN_SRCS) $(MYLIB) $(MLX42) $(MLX42_FLAGS) -o $(NAME)
-	@touch .bonus
-	@$(RM) .mandatory
 
-$(MYLIB):
-	$(MAKE) -C $(MYLIB_DIR)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
 $(MLX42): .mlx42
 .mlx42: 
@@ -78,13 +79,13 @@ $(MLX42): .mlx42
 	@touch .mlx42
 
 clean:
-	$(MAKE) clean -C $(MYLIB_DIR)
+	$(MAKE) clean -C $(LIBFT_DIR)
 	$(RM) .bonus .mandatory $(MLX42_DIR)/build
 
 fclean: clean
-	$(MAKE) fclean -C $(MYLIB_DIR)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 	$(RM) $(NAME) $(MLX42_DIR) .bonus .mandatory .mlx42
 	
 re: fclean all
 
-.PHONY: all clean fclean re mandatory bonus
+.PHONY: all clean fclean re mandatory 

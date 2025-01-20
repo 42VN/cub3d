@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/22 15:38:46 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/22 15:58:03 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
 #include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
+	t_list	*cur_node;
+	t_list	*next_node;
 
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	if (!lst || !del || !(*lst))
+		return ;
+	cur_node = (*lst);
+	while (cur_node != NULL)
+	{
+		next_node = cur_node->next;
+		del(cur_node->content);
+		free(cur_node);
+		cur_node = next_node;
+	}
+	*lst = NULL;
+}

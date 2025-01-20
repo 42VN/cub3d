@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/18 14:33:46 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/18 15:43:42 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
 #include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
+	size_t	i;
+	size_t	j;
 
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	i = 0;
+	if (!haystack && !len)
+		return (0);
+	if (!*needle)
+		return ((char *)haystack);
+	while (haystack[i] != '\0' && len)
+	{
+		j = 0;
+		while (needle[j] == haystack[i + j] && needle[j] && j < len)
+		{
+			j++;
+		}
+		if (needle[j] == '\0')
+			return ((char *)&haystack[i]);
+		i++;
+		len--;
+	}
+	return (0);
+}

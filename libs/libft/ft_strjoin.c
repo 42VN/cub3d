@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/19 13:37:15 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/19 14:03:11 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
 #include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
+	char	*res;
+	char	*ptr_res;
 
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	if (!s1 || !s2)
+		return (0);
+	res = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!res)
+		return (0);
+	ptr_res = res;
+	while (*s1 != '\0')
+	{
+		*ptr_res++ = *s1++;
+	}
+	while (*s2 != '\0')
+	{
+		*ptr_res ++ = *s2++;
+	}
+	*ptr_res = '\0';
+	return (res);
+}

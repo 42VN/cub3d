@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   am_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/17 17:38:36 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/20 16:26:43 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-# define WIDTH 1280
-# define HEIGHT 960
-
-#include "libft.h"
 #include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
 
-
-typedef struct s_cub3d
+static void	am_free_sprite(mlx_t *mlx, t_sprite *s)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
+	int	i;
 
-void	cub3d_free(t_cub3d *c);
+	i = 0;
+	if (s)
+	{
+		while (s->frames[i])
+		{
+			mlx_delete_image(mlx, s->frames[i]);
+			++i;
+		}
+		free(s);
+	}
+}
 
-#endif
+void	am_free(mlx_t *mlx, t_asset_manager *am)
+{
+	if (am)
+	{
+		if (am->sprite_weapon)
+		{
+			am_free_sprite(mlx, am->sprite_weapon);
+		}
+	}
+}

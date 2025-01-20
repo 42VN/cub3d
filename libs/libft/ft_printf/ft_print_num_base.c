@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_print_num_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Created: 2024/06/18 14:01:16 by ktieu             #+#    #+#             */
+/*   Updated: 2024/06/18 15:18:29 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "../libft.h"
 
-# define WIDTH 1280
-# define HEIGHT 960
-
-#include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
-
-
-typedef struct s_cub3d
+void	ft_print_num_base(t_printf *s, long long n, int base, char *lst_base)
 {
-	mlx_t			*mlx;
-	t_element		*element;
-	t_map			*map;
-	t_asset_manager	am;
-}	t_cub3d;
-
-void	cub3d_free(t_cub3d *c);
-
-#endif
+	if (n < 0)
+	{
+		ft_print_char(s, (int) '-');
+		ft_print_num_base(s, -n, base, lst_base);
+		return ;
+	}
+	if (n >= base)
+	{
+		ft_print_num_base(s, n / base, base, lst_base);
+		ft_print_num_base(s, n % base, base, lst_base);
+		return ;
+	}
+	else
+	{
+		ft_print_char(s, lst_base[n]);
+		return ;
+	}
+}
