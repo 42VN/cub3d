@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/22 19:51:26 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/23 17:11:17 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # define WIDTH 1280
 # define HEIGHT 960
+# define PI 3.14159265359
+# define FOV = PI / 2
 
 #include "libft.h"
 #include "asset_manager.h"
