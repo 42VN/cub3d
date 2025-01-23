@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   am_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 16:50:12 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/22 14:22:55 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/22 19:59:51 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "asset_manager.h"
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	am_init(t_cub3d *c)
 {
-	t_cub3d		cub;
-	int		fd;
+	t_asset_manager	*am;
 
-	if (argc != 2)
-		return (ft_error_ret("Usage: ./cub3D [map_path]/[map_name].cub", EXIT_FAILURE));
-	cub3d_init(&cub);
-	
-	cub3d_free(&cub);
-	return (EXIT_SUCCESS);
+	am = &c->am;
+	am->sprite_weapon = am_load_sprite(c->mlx, (t_sprite_options){1, 6, DIR_VERTICAL}, "assets/sprites/weapons.png");
+	am->ceiling = mlx_new_image(c->mlx, WIDTH, HEIGHT / 2); 
+	am->floor = mlx_new_image(c->mlx, WIDTH, HEIGHT / 2); 
+	ft_fill_color(am->ceiling, (t_color){245,214,34,255});
+	ft_fill_color(am->floor, (t_color){222,194,30,255});
 }

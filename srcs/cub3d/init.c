@@ -6,13 +6,22 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:59:32 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/22 19:52:01 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	cub3d_init(t_cub3d *c)
+static void	hook_init(t_cub3d *c)
+{
+	if (!mlx_loop_hook(c->mlx, event_loop_handler, c))
+	{
+		cub3d_error_exit(c, "cub3d_init: mlx_loop_hook");
+	}
+	mlx_close_hook(c->mlx, event_close_handler, c);
+}
+
+void	cub3d_init(t_cub3d *c)
 {
 	t_asset_manager	*am;
 
@@ -21,11 +30,10 @@ int	cub3d_init(t_cub3d *c)
 	c->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (!c->mlx)
 	{
-		cub3d_free(c);
-		exit(EXIT_FAILURE);
+		cub3d_error_exit(c, "cub3d_init: mlx_init");
 	}
-	// am->sprite_weapon = am_load_sprite(
-	// 	cub->mlx,
-	// 	(t_sprite){  }, "assets/sprites/weapons.png")
-	return (1);
+	mlx_get_mouse_pos(c->mlx, &c->mouse_x, &c->mouse_y);
+	am_init(c);
+	hook_init(c);
+	cub3d_render(c);
 }

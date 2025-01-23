@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"asset_manager.h": "c"
+		"asset_manager.h": "c",
+		"cerrno": "c"
 	}
 }

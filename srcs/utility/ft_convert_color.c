@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_convert_color.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 16:50:12 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/22 14:22:55 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/22 17:57:14 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/22 18:06:14 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "utility.h"
 
-int	main(int argc, char **argv)
+uint32_t	ft_convert_color(t_color color)
 {
-	t_cub3d		cub;
-	int		fd;
-
-	if (argc != 2)
-		return (ft_error_ret("Usage: ./cub3D [map_path]/[map_name].cub", EXIT_FAILURE));
-	cub3d_init(&cub);
-	
-	cub3d_free(&cub);
-	return (EXIT_SUCCESS);
+	return (color.transparent << 24 | color.red << 16 | color.green << 8 | color.blue);
 }

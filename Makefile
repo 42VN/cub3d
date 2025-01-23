@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/20 17:00:36 by ktieu            ###   ########.fr        #
+#    Updated: 2025/01/23 10:20:37 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,36 +25,43 @@ LIB_DIR 			= libs
 LIBFT_DIR	 		= $(LIB_DIR)/libft
 MLX42_DIR			= $(LIB_DIR)/MLX42
 CUB3D_DIR			= $(SRC_DIR)/cub3d
+EVENT_DIR			= $(SRC_DIR)/event
 MAP_DIR				= $(SRC_DIR)/map
 UTILS_DIR			= $(SRC_DIR)/utility
 ASSET_MANAGER_DIR	= $(SRC_DIR)/asset_manager
 
 
 # Source files by directory
-CUB3D_FILES			=	init.c free.c
+CUB3D_FILES			=	init.c free.c exit.c render.c
 
-UTIL_FILES			=	ft_error.c ft_readline.c ft_set_color.c ft_validate_path.c \
-						ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c
+EVENT_FILES			=	event_loop_handler.c event_close_handler.c
+
+UTIL_FILES			=	ft_error.c \
+						ft_validate_path.c \
+						ft_readline.c ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c \
+						ft_convert_color.c ft_set_color.c ft_fill_color.c 
 						
 MAP_FILES			=	read_file.c read_element.c read_map.c \
 						clean_elems.c clean_map.c \
 						print_elements.c print_map.c \
 						map_error.c
  
-ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c am_free.c
+ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
+						am_init.c am_free.c
 
-SRC_FILES		= 	./srcs/test_main.c \
-					$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
-					$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \
-					$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) \
-					$(addprefix $(MAP_DIR)/, $(MAP_FILES))
+SRC_FILES			= 	./srcs/main.c \
+						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
+						$(addprefix $(EVENT_DIR)/, $(EVENT_FILES)) \
+						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \
+						$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) \
+						$(addprefix $(MAP_DIR)/, $(MAP_FILES))
 
 # Library
-LIBFT 			= $(LIBFT_DIR)/libft.a
-MLX42			= $(MLX42_DIR)/build/libmlx42.a
+LIBFT 				= $(LIBFT_DIR)/libft.a
+MLX42				= $(MLX42_DIR)/build/libmlx42.a
 
 # Executables
-NAME 			= cub3D
+NAME 				= cub3D
 
 # Targets
 all : mandatory

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 16:50:12 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/22 14:22:55 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/22 18:47:41 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/22 18:50:41 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+/**
+ * Function to free and exit the game.
+ * If there is no error, pass in NULL for str
+ */
+void	cub3d_error_exit(t_cub3d *c, char *str)
 {
-	t_cub3d		cub;
-	int		fd;
-
-	if (argc != 2)
-		return (ft_error_ret("Usage: ./cub3D [map_path]/[map_name].cub", EXIT_FAILURE));
-	cub3d_init(&cub);
-	
-	cub3d_free(&cub);
-	return (EXIT_SUCCESS);
+	if (str)
+		ft_error(str);
+	cub3d_free(c);
+	exit(EXIT_FAILURE);
 }
