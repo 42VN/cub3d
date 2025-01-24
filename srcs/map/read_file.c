@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/24 10:42:06 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 12:21:11 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,16 @@ int	process_line(t_element *element, t_map *map, char *line, int fd)
 	if (!element->done)
 	{
 		if (read_element(element, line) == EXIT_FAILURE)
-			return (read_elem_error(element, line, fd));
+			return (EXIT_FAILURE);
 	}
 	else if (element->done)
 	{
 		if (!line[0] && map->arr && !map->arr[0])
 			return (EXIT_SUCCESS);
 		else if (!line[0] && map->arr && map->arr[0])
-		{
-			ft_error_ret("Map contains empty lines.", EXIT_FAILURE);
-			return (read_map_error(element, map, line, fd));
-		}
+			return (ft_error_ret("Map contains empty lines.", EXIT_FAILURE));
 		else if (read_map(map, line) == EXIT_FAILURE)
-			return (read_map_error(element, map, line, fd));
+			return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }
@@ -55,10 +52,9 @@ int	read_file(t_element *element, t_map *map, int fd)
 			break ;
 		}
 		if (process_line(element, map, line, fd) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
+			return (read_map_error(element, map, line, fd));
 		free(line);
 	}
-	close(fd);
 	print_elements(element);
 	print_map(map->arr);
 	return (EXIT_SUCCESS);

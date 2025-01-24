@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:51:23 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:26:32 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/24 11:37:43 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	cub3d_free(t_cub3d *c)
 	if (c)
 	{
 		am_free(c->mlx, &c->am);
-		clean_elems(c->element);
+		// clean_elems(c->element);
 		clean_map(c->map);
 	}
 }

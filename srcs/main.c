@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:19:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/24 10:14:24 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 12:09:38 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	ft_bzero(&cub, sizeof(cub));
 	cub.map = &map;
 	cub.element = &element;
+	close (fd);
 	cub3d_free(&cub);
 	return (EXIT_SUCCESS);
 }

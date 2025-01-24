@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/24 10:42:26 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 11:45:19 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,14 @@ typedef struct s_point
 
 typedef struct s_element
 {
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
+	// char	*no_path;
+	// char	*so_path;
+	// char	*we_path;
+	// char	*ea_path;
+	int		no_fd;
+	int		so_fd;
+	int		we_fd;
+	int		ea_fd;
 	t_color	floor;
 	t_color	ceiling;
 	int		done;

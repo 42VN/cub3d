@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_element.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/20 16:23:54 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/24 11:56:57 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,65 +30,69 @@ int	check_elem_type(char *line)
 		return (-1);
 }
 
-int	parse_color(t_element *element, char *info, int elem_type)
+int	parse_color(t_element *element, char **splitted_line, int elem_type)
 {
 	char	**array;
 
-	array = ft_split(info, ',');
-	free(info);
+	array = ft_split(splitted_line[1], ',');
 	if (!array)
-		return (ft_multi_error_ret("ft_split", "Memory allocation failed.", EXIT_FAILURE));
+		return (ft_error_ret("ft_split failed.", EXIT_FAILURE));
 	if (ft_array_len(array) != 3)
 	{
 		ft_clean_array(&array);
 		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
 	}
-	if (elem_type == F)
-		ft_set_color(&element->floor, array);
-	else
-		ft_set_color(&element->ceiling, array);
+	if ((elem_type == F && ft_set_color(&element->floor, array) == EXIT_FAILURE)
+		|| (elem_type == C && ft_set_color(&element->ceiling, array) == EXIT_FAILURE))
+	{
+		ft_clean_array(&array);
+		return (EXIT_SUCCESS);
+	}
 	ft_clean_array(&array);
 	return (EXIT_SUCCESS);
 }
 
-int	save_elem_path(t_element *element, char	**splitted_line, int elem_type)
+int	save_elem_info(t_element *element, char	**splitted_line, int elem_type)
 {
-	char *info;
+	int	fd;
 
-	info = ft_strdup(splitted_line[1]);
-	ft_clean_array(&splitted_line);
-	if (!info)
-		return (ft_multi_error_ret("ft_strdup", "Memory allocation failed.", EXIT_FAILURE));
+	if (elem_type == F || elem_type == C)
+		return (parse_color(element, splitted_line, elem_type));
+	fd = open(splitted_line[1], O_RDONLY);
+	if (fd == -1)
+		return (ft_error_ret(splitted_line[1], EXIT_FAILURE));
 	if (elem_type == NO)
-		element->no_path = info;
+		element->no_fd = fd;
 	else if (elem_type == SO)
-		element->so_path = info;
+		element->so_fd = fd;
 	else if (elem_type ==  WE)
-		element->we_path = info;
+		element->we_fd = fd;
 	else if (elem_type == EA)
-		element->ea_path = info;
-	else if (elem_type == F || elem_type == C)
-		return (parse_color(element, info, elem_type));
+		element->ea_fd = fd;
 	return (EXIT_SUCCESS);
 }
 
 int	parse_element(t_element *element, char **splitted_line, int elem_type)
 {
-	if ((elem_type == NO && element->no_path)
-		|| (elem_type == SO && element->so_path)
-		|| (elem_type == WE && element->we_path)
-		|| (elem_type == EA && element->ea_path)
+	if ((elem_type == NO && element->no_fd)
+		|| (elem_type == SO && element->so_fd)
+		|| (elem_type == WE && element->we_fd)
+		|| (elem_type == EA && element->ea_fd)
 		|| (elem_type == F && element->floor.done)
 		|| (elem_type == C && element->ceiling.done))
 	{
 		ft_clean_array(&splitted_line);
-		return (ft_multi_error_ret(NULL, "Elements duplicated.", EXIT_FAILURE));
+		return (ft_error_ret("Elements duplicated.", EXIT_FAILURE));
 	}
-	if (save_elem_path(element, splitted_line, elem_type) == EXIT_FAILURE)
+	if (save_elem_info(element, splitted_line, elem_type) == EXIT_FAILURE)
+	{
+		ft_clean_array(&splitted_line);
 		return (EXIT_FAILURE);
-	if (element->no_path && element->so_path && element->we_path 
-		&& element->ea_path && element->floor.done && element->ceiling.done)
+	}
+	if (element->no_fd && element->so_fd && element->we_fd 
+		&& element->ea_fd && element->floor.done && element->ceiling.done)
 		element->done = 1;
+	ft_clean_array(&splitted_line);
 	return (EXIT_SUCCESS);
 }
 
@@ -102,18 +106,18 @@ int read_element(t_element *element, char *line)
 		return (EXIT_SUCCESS);
 	splitted_line = ft_split(line, ' ');
 	if (!splitted_line)
-		return (ft_multi_error_ret("ft_split", "Memory allocation failed.", 1));
+		return (ft_error_ret("ft_split failed.", EXIT_FAILURE));
 	size = ft_array_len(splitted_line);
-	if (size != 2) //need to check if the color code of the floor/ceiling is allowed to seperate by spaces
+	if (size != 2)
 	{
 		ft_clean_array(&splitted_line);
-		return (ft_error_ret("Invalid element format!", 1));
+		return (ft_error_ret("Invalid element format.", EXIT_FAILURE));
 	}
 	elem_type = check_elem_type(splitted_line[0]);	
 	if (elem_type == -1)
 	{
 		ft_clean_array(&splitted_line);
-		return (ft_multi_error_ret(NULL, "Invalid elements.", 1));
+		return (ft_error_ret("Invalid element types.", EXIT_FAILURE));
 	}
-	return (parse_element(element, splitted_line, elem_type) == EXIT_FAILURE);
+	return (parse_element(element, splitted_line, elem_type));
 }

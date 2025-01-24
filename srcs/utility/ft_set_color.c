@@ -12,11 +12,30 @@
 
 #include "utility.h"
 
-void ft_set_color(t_color *color, char **array)
+int	get_color(const char *str)
 {
-	color->red = ft_atoi(array[0]);
-	color->green = ft_atoi(array[1]);
-	color->blue = ft_atoi(array[2]);
+	int	number;
+
+	if (!str[0] || ft_strlen(str) > 3)
+		return (-1);
+	number = 0;
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
+			return (-1);
+		number = number * 10 + *str++ - '0';
+	}
+	return (number);
+}
+
+int ft_set_color(t_color *color, char **array)
+{
+	color->red = get_color(array[0]);
+	color->green = get_color(array[1]);
+	color->blue = get_color(array[2]);
+	if (color->red == -1 || color->green == -1 || color->blue == -1)
+		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
 	color->done = 1;
 	// printf("Color: %d, %d, %d\n", color->red, color->green, color->blue); //test
+	return (EXIT_SUCCESS);
 }
