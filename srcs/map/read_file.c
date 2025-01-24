@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/24 12:21:11 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 13:48:04 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	read_file(t_element *element, t_map *map, int fd)
 	map->arr = (char **)ft_calloc(BUFFER_SIZE, sizeof(char *));
 	if (!map->arr)
 		return (ft_error_ret("Map allocation failed.", 1));
+	printf("Start: Player: [%d, %d] %d\n", map->start.row, map->start.col, map->start.direction);
 	map->size = BUFFER_SIZE;
 	while (1)
 	{
@@ -57,5 +58,7 @@ int	read_file(t_element *element, t_map *map, int fd)
 	}
 	print_elements(element);
 	print_map(map->arr);
-	return (EXIT_SUCCESS);
+	printf("Player: [%d, %d] %d\n", map->start.row, map->start.col, map->start.direction);
+	// return (EXIT_SUCCESS);
+	return (validate_map(element, map, fd));
 }

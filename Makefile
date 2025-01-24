@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/24 09:42:41 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/24 13:31:33 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ UTIL_FILES			=	ft_error.c \
 MAP_FILES			=	read_file.c read_element.c read_map.c \
 						clean_elems.c clean_map.c \
 						print_elements.c print_map.c \
-						map_error.c
+						map_error.c validate_map.c
  
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 						am_init.c am_free.c

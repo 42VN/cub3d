@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/24 11:45:19 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 13:47:28 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,24 @@ typedef enum e_elem_type
 	C
 }	t_elem_type;
 
+typedef enum e_direction
+{
+	O,
+	N,
+	S,
+	W,
+	E
+}	t_direction;
+
 typedef struct s_point
 {
-	int	row;
-	int	col;
+	int			row;
+	int			col;
+	t_direction	direction;
 }	t_point;
 
 typedef struct s_element
 {
-	// char	*no_path;
-	// char	*so_path;
-	// char	*we_path;
-	// char	*ea_path;
 	int		no_fd;
 	int		so_fd;
 	int		we_fd;
@@ -68,7 +74,6 @@ typedef struct s_map
 	int			max_rows;
 	int			max_cols;
 	t_point		start;
-	t_obj_type	direction;
 }	t_map;
 
 //--------------------------------------------
@@ -83,6 +88,7 @@ void	clean_map(t_map *map);
 int		read_file(t_element *element, t_map *map, int fd);
 int 	read_element(t_element *element, char *line);
 int		read_map(t_map *map, char *line);
+int		validate_map(t_element *element, t_map *map, int fd);
 
 //--------------------------------------------
 // ERROR
