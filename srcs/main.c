@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:19:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/24 12:09:38 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 14:45:41 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	ft_bzero(&map, sizeof(map));
 	ft_bzero(&element, sizeof(element));
 	fd = ft_validate_map_path(argv[1]);
-	if (fd == -1)
+	if (fd < 0)
 		return (EXIT_FAILURE);
 	if (read_file(&element, &map, fd))
 		return (EXIT_FAILURE);

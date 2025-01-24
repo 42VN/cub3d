@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/24 13:48:04 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:05:23 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 int	process_line(t_element *element, t_map *map, char *line, int fd)
 {
 	if (!element->done)
-	{
-		if (read_element(element, line) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
-	}
+		return (read_element(element, line));
 	else if (element->done)
 	{
 		if (!line[0] && map->arr && !map->arr[0])
@@ -40,7 +37,6 @@ int	read_file(t_element *element, t_map *map, int fd)
 	map->arr = (char **)ft_calloc(BUFFER_SIZE, sizeof(char *));
 	if (!map->arr)
 		return (ft_error_ret("Map allocation failed.", 1));
-	printf("Start: Player: [%d, %d] %d\n", map->start.row, map->start.col, map->start.direction);
 	map->size = BUFFER_SIZE;
 	while (1)
 	{
@@ -49,16 +45,19 @@ int	read_file(t_element *element, t_map *map, int fd)
 			return (EXIT_FAILURE);
 		if (eof)
 		{
-			free(line);
+			if (!element->done || !map->arr[0])
+			{
+				ft_error("Invalid map.");
+				return (map_error(element, map, line, fd));
+			}
 			break ;
 		}
+		printf("line = %s\n", line);
 		if (process_line(element, map, line, fd) == EXIT_FAILURE)
-			return (read_map_error(element, map, line, fd));
+			return (map_error(element, map, line, fd));
 		free(line);
 	}
 	print_elements(element);
 	print_map(map->arr);
-	printf("Player: [%d, %d] %d\n", map->start.row, map->start.col, map->start.direction);
-	// return (EXIT_SUCCESS);
 	return (validate_map(element, map, fd));
 }

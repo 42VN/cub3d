@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/24 11:00:15 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 14:56:15 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_color
 //----------------------------------------------
 // ERROR
 //----------------------------------------------
-char		*ft_error_str_ret(char *str, char *message);
+char		*ft_error_ret_null(char *str);
 void		ft_error(char *str);
 int			ft_error_ret(char *str, int return_code);
 int			ft_multi_error_ret(char *str1, char *str2, int return_code);

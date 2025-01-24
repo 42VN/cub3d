@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/24 13:45:49 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 14:20:20 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	validate_map(t_element *element, t_map *map, int fd)
 	while (map && map->arr && map->arr[i])
 	{
 		if (validate_characters(map, map->arr[i]) == EXIT_FAILURE)
-			return (read_map_error(element, map, NULL, fd));
+			return (map_error(element, map, NULL, fd));
 		i++;
 	}
 	return (EXIT_SUCCESS);

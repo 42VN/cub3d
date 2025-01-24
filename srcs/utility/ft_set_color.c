@@ -25,6 +25,8 @@ int	get_color(const char *str)
 			return (-1);
 		number = number * 10 + *str++ - '0';
 	}
+	if (number > 255)
+		return (-1);
 	return (number);
 }
 
@@ -36,6 +38,5 @@ int ft_set_color(t_color *color, char **array)
 	if (color->red == -1 || color->green == -1 || color->blue == -1)
 		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
 	color->done = 1;
-	// printf("Color: %d, %d, %d\n", color->red, color->green, color->blue); //test
 	return (EXIT_SUCCESS);
 }

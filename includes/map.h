@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/24 13:47:28 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 14:20:20 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		validate_map(t_element *element, t_map *map, int fd);
 //--------------------------------------------
 // ERROR
 //--------------------------------------------
-int		read_map_error(t_element *element, t_map *map, char *line, int fd);
+int		map_error(t_element *element, t_map *map, char *line, int fd);
 int		read_elem_error(t_element *element, char *line, int fd);
 
 //--------------------------------------------

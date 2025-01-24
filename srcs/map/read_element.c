@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/24 11:56:57 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/24 14:48:55 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,18 @@ int	parse_color(t_element *element, char **splitted_line, int elem_type)
 	array = ft_split(splitted_line[1], ',');
 	if (!array)
 		return (ft_error_ret("ft_split failed.", EXIT_FAILURE));
-	if (ft_array_len(array) != 3)
+	if (ft_array_len(array) != 3 
+		|| splitted_line[1][ft_strlen(splitted_line[1]) - 1] == ',')
 	{
 		ft_clean_array(&array);
 		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
 	}
 	if ((elem_type == F && ft_set_color(&element->floor, array) == EXIT_FAILURE)
-		|| (elem_type == C && ft_set_color(&element->ceiling, array) == EXIT_FAILURE))
+		|| (elem_type == C
+		&& ft_set_color(&element->ceiling, array) == EXIT_FAILURE))
 	{
 		ft_clean_array(&array);
-		return (EXIT_SUCCESS);
+		return (EXIT_FAILURE);
 	}
 	ft_clean_array(&array);
 	return (EXIT_SUCCESS);
@@ -58,9 +60,9 @@ int	save_elem_info(t_element *element, char	**splitted_line, int elem_type)
 
 	if (elem_type == F || elem_type == C)
 		return (parse_color(element, splitted_line, elem_type));
-	fd = open(splitted_line[1], O_RDONLY);
-	if (fd == -1)
-		return (ft_error_ret(splitted_line[1], EXIT_FAILURE));
+	fd = ft_validate_elem_path(splitted_line[1]);
+	if (fd < 0)
+		return (EXIT_FAILURE);
 	if (elem_type == NO)
 		element->no_fd = fd;
 	else if (elem_type == SO)
