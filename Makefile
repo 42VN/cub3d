@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
+#    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/23 17:12:13 by ktieu            ###   ########.fr        #
+#    Updated: 2025/01/24 09:42:41 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ MAP_FILES			=	read_file.c read_element.c read_map.c \
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 						am_init.c am_free.c
 
-SRC_FILES			= 	./srcs/test_main.c \
+SRC_FILES			= 	./srcs/main.c \
 						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
 						$(addprefix $(EVENT_DIR)/, $(EVENT_FILES)) \
 						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \

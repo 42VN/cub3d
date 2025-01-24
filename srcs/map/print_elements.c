@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:46:15 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:10:35 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/24 10:43:11 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	print_elements(t_element *elem)
 	printf("CE color: %d, %d, %d\n", elem->ceiling.red,
 			elem->ceiling.green, elem->ceiling.blue);
 	if (elem->done)
-		printf("Parsing done");
+		printf("Parsing done!\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/20 16:29:27 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/24 10:42:06 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	process_line(t_element *element, t_map *map, char *line, int fd)
 	}
 	else if (element->done)
 	{
-		if (!line[0] && !map->arr)
+		if (!line[0] && map->arr && !map->arr[0])
 			return (EXIT_SUCCESS);
-		else if (!line[0] && map->arr)
+		else if (!line[0] && map->arr && map->arr[0])
 		{
 			ft_error_ret("Map contains empty lines.", EXIT_FAILURE);
 			return (read_map_error(element, map, line, fd));
@@ -40,6 +40,10 @@ int	read_file(t_element *element, t_map *map, int fd)
 	int		eof;
 
 	eof = 0;
+	map->arr = (char **)ft_calloc(BUFFER_SIZE, sizeof(char *));
+	if (!map->arr)
+		return (ft_error_ret("Map allocation failed.", 1));
+	map->size = BUFFER_SIZE;
 	while (1)
 	{
 		line = ft_readline(fd, &eof, BUFFER_SIZE);
@@ -56,6 +60,6 @@ int	read_file(t_element *element, t_map *map, int fd)
 	}
 	close(fd);
 	print_elements(element);
-	print_map(map);
+	print_map(map->arr);
 	return (EXIT_SUCCESS);
 }

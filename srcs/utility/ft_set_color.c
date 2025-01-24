@@ -18,5 +18,5 @@ void ft_set_color(t_color *color, char **array)
 	color->green = ft_atoi(array[1]);
 	color->blue = ft_atoi(array[2]);
 	color->done = 1;
-	printf("Color: %d, %d, %d\n", color->red, color->green, color->blue); //test
+	// printf("Color: %d, %d, %d\n", color->red, color->green, color->blue); //test
 }

@@ -3,20 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:30:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:30:13 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/24 10:41:44 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void	print_map(t_map *map)
+void	print_map(char ** map)
 {
-	if (!map || !map->arr)
+	int	i;
+
+	if (!map)
 		return ;
 	printf("Map: \n");
-	while (*(map->arr))
-		printf("%s\n", *(map->arr++));
+	i = 0;
+	while (map[i])
+		printf("%s\n", map[i++]);
 }

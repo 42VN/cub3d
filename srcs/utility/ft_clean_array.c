@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_clean_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 16:19:16 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:20:05 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/24 10:23:00 by hitran            #+#    #+#             */
+/*   Updated: 2025/01/24 10:39:07 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ void	ft_clean_array(char ***str)
 {
 	int	i;
 
+	if (!str || !(*str))
+		return;
 	i = 0;
-	if (*str)
+	while ((*str)[i])
 	{
-		while ((*str)[i] != NULL)
-			free((*str)[i++]);
-		free(*str);
-		*str = NULL;
+		free((*str)[i]);
+		(*str)[i] = NULL;
+		i++;
 	}
+	free(*str);
+	*str = NULL;
 }

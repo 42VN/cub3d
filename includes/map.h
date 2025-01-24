@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:31:11 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/24 10:42:26 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ int		read_elem_error(t_element *element, char *line, int fd);
 // DEBUG
 //--------------------------------------------
 void	print_elements(t_element *elem);
-void	print_map(t_map *map);
+void	print_map(char **map);
 
 #endif
