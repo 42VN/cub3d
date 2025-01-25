@@ -52,12 +52,11 @@ int	read_file(t_element *element, t_map *map, int fd)
 			free(line);
 			break ;
 		}
-		printf("line = %s\n", line);
 		if (process_line(element, map, line, fd) == EXIT_FAILURE)
 			return (map_error(element, map, line, fd));
 		free(line);
 	}
-	print_elements(element);
-	print_map(map->arr);
+	// print_elements(element);
+	// print_map(map->arr);
 	return (validate_map(element, map, fd));
 }
