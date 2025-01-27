@@ -6,13 +6,13 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:30:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/24 12:55:09 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/27 09:35:53 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void	print_map(char ** map)
+void	print_map(char **map)
 {
 	int	i;
 

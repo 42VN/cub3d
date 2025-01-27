@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft_set_color.c                                     :+:      :+:    :+:   */
+/*   ft_set_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 14:20:33 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/17 14:47:14 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/27 09:40:47 by hitran            #+#    #+#             */
+/*   Updated: 2025/01/27 09:41:12 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	get_color(const char *str)
 	return (number);
 }
 
-int ft_set_color(t_color *color, char **array)
+int	ft_set_color(t_color *color, char **array)
 {
 	color->red = get_color(array[0]);
 	color->green = get_color(array[1]);

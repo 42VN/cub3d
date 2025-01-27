@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:46:15 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/24 13:02:53 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/27 09:35:18 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_elements(t_element *elem)
 	printf("WE fd: %d\n", elem->we_fd);
 	printf("EA fd: %d\n", elem->ea_fd);
 	printf("FL color: %d, %d, %d\n", elem->floor.red,
-			elem->floor.green, elem->floor.blue);
+		elem->floor.green, elem->floor.blue);
 	printf("CE color: %d, %d, %d\n", elem->ceiling.red,
-			elem->ceiling.green, elem->ceiling.blue);
+		elem->ceiling.green, elem->ceiling.blue);
 }

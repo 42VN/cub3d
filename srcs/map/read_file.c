@@ -6,13 +6,13 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/24 15:23:50 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/27 09:16:33 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	process_line(t_element *element, t_map *map, char *line, int fd)
+static int	process_line(t_element *element, t_map *map, char *line, int fd)
 {
 	if (!element->done)
 		return (read_element(element, line));
@@ -44,11 +44,6 @@ int	read_file(t_element *element, t_map *map, int fd)
 			return (EXIT_FAILURE);
 		if (eof)
 		{
-			if (!element->done || !map->arr[0])
-			{
-				ft_error("Invalid map.");
-				return (map_error(element, map, line, fd));
-			}
 			free(line);
 			break ;
 		}
@@ -56,7 +51,5 @@ int	read_file(t_element *element, t_map *map, int fd)
 			return (map_error(element, map, line, fd));
 		free(line);
 	}
-	// print_elements(element);
-	// print_map(map->arr);
 	return (validate_map(element, map, fd));
 }

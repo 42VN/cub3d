@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/24 15:24:33 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/27 09:58:47 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,37 +33,9 @@ static int	is_unclosed(t_map *map, char **visited, int32_t row, int32_t col)
 		return (0);
 	visited[row][col] = '1';
 	return (is_unclosed(map, visited, row + 1, col)
-			|| is_unclosed(map, visited, row - 1, col)
-			|| is_unclosed(map, visited, row, col + 1)
-			|| is_unclosed(map, visited, row, col - 1));
-}
-
-int	copy_map(char **visited, t_map *map)
-{
-	int	row;
-	int col;
-
-	row = 0;
-	while (map && map->arr && map->arr[row])
-	{
-		visited[row] = (char *)ft_calloc(map->max_cols + 1, sizeof(char));
-		if (!visited[row])
-		{
-			ft_clean_array(&visited);
-			return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE)); 
-		}
-		col = 0;
-		while (col < map->max_cols)
-		{
-			if (map->arr[row][col])
-				visited[row][col] = map->arr[row][col];
-			else
-				visited[row][col] = ' ';
-			col++;
-		}
-		row++;
-	}
-	return (EXIT_SUCCESS);
+		|| is_unclosed(map, visited, row - 1, col)
+		|| is_unclosed(map, visited, row, col + 1)
+		|| is_unclosed(map, visited, row, col - 1));
 }
 
 static int	check_wall_surrounded(t_map *map)
@@ -72,8 +44,8 @@ static int	check_wall_surrounded(t_map *map)
 
 	visited = (char **)ft_calloc(map->max_rows + 1, sizeof(char *));
 	if (!visited)
-		return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE)); 
-	if (copy_map(visited, map) == EXIT_FAILURE)
+		return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
+	if (copy_map(visited, map, ' ') == EXIT_FAILURE)
 	{
 		ft_clean_array(&visited);
 		return (EXIT_FAILURE);
@@ -99,7 +71,7 @@ static int	validate_characters(t_map *map, int row)
 					EXIT_FAILURE));
 		else if (ft_strchr("NSEW", map->arr[row][col]))
 		{
-			if  (map->start.direction > 0)
+			if (map->start.direction > 0)
 				return (ft_error_ret("More than 1 player.", EXIT_FAILURE));
 			map->start.col = col;
 			map->start.row = row;
@@ -115,6 +87,11 @@ int	validate_map(t_element *element, t_map *map, int fd)
 	int	row;
 
 	row = 0;
+	if (!element->done || !map->arr[0])
+	{
+		ft_error("Invalid map.");
+		return (map_error(element, map, NULL, fd));
+	}
 	while (map && map->arr && map->arr[row])
 	{
 		if (validate_characters(map, row) == EXIT_FAILURE)
@@ -128,5 +105,7 @@ int	validate_map(t_element *element, t_map *map, int fd)
 	}
 	if (check_wall_surrounded(map) == EXIT_FAILURE)
 		return (map_error(element, map, NULL, fd));
+	print_elements(element);
+	print_map(map->arr);
 	return (EXIT_SUCCESS);
 }

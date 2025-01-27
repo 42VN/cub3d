@@ -6,28 +6,38 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/24 13:32:28 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/27 09:42:55 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	array_copy(char **dest, char **source)
+int	copy_map(char **visited, t_map *map, char rest)
 {
-	int	i;
+	int	row;
+	int	col;
+	int	len;
 
-	i = 0;
-	while (source && source[i])
+	row = -1;
+	while (map && map->arr && map->arr[++row])
 	{
-		dest[i] = ft_strdup(source[i]);
-		if (!dest[i])
-			return (ft_error_ret("Map copying: ft_strdup failed.", EXIT_FAILURE));
-		i++;
+		visited[row] = (char *)ft_calloc(map->max_cols + 1, sizeof(char));
+		if (!visited[row])
+		{
+			ft_clean_array(&visited);
+			return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
+		}
+		col = -1;
+		len = ft_strlen(map->arr[row]);
+		while (++col < len && map->arr[row][col])
+			visited[row][col] = map->arr[row][col];
+		while (rest && col < map->max_cols)
+			visited[row][col++] = rest;
 	}
 	return (EXIT_SUCCESS);
 }
 
-static int	reallocate(t_map *map)
+static int	realloc_map(t_map *map)
 {
 	char	**new_array;
 
@@ -37,7 +47,7 @@ static int	reallocate(t_map *map)
 		new_array = (char **)ft_calloc(map->size, sizeof(char *));
 		if (!new_array)
 			return (EXIT_FAILURE);
-		if (array_copy(new_array, map->arr) == EXIT_FAILURE)
+		if (copy_map(new_array, map, 0) == EXIT_FAILURE)
 		{
 			ft_clean_array(&new_array);
 			return (EXIT_FAILURE);
@@ -57,7 +67,7 @@ int	read_map(t_map *map, char *line)
 	len = ft_strlen(line);
 	if (len > map->max_cols)
 		map->max_cols = len;
-	if (reallocate(map) == EXIT_FAILURE)
+	if (realloc_map(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	map->arr[map->max_rows] = ft_strdup(line);
 	if (!map->arr[map->max_rows])
