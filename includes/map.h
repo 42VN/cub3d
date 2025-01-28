@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/27 09:31:48 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/28 10:50:15 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ typedef struct s_element
 	int		so_fd;
 	int		we_fd;
 	int		ea_fd;
-	t_color	floor;
-	t_color	ceiling;
+	int		f_color;
+	int		c_color;
 	int		done;
 }	t_element;
 

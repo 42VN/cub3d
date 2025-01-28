@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/27 09:47:46 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/28 10:57:23 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			ft_validate_elem_path(char *path);
 //----------------------------------------------
 // COLOR
 //----------------------------------------------
-int 		ft_set_color(t_color *color, char **array);
+int 		ft_set_color(int *color, char **array);
 void		ft_fill_color(mlx_image_t *img ,t_color color);
 uint32_t	ft_convert_color(t_color color);
 //----------------------------------------------

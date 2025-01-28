@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:40:47 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/27 09:41:12 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/28 10:56:25 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,17 @@ int	get_color(const char *str)
 	return (number);
 }
 
-int	ft_set_color(t_color *color, char **array)
+int	ft_set_color(int *color, char **array)
 {
-	color->red = get_color(array[0]);
-	color->green = get_color(array[1]);
-	color->blue = get_color(array[2]);
-	if (color->red == -1 || color->green == -1 || color->blue == -1)
+	int	red;
+	int	green;
+	int	blue;
+
+	red = get_color(array[0]);
+	green = get_color(array[1]);
+	blue = get_color(array[2]);
+	if (red == -1 || green == -1 || blue == -1)
 		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
-	color->done = 1;
+	*color = (1 << 24) + (red << 16) + (green << 8) + blue;
 	return (EXIT_SUCCESS);
 }

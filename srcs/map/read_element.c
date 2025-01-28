@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/27 09:38:13 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/28 10:52:21 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static int	parse_color(t_element *element, char **splitted_line, int elem_type)
 		ft_clean_array(&array);
 		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
 	}
-	if ((elem_type == F && ft_set_color(&element->floor, array) == EXIT_FAILURE)
+	if ((elem_type == F && ft_set_color(&element->f_color, array) == EXIT_FAILURE)
 		|| (elem_type == C
-			&& ft_set_color(&element->ceiling, array) == EXIT_FAILURE))
+			&& ft_set_color(&element->c_color, array) == EXIT_FAILURE))
 	{
 		ft_clean_array(&array);
 		return (EXIT_FAILURE);
@@ -82,8 +82,8 @@ static int	parse_element(t_element *element, char **splitted_line,
 		|| (elem_type == SO && element->so_fd)
 		|| (elem_type == WE && element->we_fd)
 		|| (elem_type == EA && element->ea_fd)
-		|| (elem_type == F && element->floor.done)
-		|| (elem_type == C && element->ceiling.done))
+		|| (elem_type == F && element->f_color)
+		|| (elem_type == C && element->c_color))
 	{
 		ft_clean_array(&splitted_line);
 		return (ft_error_ret("Elements duplicated.", EXIT_FAILURE));
@@ -94,7 +94,7 @@ static int	parse_element(t_element *element, char **splitted_line,
 		return (EXIT_FAILURE);
 	}
 	if (element->no_fd && element->so_fd && element->we_fd
-		&& element->ea_fd && element->floor.done && element->ceiling.done)
+		&& element->ea_fd && element->f_color && element->c_color)
 		element->done = 1;
 	ft_clean_array(&splitted_line);
 	return (EXIT_SUCCESS);
