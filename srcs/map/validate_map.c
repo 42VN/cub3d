@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/29 10:37:48 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/29 10:43:22 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_direction	get_direction(char c)
 
 static int	is_unclosed(t_map *map, char **visited, int32_t row, int32_t col)
 {
-	print_map(visited);
 	if (row < 0 || row >= map->max_rows || col < 0 || col >= map->max_cols
 		|| visited[row][col] == ' ')
 		return (1);
