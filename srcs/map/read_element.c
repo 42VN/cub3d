@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/28 10:52:21 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/29 10:39:40 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static int	parse_color(t_element *element, char **splitted_line, int elem_type)
 		ft_clean_array(&array);
 		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
 	}
-	if ((elem_type == F && ft_set_color(&element->f_color, array) == EXIT_FAILURE)
+	if ((elem_type == F
+			&& ft_set_color(&element->f_color, array) == EXIT_FAILURE)
 		|| (elem_type == C
 			&& ft_set_color(&element->c_color, array) == EXIT_FAILURE))
 	{
