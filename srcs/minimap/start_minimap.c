@@ -77,7 +77,6 @@ void	start_minimap(t_cub3d *cub)
 	if (!cub->mlx)
 		game_error(cub, mlx_strerror(mlx_errno));
 	cub->current = cub->map->start;
-	load_png(cub);
 	display_minimap(cub, -1, -1);
 	mlx_key_hook(cub->mlx, key_hook, cub);
 	mlx_close_hook(cub->mlx, close_hook, cub);

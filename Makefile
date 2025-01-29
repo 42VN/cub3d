@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/29 14:03:45 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/29 14:14:19 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ MAP_FILES			=	read_file.c read_element.c read_map.c \
 						print_elements.c print_map.c \
 						map_error.c validate_map.c
 
-MMAP_FILES			=	start_minimap.c load_png.c display_minimap.c utils.c
+MMAP_FILES			=	start_minimap.c display_minimap.c utils.c
  
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 						am_init.c am_free.c

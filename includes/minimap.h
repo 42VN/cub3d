@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/29 12:41:39 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/29 14:14:03 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_minimap
 
 // minimap
 void	start_minimap(t_cub3d *cub);
-void	load_png(t_cub3d *cub);
 void	display_minimap(t_cub3d *cub, int32_t row, int32_t col);
 
 // UTILS //
