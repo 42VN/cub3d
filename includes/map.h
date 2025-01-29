@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/28 10:50:15 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/29 12:14:49 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 
 typedef enum e_obj_type
 {
+	EMPTY,
 	SPACE,
 	WALL,
+	PLAYER,
 	NORTH,
 	SOUTH,
 	EAST,
-	WEST,
-	EMPTY
+	WEST
 }	t_obj_type;
 
 typedef enum e_elem_type
@@ -53,6 +54,7 @@ typedef struct s_point
 	int			row;
 	int			col;
 	t_direction	direction;
+	double		angle;
 }	t_point;
 
 typedef struct s_element

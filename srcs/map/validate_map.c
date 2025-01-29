@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/29 10:43:22 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/29 13:48:58 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	validate_map(t_element *element, t_map *map, int fd)
 	}
 	if (check_wall_surrounded(map) == EXIT_FAILURE)
 		return (map_error(element, map, NULL, fd));
-	print_elements(element);
-	print_map(map->arr);
+	// print_elements(element);
+	// print_map(map->arr);
 	return (EXIT_SUCCESS);
 }

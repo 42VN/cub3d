@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/24 13:31:33 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/29 14:03:45 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ MLX42_DIR			= $(LIB_DIR)/MLX42
 CUB3D_DIR			= $(SRC_DIR)/cub3d
 EVENT_DIR			= $(SRC_DIR)/event
 MAP_DIR				= $(SRC_DIR)/map
+MMAP_DIR			= $(SRC_DIR)/minimap
 UTILS_DIR			= $(SRC_DIR)/utility
 ASSET_MANAGER_DIR	= $(SRC_DIR)/asset_manager
 
@@ -45,6 +46,8 @@ MAP_FILES			=	read_file.c read_element.c read_map.c \
 						clean_elems.c clean_map.c \
 						print_elements.c print_map.c \
 						map_error.c validate_map.c
+
+MMAP_FILES			=	start_minimap.c load_png.c display_minimap.c utils.c
  
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 						am_init.c am_free.c
@@ -54,7 +57,8 @@ SRC_FILES			= 	./srcs/main.c \
 						$(addprefix $(EVENT_DIR)/, $(EVENT_FILES)) \
 						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \
 						$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) \
-						$(addprefix $(MAP_DIR)/, $(MAP_FILES))
+						$(addprefix $(MAP_DIR)/, $(MAP_FILES)) \
+						$(addprefix $(MMAP_DIR)/, $(MMAP_FILES))
 
 # Library
 LIBFT 				= $(LIBFT_DIR)/libft.a
@@ -87,7 +91,7 @@ $(MLX42): .mlx42
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
-	$(RM) .bonus .mandatory $(MLX42_DIR)/build
+	$(RM) .bonus .mandatory 
 
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)

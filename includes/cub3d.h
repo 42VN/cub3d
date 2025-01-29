@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/23 17:11:17 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/29 11:49:57 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include "asset_manager.h"
 #include "map.h"
 #include "utility.h"
-
+#include "minimap.h"
 
 typedef struct s_cub3d
 {
@@ -31,6 +31,9 @@ typedef struct s_cub3d
 	int32_t			mouse_y;
 	t_element		*element;
 	t_map			*map;
+	mlx_image_t		**mini_images;
+	t_point			current;
+	t_point			next;
 	t_asset_manager	am;
 }	t_cub3d;
 
