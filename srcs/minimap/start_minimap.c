@@ -12,16 +12,16 @@
 
 #include "cub3d.h"
 
-static double	new_angle(double current, double delta)
+static double	update_direction(double current, double delta)
 {
-	double	new_angle;
+	double	res;
 
-	new_angle = current + delta;
-	while (new_angle < 0)
-		new_angle += 2 * PI;
-	while (new_angle > 2* PI)
-		new_angle -= 2 * PI;
-	return (new_angle);
+	res = current + delta;
+	while (res < 0)
+		res += 2 * PI;
+	while (res >= 2* PI)
+		res -= 2 * PI;
+	return (res);
 }
 
 static void	move_player(t_cub3d *cub)
@@ -30,39 +30,61 @@ static void	move_player(t_cub3d *cub)
 	cub->mini_images[PLAYER]->instances[0].x = cub->current.col * MPX;
 	cub->mini_images[PLAYER]->instances[0].y = cub->current.row * MPX;
 }
+/*
+		NO
+	WE		EA
+		SO
+
+		W
+	A	S	D
+
+	NO
+
+	WE+W = NO+A
+	WE+S = NO+D
+	WE+A = NO+S
+	WE+D = NO+W
+
+	SO+W = NO+S
+	SO+S = NO+W
+	SO+A = NO+D
+	SO+D = NO+A
+
+	EA+W = NO+D
+	EA+S = NO+A
+	EA+A = NO+W
+	EA+D = NO+S
+*/
 
 static void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_cub3d	*cub;
 
 	cub = (t_cub3d *)param;
-	if (keydata.action == MLX_PRESS)
-	{
-		if (keydata.key == MLX_KEY_ESCAPE)
-			exit_cub3d(cub, EXIT_SUCCESS);
-		else if (keydata.key == MLX_KEY_W)
-			cub->next = (t_point){cub->current.row - 1, cub->current.col,
-							cub->current.direction, cub->current.angle};
-		else if (keydata.key == MLX_KEY_S)
-			cub->next = (t_point){cub->current.row + 1, cub->current.col,
-							cub->current.direction, cub->current.angle};
-		else if (keydata.key == MLX_KEY_A)
-			cub->next = (t_point){cub->current.row, cub->current.col - 1,
-							cub->current.direction, new_angle(cub->current.angle, PI / 2)};
-		else if (keydata.key == MLX_KEY_D)
+	if (keydata.key == MLX_KEY_ESCAPE)
+		exit_cub3d(cub, EXIT_SUCCESS);
+	else if (keydata.key == MLX_KEY_W)
+		cub->next = (t_point){cub->current.row - 1, cub->current.col,
+						cub->current.radian};
+	else if (keydata.key == MLX_KEY_S)
+		cub->next = (t_point){cub->current.row + 1, cub->current.col,
+						cub->current.radian};
+	else if (keydata.key == MLX_KEY_A)
+		cub->next = (t_point){cub->current.row, cub->current.col - 1,
+						cub->current.radian};
+	else if (keydata.key == MLX_KEY_D)
 			cub->next = (t_point){cub->current.row, cub->current.col + 1,
-							cub->current.direction, new_angle(cub->current.angle, -PI / 2)};
-		else if (keydata.key == MLX_KEY_LEFT)
-			cub->next = (t_point){cub->current.row, cub->current.col,
-							cub->current.direction, new_angle(cub->current.angle, PI / 10)};
-		else if (keydata.key == MLX_KEY_RIGHT)
-			cub->next = (t_point){cub->current.row, cub->current.col,
-							cub->current.direction, new_angle(cub->current.angle, -PI / 10)};
-		else
-			return ;
-		if (cub->map->arr[cub->next.row][cub->next.col] != '1')
-			move_player(cub);
-	}
+						cub->current.radian};
+	else if (keydata.key == MLX_KEY_LEFT)
+		cub->next = (t_point){cub->current.row, cub->current.col,
+						update_direction(cub->current.radian, PI / 10)};
+	else if (keydata.key == MLX_KEY_RIGHT)
+		cub->next = (t_point){cub->current.row, cub->current.col,
+						update_direction(cub->current.radian, -PI / 10)};
+	else
+		return ;
+	if (cub->map->arr[cub->next.row][cub->next.col] != '1')
+		move_player(cub);
 }
 
 static void	close_hook(void *param)

@@ -6,23 +6,23 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/29 13:48:58 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/29 15:27:52 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_direction	get_direction(char c)
+double	get_direction(char c)
 {
 	if (c == 'N')
-		return (N);
+		return (2 * PI);
 	else if (c == 'S')
-		return (S);
+		return (PI);
 	else if (c == 'W')
-		return (W);
+		return (PI / 2);
 	else if (c == 'E')
-		return (E);
-	return (O);
+		return (3 * PI / 2);
+	return (0);
 }
 
 static int	is_unclosed(t_map *map, char **visited, int32_t row, int32_t col)
@@ -72,11 +72,11 @@ static int	validate_characters(t_map *map, int row)
 					EXIT_FAILURE));
 		else if (ft_strchr("NSEW", map->arr[row][col]))
 		{
-			if (map->start.direction > 0)
+			if (map->start.radian > 0)
 				return (ft_error_ret("More than 1 player.", EXIT_FAILURE));
 			map->start.col = col;
 			map->start.row = row;
-			map->start.direction = get_direction(map->arr[row][col]);
+			map->start.radian = get_direction(map->arr[row][col]);
 		}
 		col++;
 	}
@@ -99,7 +99,7 @@ int	validate_map(t_element *element, t_map *map, int fd)
 			return (map_error(element, map, NULL, fd));
 		row++;
 	}
-	if (!map->start.direction)
+	if (!map->start.radian)
 	{
 		ft_error("Player not found.");
 		return (map_error(element, map, NULL, fd));

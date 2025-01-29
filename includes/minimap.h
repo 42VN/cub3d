@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/29 14:14:03 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/29 15:37:31 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 # include "cub3d.h"
 
 # define MPX 32
-# define M_TEXTURE_NO	4
+# define M_TEXTURE_NO	3
 
-# define M_EMPTY	"./assets/textures/mini_empty.png"
 # define M_SPACE	"./assets/textures/mini_space.png"
 # define M_WALL		"./assets/textures/mini_wall.png"
 # define M_PLAYER	"./assets/textures/mini_player.png"
