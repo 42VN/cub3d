@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:15:03 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/24 14:23:18 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/30 15:39:52 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	map_error(t_element *element, t_map *map, char *line, int fd)
 {
-	clean_elems(element);
 	clean_map(map);
 	if (line)
 		free(line);

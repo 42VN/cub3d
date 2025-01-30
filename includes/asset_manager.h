@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asset_manager.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/22 19:02:39 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/30 15:28:13 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ typedef struct s_asset_manager
 	mlx_image_t	*floor;
 	mlx_image_t	*door;
 	t_sprite	*sprite_weapon;
+	mlx_image_t	*m_wall;
+	mlx_image_t	*m_
+	mlx_image_t	*m_wall;
 }	t_asset_manager;
 
 //-------------------------------------------------

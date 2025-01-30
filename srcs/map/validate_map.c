@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/30 09:54:59 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/30 15:37:09 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,18 @@ static int	validate_characters(t_map *map, int row)
 	int	col;
 
 	col = 0;
-	while (map->arr[row][col])
+	while (map->grid[row][col])
 	{
-		if (!ft_strchr(" 01NSEW", map->arr[row][col]))
+		if (!ft_strchr(" 01NSEW", map->grid[row][col]))
 			return (ft_error_ret("Map contains invalid characters",
 					EXIT_FAILURE));
-		else if (ft_strchr("NSEW", map->arr[row][col]))
+		else if (ft_strchr("NSEW", map->grid[row][col]))
 		{
 			if (map->start.rad > 0)
 				return (ft_error_ret("More than 1 player.", EXIT_FAILURE));
 			map->start.x = col;
 			map->start.y = row;
-			map->start.rad = get_direction(map->arr[row][col]);
+			map->start.rad = get_direction(map->grid[row][col]);
 		}
 		col++;
 	}
@@ -88,12 +88,12 @@ int	validate_map(t_element *element, t_map *map, int fd)
 	int	row;
 
 	row = 0;
-	if (!element->done || !map->arr[0])
+	if (!element->done || !map->grid[0])
 	{
 		ft_error("Invalid map.");
 		return (map_error(element, map, NULL, fd));
 	}
-	while (map && map->arr && map->arr[row])
+	while (map && map->grid && map->grid[row])
 	{
 		if (validate_characters(map, row) == EXIT_FAILURE)
 			return (map_error(element, map, NULL, fd));
@@ -107,6 +107,6 @@ int	validate_map(t_element *element, t_map *map, int fd)
 	if (check_wall_surrounded(map) == EXIT_FAILURE)
 		return (map_error(element, map, NULL, fd));
 	// print_elements(element);
-	// print_map(map->arr);
+	// print_map(map->grid);
 	return (EXIT_SUCCESS);
 }

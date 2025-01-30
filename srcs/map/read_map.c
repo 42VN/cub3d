@@ -5,73 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/27 09:42:55 by hitran           ###   ########.fr       */
+/*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
+/*   Updated: 2025/01/30 15:43:20 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	copy_map(char **visited, t_map *map, char rest)
+static int	process_line(t_map *map, char *line, int fd)
 {
-	int	row;
-	int	col;
-	int	len;
-
-	row = -1;
-	while (map && map->arr && map->arr[++row])
+	if (!map->elem_done)
+		return (read_element(map, line));
+	else if (map->elem_done)
 	{
-		visited[row] = (char *)ft_calloc(map->max_cols + 1, sizeof(char));
-		if (!visited[row])
-		{
-			ft_clean_array(&visited);
-			return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
-		}
-		col = -1;
-		len = ft_strlen(map->arr[row]);
-		while (++col < len && map->arr[row][col])
-			visited[row][col] = map->arr[row][col];
-		while (rest && col < map->max_cols)
-			visited[row][col++] = rest;
+		if (!line[0] && map->grid && !map->grid[0])
+			return (EXIT_SUCCESS);
+		else if (!line[0] && map->grid && map->grid[0])
+			return (ft_error_ret("Map contains empty lines.", EXIT_FAILURE));
+		return (read_map(map, line));
 	}
 	return (EXIT_SUCCESS);
 }
 
-static int	realloc_map(t_map *map)
+int	read_map(t_map *map, int fd)
 {
-	char	**new_array;
+	char	*line;
+	int		eof;
 
-	if (map->max_rows >= map->size)
+	eof = 0;
+	map->grid = (char **)ft_calloc(BUFFER_SIZE, sizeof(char *));
+	if (!map->grid)
+		return (ft_error_ret("Map allocation failed.", 1));
+	map->size = BUFFER_SIZE;
+	while (1)
 	{
-		map->size += BUFFER_SIZE;
-		new_array = (char **)ft_calloc(map->size, sizeof(char *));
-		if (!new_array)
+		line = ft_readline(fd, &eof, BUFFER_SIZE);
+		if (!line)
 			return (EXIT_FAILURE);
-		if (copy_map(new_array, map, 0) == EXIT_FAILURE)
+		if (eof)
 		{
-			ft_clean_array(&new_array);
-			return (EXIT_FAILURE);
+			free(line);
+			break ;
 		}
-		ft_clean_array(&map->arr);
-		map->arr = new_array;
+		if (process_line(map, line, fd) == EXIT_FAILURE)
+			return (map_error(map, line, fd));
+		free(line);
 	}
-	return (EXIT_SUCCESS);
-}
-
-int	read_map(t_map *map, char *line)
-{
-	int	len;
-
-	if (!map || !line)
-		return (EXIT_FAILURE);
-	len = ft_strlen(line);
-	if (len > map->max_cols)
-		map->max_cols = len;
-	if (realloc_map(map) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	map->arr[map->max_rows] = ft_strdup(line);
-	if (!map->arr[map->max_rows])
-		return (ft_error_ret("Map reading: ft_strdup failed.", EXIT_FAILURE));
-	map->max_rows++;
-	return (EXIT_SUCCESS);
+	return (validate_map(map, fd));
 }

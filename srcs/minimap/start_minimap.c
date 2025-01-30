@@ -79,7 +79,7 @@ static void	key_hook(mlx_key_data_t keydata, void *param)
 		cub->next = (t_point){cur.x, cur.y, update_radian(cur.rad, -PI / 10)};
 	else
 		return ;
-	if (cub->map->arr[cub->next.y][cub->next.x] != '1')
+	if (cub->map->grid[cub->next.y][cub->next.x] != '1')
 		move_player(cub);
 }
 

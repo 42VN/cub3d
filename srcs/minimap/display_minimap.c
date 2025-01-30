@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 00:30:53 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/30 10:07:18 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/30 15:37:14 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ void	display_minimap(t_cub3d *cub, int32_t y, int32_t x)
 	while (++y < cub->map->max_rows)
 	{
 		x = -1;
-		len = ft_strlen(cub->map->arr[y]);
+		len = ft_strlen(cub->map->grid[y]);
 		while (++x < len)
 		{
-			if (cub->map->arr[y][x] == '1')
+			if (cub->map->grid[y][x] == '1')
 				image_to_window(cub, cub->m_images[WALL], x, y);
-			else if (cub->map->arr[y][x] != ' ')
+			else if (cub->map->grid[y][x] != ' ')
 				image_to_window(cub, cub->m_images[SPACE], x, y);
 		}
 	}

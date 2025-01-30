@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/30 10:06:57 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/30 15:26:26 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@
 
 typedef struct s_cub3d
 {
+	t_map			map;
 	mlx_t			*mlx;
 	int32_t			mouse_x;
 	int32_t			mouse_y;
-	t_element		*element;
-	t_map			*map;
-	mlx_image_t		**m_images;
 	t_point			current;
 	t_point			next;
 	t_asset_manager	am;
