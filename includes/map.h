@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/29 15:38:12 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/30 09:52:27 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ typedef enum e_direction
 
 typedef struct s_point
 {
-	int			row;
-	int			col;
-	double		radian;
+	int			x;
+	int			y;
+	double		rad;
 }	t_point;
 
 typedef struct s_element

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-static double	update_direction(double current, double delta)
+static double	update_radian(double current, double delta)
 {
 	double	res;
 
@@ -27,8 +27,8 @@ static double	update_direction(double current, double delta)
 static void	move_player(t_cub3d *cub)
 {
 	cub->current = cub->next;
-	cub->mini_images[PLAYER]->instances[0].x = cub->current.col * MPX;
-	cub->mini_images[PLAYER]->instances[0].y = cub->current.row * MPX;
+	cub->m_images[PLAYER]->instances[0].x = cub->current.x * MPX;
+	cub->m_images[PLAYER]->instances[0].y = cub->current.y * MPX;
 }
 /*
 		NO
@@ -59,31 +59,27 @@ static void	move_player(t_cub3d *cub)
 static void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_cub3d	*cub;
+	t_point	cur;
 
 	cub = (t_cub3d *)param;
+	cur = cub->current;
 	if (keydata.key == MLX_KEY_ESCAPE)
 		exit_cub3d(cub, EXIT_SUCCESS);
 	else if (keydata.key == MLX_KEY_W)
-		cub->next = (t_point){cub->current.row - 1, cub->current.col,
-						cub->current.radian};
+		cub->next = (t_point){cur.x, cur.y - 1, cur.rad};
 	else if (keydata.key == MLX_KEY_S)
-		cub->next = (t_point){cub->current.row + 1, cub->current.col,
-						cub->current.radian};
+		cub->next = (t_point){cur.x, cur.y + 1, cur.rad};
 	else if (keydata.key == MLX_KEY_A)
-		cub->next = (t_point){cub->current.row, cub->current.col - 1,
-						cub->current.radian};
+		cub->next = (t_point){cur.x - 1, cur.y, cur.rad};
 	else if (keydata.key == MLX_KEY_D)
-			cub->next = (t_point){cub->current.row, cub->current.col + 1,
-						cub->current.radian};
+			cub->next = (t_point){cur.x + 1, cur.y, cur.rad};
 	else if (keydata.key == MLX_KEY_LEFT)
-		cub->next = (t_point){cub->current.row, cub->current.col,
-						update_direction(cub->current.radian, PI / 10)};
+		cub->next = (t_point){cur.x, cur.y, update_radian(cur.rad, PI / 10)};
 	else if (keydata.key == MLX_KEY_RIGHT)
-		cub->next = (t_point){cub->current.row, cub->current.col,
-						update_direction(cub->current.radian, -PI / 10)};
+		cub->next = (t_point){cur.x, cur.y, update_radian(cur.rad, -PI / 10)};
 	else
 		return ;
-	if (cub->map->arr[cub->next.row][cub->next.col] != '1')
+	if (cub->map->arr[cub->next.y][cub->next.x] != '1')
 		move_player(cub);
 }
 
@@ -95,7 +91,8 @@ static void	close_hook(void *param)
 void	start_minimap(t_cub3d *cub)
 {
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	cub->mlx = mlx_init(cub->map->max_cols * MPX, cub->map->max_rows * MPX, "minimap", true);
+	cub->mlx = mlx_init(cub->map->max_cols * MPX, cub->map->max_rows * MPX,
+					"minimap", true);
 	if (!cub->mlx)
 		game_error(cub, mlx_strerror(mlx_errno));
 	cub->current = cub->map->start;

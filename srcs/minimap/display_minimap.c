@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 00:30:53 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/29 15:40:41 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/30 10:07:18 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,37 +31,37 @@ static mlx_image_t	*png_to_image(t_cub3d *cub, const char *path)
 
 static void	load_png(t_cub3d *cub)
 {
-	cub->mini_images = ft_calloc(M_TEXTURE_NO + 1, sizeof(mlx_image_t));
-	if (!cub->mini_images)
+	cub->m_images = ft_calloc(M_TEXTURE_NO + 1, sizeof(mlx_image_t));
+	if (!cub->m_images)
 		game_error(cub, "Memory allocation failed");
-	cub->mini_images[SPACE] = png_to_image(cub, M_SPACE);
-	cub->mini_images[WALL] = png_to_image(cub, M_WALL);
-	cub->mini_images[PLAYER] = png_to_image(cub, M_PLAYER);
+	cub->m_images[SPACE] = png_to_image(cub, M_SPACE);
+	cub->m_images[WALL] = png_to_image(cub, M_WALL);
+	cub->m_images[PLAYER] = png_to_image(cub, M_PLAYER);
 }
 
 static void	image_to_window(t_cub3d *cub, mlx_image_t *im,
-	int32_t row, int32_t col)
+	int32_t x, int32_t y)
 {
-	if (mlx_image_to_window(cub->mlx, im, col * MPX, row * MPX) < 0)
+	if (mlx_image_to_window(cub->mlx, im, x * MPX, y * MPX) < 0)
 		game_error(cub, mlx_strerror(mlx_errno));
 }
 
-void	display_minimap(t_cub3d *cub, int32_t row, int32_t col)
+void	display_minimap(t_cub3d *cub, int32_t y, int32_t x)
 {
 	int	len;
 
 	load_png(cub);
-	while (++row < cub->map->max_rows)
+	while (++y < cub->map->max_rows)
 	{
-		col = -1;
-		len = ft_strlen(cub->map->arr[row]);
-		while (++col < len)
+		x = -1;
+		len = ft_strlen(cub->map->arr[y]);
+		while (++x < len)
 		{
-			if (cub->map->arr[row][col] == '1')
-				image_to_window(cub, cub->mini_images[WALL], row, col);
-			else if (cub->map->arr[row][col] != ' ')
-				image_to_window(cub, cub->mini_images[SPACE], row, col);
+			if (cub->map->arr[y][x] == '1')
+				image_to_window(cub, cub->m_images[WALL], x, y);
+			else if (cub->map->arr[y][x] != ' ')
+				image_to_window(cub, cub->m_images[SPACE], x, y);
 		}
 	}
-	image_to_window(cub, cub->mini_images[PLAYER], cub->current.row, cub->current.col);
+	image_to_window(cub, cub->m_images[PLAYER], cub->current.x, cub->current.y);
 }

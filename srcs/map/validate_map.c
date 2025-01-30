@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/29 15:27:52 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/30 09:54:59 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	check_wall_surrounded(t_map *map)
 		ft_clean_array(&visited);
 		return (EXIT_FAILURE);
 	}
-	if (is_unclosed(map, visited, map->start.row, map->start.col))
+	if (is_unclosed(map, visited, map->start.y, map->start.x))
 	{
 		ft_clean_array(&visited);
 		return (ft_error_ret("Map is unclosed by walls.", EXIT_FAILURE));
@@ -72,11 +72,11 @@ static int	validate_characters(t_map *map, int row)
 					EXIT_FAILURE));
 		else if (ft_strchr("NSEW", map->arr[row][col]))
 		{
-			if (map->start.radian > 0)
+			if (map->start.rad > 0)
 				return (ft_error_ret("More than 1 player.", EXIT_FAILURE));
-			map->start.col = col;
-			map->start.row = row;
-			map->start.radian = get_direction(map->arr[row][col]);
+			map->start.x = col;
+			map->start.y = row;
+			map->start.rad = get_direction(map->arr[row][col]);
 		}
 		col++;
 	}
@@ -99,7 +99,7 @@ int	validate_map(t_element *element, t_map *map, int fd)
 			return (map_error(element, map, NULL, fd));
 		row++;
 	}
-	if (!map->start.radian)
+	if (!map->start.rad)
 	{
 		ft_error("Player not found.");
 		return (map_error(element, map, NULL, fd));

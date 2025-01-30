@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/29 12:34:12 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/30 10:07:36 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	exit_cub3d(t_cub3d *cub, int32_t stt)
 		return ;
 	clean_elems(cub->element);
 	clean_map(cub->map);
-	if (cub->mini_images)
+	if (cub->m_images)
 	{
 		index = -1;
 		while (++index < M_TEXTURE_NO)
-			if (cub->mini_images[index])
-				mlx_delete_image(cub->mlx, cub->mini_images[index]);
-		free(cub->mini_images);
+			if (cub->m_images[index])
+				mlx_delete_image(cub->mlx, cub->m_images[index]);
+		free(cub->m_images);
 	}
 	if (cub->mlx)
 		mlx_terminate(cub->mlx);
