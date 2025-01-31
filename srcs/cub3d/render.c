@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:06:00 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/23 17:07:52 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/31 10:51:47 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * Render the images using the IV plane (bottom right plane)
  */
-void	cub3d_render(t_cub3d *c)
+void	cub3d_render(t_cub *c)
 {
 	t_asset_manager	*am;
 

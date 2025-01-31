@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/29 10:42:40 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 10:31:04 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	check_elem_type(char *line)
 		return (-1);
 }
 
-static int	parse_color(t_element *element, char **splitted_line, int elem_type)
+static int	parse_color(t_map *map, char **splitted_line, int elem_type)
 {
 	char	**array;
 
@@ -44,9 +44,9 @@ static int	parse_color(t_element *element, char **splitted_line, int elem_type)
 		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
 	}
 	if ((elem_type == F
-			&& ft_set_color(&element->f_color, array) == EXIT_FAILURE)
+			&& ft_set_color(&map->f_color, array) == EXIT_FAILURE)
 		|| (elem_type == C
-			&& ft_set_color(&element->c_color, array) == EXIT_FAILURE))
+			&& ft_set_color(&map->c_color, array) == EXIT_FAILURE))
 	{
 		ft_clean_array(&array);
 		return (EXIT_FAILURE);
@@ -55,53 +55,45 @@ static int	parse_color(t_element *element, char **splitted_line, int elem_type)
 	return (EXIT_SUCCESS);
 }
 
-static int	save_element(t_element *element, char	**splitted_line,
+static int	save_element(t_map *map, char	**splitted_line,
 			int elem_type)
 {
 	int	fd;
 
 	if (elem_type == F || elem_type == C)
-		return (parse_color(element, splitted_line, elem_type));
+		return (parse_color(map, splitted_line, elem_type));
 	fd = ft_validate_elem_path(splitted_line[1]);
 	if (fd < 0)
 		return (EXIT_FAILURE);
 	if (elem_type == NO)
-		element->no_fd = fd;
+		map->no_fd = fd;
 	else if (elem_type == SO)
-		element->so_fd = fd;
+		map->so_fd = fd;
 	else if (elem_type == WE)
-		element->we_fd = fd;
+		map->we_fd = fd;
 	else if (elem_type == EA)
-		element->ea_fd = fd;
+		map->ea_fd = fd;
 	return (EXIT_SUCCESS);
 }
 
-static int	parse_element(t_element *element, char **splitted_line,
+static int	parse_element(t_map *map, char **splitted_line,
 			int elem_type)
 {
-	if ((elem_type == NO && element->no_fd)
-		|| (elem_type == SO && element->so_fd)
-		|| (elem_type == WE && element->we_fd)
-		|| (elem_type == EA && element->ea_fd)
-		|| (elem_type == F && element->f_color)
-		|| (elem_type == C && element->c_color))
+	if (is_done(map))
 	{
 		ft_clean_array(&splitted_line);
 		return (ft_error_ret("Elements duplicated.", EXIT_FAILURE));
 	}
-	if (save_element(element, splitted_line, elem_type) == EXIT_FAILURE)
+	if (save_element(map, splitted_line, elem_type) == EXIT_FAILURE)
 	{
 		ft_clean_array(&splitted_line);
 		return (EXIT_FAILURE);
 	}
-	if (element->no_fd && element->so_fd && element->we_fd
-		&& element->ea_fd && element->f_color && element->c_color)
-		element->done = 1;
 	ft_clean_array(&splitted_line);
 	return (EXIT_SUCCESS);
 }
 
-int	read_element(t_element *element, char *line)
+int	read_element(t_map *map, char *line)
 {
 	char	**splitted_line;
 	int		size;
@@ -124,5 +116,5 @@ int	read_element(t_element *element, char *line)
 		ft_clean_array(&splitted_line);
 		return (ft_error_ret("Invalid element types.", EXIT_FAILURE));
 	}
-	return (parse_element(element, splitted_line, elem_type));
+	return (parse_element(map, splitted_line, elem_type));
 }

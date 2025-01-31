@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/29 14:14:19 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/31 10:58:24 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,8 @@ UTIL_FILES			=	ft_error.c \
 						ft_readline.c ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c \
 						ft_convert_color.c ft_set_color.c ft_fill_color.c 
 						
-MAP_FILES			=	read_file.c read_element.c read_map.c \
-						clean_elems.c clean_map.c \
-						print_elements.c print_map.c \
-						map_error.c validate_map.c
+MAP_FILES			=	read_grid.c read_element.c read_map.c \
+						utils.c validate_grid.c
 
 MMAP_FILES			=	start_minimap.c display_minimap.c utils.c
  

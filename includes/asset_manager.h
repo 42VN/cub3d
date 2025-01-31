@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/30 15:28:13 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 10:51:47 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "utility.h"
 # include "MLX42.h"
 
-typedef struct s_cub3d t_cub3d;
+typedef struct s_cub t_cub;
 
 //-------------------------------------------------
 // STRUCTS
@@ -52,14 +52,13 @@ typedef struct s_asset_manager
 	mlx_image_t	*door;
 	t_sprite	*sprite_weapon;
 	mlx_image_t	*m_wall;
-	mlx_image_t	*m_
-	mlx_image_t	*m_wall;
+	mlx_image_t	*m_images;
 }	t_asset_manager;
 
 //-------------------------------------------------
 // MAIN FUCNTIONS
 //-------------------------------------------------
-void		am_init(t_cub3d *c);
+void		am_init(t_cub *c);
 void		am_free(mlx_t *mlx, t_asset_manager *am);
 
 //-------------------------------------------------

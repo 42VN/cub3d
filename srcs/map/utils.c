@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:30:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/30 15:41:30 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 11:03:35 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+
+void	clean_map(t_map *map)
+{
+	if (!map || !map->grid)
+		return ;
+	if (map->no_fd > 2)
+		close (map->no_fd);
+	if (map->so_fd > 2)
+		close (map->so_fd);
+	if (map->we_fd > 2)
+		close (map->we_fd);
+	if (map->ea_fd > 2)
+		close (map->ea_fd);
+	if (map->grid)
+		ft_clean_array(&map->grid);
+}
+
+int	map_error(t_map *map, char *line, int fd)
+{
+	clean_map(map);
+	if (line)
+		free(line);
+	close(fd);
+	return (EXIT_FAILURE);
+}
 
 void	print_map(t_map *map)
 {
@@ -30,4 +55,10 @@ void	print_map(t_map *map)
 	i = 0;
 	while (map->grid[i])
 		printf("%s\n", map->grid[i++]);
+}
+
+bool	is_done(t_map *map)
+{
+	return (map->no_fd && map->so_fd && map->we_fd && map->ea_fd
+			&& map->f_color && map->c_color);
 }

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   am_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/23 17:40:58 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/31 10:51:47 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asset_manager.h"
 #include "cub3d.h"
 
-void	am_init(t_cub3d *c)
+void	am_init(t_cub *c)
 {
 	t_asset_manager	*am;
 

@@ -6,13 +6,13 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/30 15:43:05 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 11:01:17 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	copy_map(char **visited, t_map *map, char rest)
+int	copy_grid(char **visited, t_map *map, char rest)
 {
 	int	row;
 	int	col;
@@ -47,7 +47,7 @@ static int	realloc_map(t_map *map)
 		new_array = (char **)ft_calloc(map->size, sizeof(char *));
 		if (!new_array)
 			return (EXIT_FAILURE);
-		if (copy_map(new_array, map, 0) == EXIT_FAILURE)
+		if (copy_grid(new_array, map, 0) == EXIT_FAILURE)
 		{
 			ft_clean_array(&new_array);
 			return (EXIT_FAILURE);
@@ -58,7 +58,7 @@ static int	realloc_map(t_map *map)
 	return (EXIT_SUCCESS);
 }
 
-int	read_map(t_map *map, char *line)
+int	read_grid(t_map *map, char *line)
 {
 	int	len;
 

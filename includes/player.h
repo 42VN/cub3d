@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_error.c                                        :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 16:15:03 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/30 15:39:52 by hitran           ###   ########.fr       */
+/*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/31 11:12:31 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#ifndef PLAYER_H
+#define PLAYER_H
 
-int	map_error(t_element *element, t_map *map, char *line, int fd)
+typedef struct s_player
 {
-	clean_map(map);
-	if (line)
-		free(line);
-	close(fd);
-	return (EXIT_FAILURE);
-}
+	double	cur_x;
+	double	cur_y;
+	double	next_x;
+	double	next_y;
+	double	angle;
+	double	speed;	
+}	t_player;
+
+#endif

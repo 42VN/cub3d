@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_loop_handler.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:32:20 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/22 18:41:14 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/31 10:51:47 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	event_loop_handler(void *data)
 {
-	t_cub3d	*c;
+	t_cub	*c;
 
-	c = (t_cub3d *)data;
+	c = (t_cub *)data;
 }

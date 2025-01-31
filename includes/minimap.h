@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/29 15:37:31 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 11:17:53 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,12 @@
 # define M_WALL		"./assets/textures/mini_wall.png"
 # define M_PLAYER	"./assets/textures/mini_player.png"
 
-typedef struct s_minimap
-{
-	mlx_image_t	**image;
-}	t_minimap;
-
 // minimap
-void	start_minimap(t_cub3d *cub);
-void	display_minimap(t_cub3d *cub, int32_t row, int32_t col);
+void	start_minimap(t_cub *cub);
+void	display_minimap(t_cub *cub, int32_t row, int32_t col);
 
 // UTILS //
-void	exit_cub3d(t_cub3d *cub, int32_t stt);
-void	game_error(t_cub3d *cub, const char *message);
+void	exit_cub(t_cub *cub, int32_t stt);
+void	game_error(t_cub *cub, const char *message);
 
 #endif

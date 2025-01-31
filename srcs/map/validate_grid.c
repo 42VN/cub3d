@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   validate_grid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/30 15:37:09 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 11:15:15 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ static int	is_unclosed(t_map *map, char **visited, int32_t row, int32_t col)
 		|| is_unclosed(map, visited, row, col - 1));
 }
 
-static int	check_wall_surrounded(t_map *map)
+static int	check_wall_surrounded(t_map *map, double x, double y)
 {
 	char	**visited;
 
 	visited = (char **)ft_calloc(map->max_rows + 1, sizeof(char *));
 	if (!visited)
 		return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
-	if (copy_map(visited, map, ' ') == EXIT_FAILURE)
+	if (copy_grid(visited, map, ' ') == EXIT_FAILURE)
 	{
 		ft_clean_array(&visited);
 		return (EXIT_FAILURE);
 	}
-	if (is_unclosed(map, visited, map->start.y, map->start.x))
+	if (is_unclosed(map, visited, y, x))
 	{
 		ft_clean_array(&visited);
 		return (ft_error_ret("Map is unclosed by walls.", EXIT_FAILURE));
@@ -60,53 +60,52 @@ static int	check_wall_surrounded(t_map *map)
 	return (EXIT_SUCCESS);
 }
 
-static int	validate_characters(t_map *map, int row)
+static int	validate_characters(t_cub *cub, int row)
 {
 	int	col;
 
 	col = 0;
-	while (map->grid[row][col])
+	while (cub->map.grid[row][col])
 	{
-		if (!ft_strchr(" 01NSEW", map->grid[row][col]))
+		if (!ft_strchr(" 01NSEW", cub->map.grid[row][col]))
 			return (ft_error_ret("Map contains invalid characters",
 					EXIT_FAILURE));
-		else if (ft_strchr("NSEW", map->grid[row][col]))
+		else if (ft_strchr("NSEW", cub->map.grid[row][col]))
 		{
-			if (map->start.rad > 0)
+			if (cub->player.angle > 0)
 				return (ft_error_ret("More than 1 player.", EXIT_FAILURE));
-			map->start.x = col;
-			map->start.y = row;
-			map->start.rad = get_direction(map->grid[row][col]);
+			cub->player.cur_x = col;
+			cub->player.cur_y = row;
+			cub->player.angle =	get_direction(cub->map.grid[row][col]);
 		}
 		col++;
 	}
 	return (EXIT_SUCCESS);
 }
 
-int	validate_map(t_element *element, t_map *map, int fd)
+int	validate_grid(t_cub *cub, int fd)
 {
 	int	row;
 
 	row = 0;
-	if (!element->done || !map->grid[0])
+	if (!is_done(&cub->map) || !cub->map.grid[0])
 	{
 		ft_error("Invalid map.");
-		return (map_error(element, map, NULL, fd));
+		return (map_error(&cub->map, NULL, fd));
 	}
-	while (map && map->grid && map->grid[row])
+	while (cub->map.grid && cub->map.grid[row])
 	{
-		if (validate_characters(map, row) == EXIT_FAILURE)
-			return (map_error(element, map, NULL, fd));
+		if (validate_characters(cub, row) == EXIT_FAILURE)
+			return (map_error(&cub->map, NULL, fd));
 		row++;
 	}
-	if (!map->start.rad)
+	if (!cub->player.angle)
 	{
 		ft_error("Player not found.");
-		return (map_error(element, map, NULL, fd));
+		return (map_error(&cub->map, NULL, fd));
 	}
-	if (check_wall_surrounded(map) == EXIT_FAILURE)
-		return (map_error(element, map, NULL, fd));
-	// print_elements(element);
-	// print_map(map->grid);
+	if (check_wall_surrounded(&cub->map, cub->player.cur_x, cub->player.cur_y) == EXIT_FAILURE)
+		return (map_error(&cub->map, NULL, fd));
+	print_map(&cub->map);
 	return (EXIT_SUCCESS);
 }

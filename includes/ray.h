@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/16 14:54:33 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/31 11:12:14 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 typedef struct s_ray
 {
-	double	x0;
-	double	y0;
-	double	x;
-	double	y;
+	double	cur_x;
+	double	cur_y;
+	double	next_x;
+	double	next_y;
+	double	angle;
 	double	distance;
 
-	
 }	t_ray;
 
 #endif

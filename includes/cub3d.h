@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/30 15:26:26 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 10:54:52 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@
 #include "map.h"
 #include "utility.h"
 #include "minimap.h"
+#include "player.h"
 
-typedef struct s_cub3d
+typedef struct s_cub
 {
 	t_map			map;
+	t_player		player;
 	mlx_t			*mlx;
 	int32_t			mouse_x;
 	int32_t			mouse_y;
-	t_point			current;
-	t_point			next;
 	t_asset_manager	am;
-}	t_cub3d;
+}	t_cub;
 
-void	cub3d_init(t_cub3d *cub);
-void	cub3d_render(t_cub3d *c);
-void	cub3d_free(t_cub3d *c);
-void	cub3d_error_exit(t_cub3d *c, char *str);
+void	cub3d_init(t_cub *cub);
+void	cub3d_render(t_cub *c);
+void	cub3d_free(t_cub *c);
+void	cub3d_error_exit(t_cub *c, char *str);
 
 //-------------------------------------------
 // EVENTS
