@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:19:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 11:02:47 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 18:37:39 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (read_map(&cub, fd))
 		return (EXIT_FAILURE);
-	// start_minimap(&cub);
 	close (fd);
+	cub3d_init(&cub);
+	mlx_loop(cub.mlx);
 	cub3d_free(&cub);
 	return (EXIT_SUCCESS);
 }

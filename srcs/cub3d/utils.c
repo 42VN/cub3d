@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_loop_handler.c                               :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 18:32:20 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 18:30:42 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/31 15:36:14 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/31 17:09:09 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	event_loop_handler(void *data)
+void	ft_image_to_window(t_cub *cub, mlx_image_t *img,
+	int32_t x, int32_t y)
 {
-	(void)data;
-	// t_cub	*c;
-
-	// c = (t_cub *)data;
+	if (mlx_image_to_window(cub->mlx, img, x, y) < 0)
+		cub3d_error_exit(cub, "mlx_image_to_window");
 }

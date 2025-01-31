@@ -6,18 +6,18 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:38:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/20 16:26:43 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/31 16:06:29 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asset_manager.h"
+#include "cub3d.h"
 
 static void	am_free_sprite(mlx_t *mlx, t_sprite *s)
 {
 	int	i;
 
 	i = 0;
-	if (s)
+	if (s && s->frames)
 	{
 		while (s->frames[i])
 		{
@@ -28,13 +28,38 @@ static void	am_free_sprite(mlx_t *mlx, t_sprite *s)
 	}
 }
 
+static void	am_free_imgs(mlx_t *mlx, t_asset_manager *am)
+{
+	if (am->ceiling)
+		mlx_delete_image(mlx, am->ceiling);
+	if (am->floor)
+		mlx_delete_image(mlx, am->floor);
+	if (am->m_map)
+		mlx_delete_image(mlx, am->m_map);
+	if (am->m_map_bg)
+		mlx_delete_image(mlx, am->m_map_bg);
+	if (am->m_player)
+		mlx_delete_image(mlx, am->m_player);
+	if (am->m_space)
+		mlx_delete_image(mlx, am->m_space);
+	if (am->m_wall)
+		mlx_delete_image(mlx, am->m_wall);
+	if (am->walls[0])
+		mlx_delete_image(mlx, am->walls[0]);
+	if (am->walls[1])
+		mlx_delete_image(mlx, am->walls[1]);
+	if (am->walls[2])
+		mlx_delete_image(mlx, am->walls[2]);
+	if (am->walls[3])
+		mlx_delete_image(mlx, am->walls[3]);
+}
+
 void	am_free(mlx_t *mlx, t_asset_manager *am)
 {
 	if (am)
 	{
 		if (am->sprite_weapon)
-		{
 			am_free_sprite(mlx, am->sprite_weapon);
-		}
+		am_free_imgs(mlx, am);
 	}
 }

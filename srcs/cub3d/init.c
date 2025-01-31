@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 10:51:47 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 18:37:43 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	cub3d_init(t_cub *c)
 
 	ft_bzero(c, sizeof(t_cub));
 	am = &c->am;
+	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	c->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (!c->mlx)
 	{
@@ -35,5 +36,5 @@ void	cub3d_init(t_cub *c)
 	mlx_get_mouse_pos(c->mlx, &c->mouse_x, &c->mouse_y);
 	am_init(c);
 	hook_init(c);
-	cub3d_render(c);
+	cub3d_display(c);
 }

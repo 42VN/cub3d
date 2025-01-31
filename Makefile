@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
+#    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/31 10:58:24 by hitran           ###   ########.fr        #
+#    Updated: 2025/01/31 18:23:33 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC 				= cc
-CFLAGS 			= -g
+CFLAGS 			= -g -fsanitize=address
 MLX42_FLAGS		= -ldl -lglfw -pthread -lm
 INCLUDES 		= -I./includes -I./libs/libft -I./libs/MLX42/include/MLX42
 RM 				= rm -rf
@@ -33,19 +33,21 @@ ASSET_MANAGER_DIR	= $(SRC_DIR)/asset_manager
 
 
 # Source files by directory
-CUB3D_FILES			=	init.c free.c exit.c render.c
+CUB3D_FILES			=	init.c free.c exit.c display.c utils.c
 
-EVENT_FILES			=	event_loop_handler.c event_close_handler.c
+EVENT_FILES			=	event_loop_handler.c \
+						event_close_handler.c \
+						event_draw_minimap.c
 
 UTIL_FILES			=	ft_error.c \
 						ft_validate_path.c \
 						ft_readline.c ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c \
-						ft_convert_color.c ft_set_color.c ft_fill_color.c 
+						ft_convert_color.c ft_set_color.c ft_fill_color.c \
+						ft_get_pixels.c ft_copy_pixels.c
 						
 MAP_FILES			=	read_grid.c read_element.c read_map.c \
 						utils.c validate_grid.c
 
-MMAP_FILES			=	start_minimap.c display_minimap.c utils.c
  
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 						am_init.c am_free.c
@@ -56,7 +58,6 @@ SRC_FILES			= 	./srcs/main.c \
 						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \
 						$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) \
 						$(addprefix $(MAP_DIR)/, $(MAP_FILES)) \
-						$(addprefix $(MMAP_DIR)/, $(MMAP_FILES))
 
 # Library
 LIBFT 				= $(LIBFT_DIR)/libft.a

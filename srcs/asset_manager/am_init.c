@@ -3,24 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   am_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 10:51:47 by hitran           ###   ########.fr       */
+/*   Updated: 2025/01/31 17:04:56 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asset_manager.h"
 #include "cub3d.h"
 
+static void	init_img(t_cub *c, mlx_image_t **img, uint32_t width, uint32_t height)
+{
+	*img = mlx_new_image(c->mlx, width, height);
+	if (!*img)
+		cub3d_error_exit(c, "am_init: mlx_new_image");
+}
+
 void	am_init(t_cub *c)
 {
 	t_asset_manager	*am;
 
 	am = &c->am;
-	am->sprite_weapon = am_load_sprite(c->mlx, (t_sprite_options){1, 6, DIR_VERTICAL}, "./assets/sprites/weapons.png");
-	am->ceiling = mlx_new_image(c->mlx, WIDTH, HEIGHT / 2); 
-	am->floor = mlx_new_image(c->mlx, WIDTH, HEIGHT / 2); 
-	ft_fill_color(am->ceiling, (t_color){245,214,34,255});
-	ft_fill_color(am->floor, (t_color){222,194,30,255});
+	am->sprite_weapon = am_load_sprite(c,
+		(t_sprite_options){1, 6, DIR_VERTICAL},
+		(t_png_options){0, 0, 0},
+		"./assets/sprites/weapons.png");
+		
+	am->m_wall = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_WALL);
+	am->m_player = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_PLAYER);
+	am->m_player = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_SPACE);
+
+	init_img(c, &am->ceiling, WIDTH, HEIGHT / 2);
+	init_img(c, &am->floor, WIDTH, HEIGHT / 2);
+	init_img(c, &am->m_map, M_WIDTH, M_HEIGHT);
+	init_img(c, &am->m_map_bg, M_WIDTH, M_HEIGHT);
+
+	if (!ft_fill_color(am->ceiling, (t_color){59, 59, 59, 255})
+		|| !ft_fill_color(am->floor, (t_color){115, 115, 115, 255})
+		|| !ft_fill_color(am->m_map, (t_color){45, 52, 54})
+		|| !ft_fill_color(am->m_map_bg, (t_color){45, 52, 54})
+	)
+	{
+		cub3d_error_exit(c, "ft_fill_color");
+	}
 }

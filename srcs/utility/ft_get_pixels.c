@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_loop_handler.c                               :+:      :+:    :+:   */
+/*   ft_get_pixels.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 18:32:20 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 18:30:42 by ktieu            ###   ########.fr       */
+/*   Created: 2025/01/31 17:29:54 by ktieu             #+#    #+#             */
+/*   Updated: 2025/01/31 17:35:57 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "utility.h"
 
-void	event_loop_handler(void *data)
+uint8_t	*ft_get_pixels(mlx_image_t *img, int32_t x, int32_t y)
 {
-	(void)data;
-	// t_cub	*c;
+	int32_t	offset;
 
-	// c = (t_cub *)data;
+	offset = (y * img->width + x) * sizeof(int32_t);
+	return (img->pixels + offset);
 }

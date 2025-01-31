@@ -39,7 +39,7 @@
 // 	cub->m_images[PLAYER] = png_to_image(cub, M_PLAYER);
 // }
 
-// static void	image_to_window(t_cub *cub, mlx_image_t *im,
+// static void	ft_image_to_window(t_cub *cub, mlx_image_t *im,
 // 	int32_t x, int32_t y)
 // {
 // 	if (mlx_image_to_window(cub->mlx, im, x * MPX, y * MPX) < 0)
@@ -58,10 +58,10 @@
 // 		while (++x < len)
 // 		{
 // 			if (cub->map->grid[y][x] == '1')
-// 				image_to_window(cub, cub->m_images[WALL], x, y);
+// 				ft_image_to_window(cub, cub->m_images[WALL], x, y);
 // 			else if (cub->map->grid[y][x] != ' ')
-// 				image_to_window(cub, cub->m_images[SPACE], x, y);
+// 				ft_image_to_window(cub, cub->m_images[SPACE], x, y);
 // 		}
 // 	}
-// 	image_to_window(cub, cub->m_images[PLAYER], cub->current.x, cub->current.y);
+// 	ft_image_to_window(cub, cub->m_images[PLAYER], cub->current.x, cub->current.y);
 // }

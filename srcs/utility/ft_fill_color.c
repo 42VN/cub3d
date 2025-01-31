@@ -6,18 +6,20 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:53:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/22 18:08:45 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/01/31 16:04:59 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utility.h"
 
-void	ft_fill_color(mlx_image_t *img ,t_color color)
+int	ft_fill_color(mlx_image_t *img ,t_color color)
 {
 	uint32_t	x;
 	uint32_t	y;
 	uint32_t	color_int;
 
+	if (!img)
+		return (0);
 	y = 0;
 	while (y < img->height)
 	{
@@ -30,4 +32,5 @@ void	ft_fill_color(mlx_image_t *img ,t_color color)
 		}
 		++y;
 	}
+	return (1);
 }
