@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utility.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 17:37:08 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/03 14:02:45 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,18 @@ typedef struct s_color
 	uint32_t	blue;
 	int			done;
 }	t_color;
+
+typedef struct s_dpoint
+{
+	double	x;
+	double	y;
+}	t_dpoint;
+
+typedef struct s_point
+{
+	int	row;
+	int	col;
+}	t_point;
 
 //----------------------------------------------
 // ERROR

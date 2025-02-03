@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   init_rays.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/03 14:10:17 by hitran           ###   ########.fr       */
+/*   Created: 2025/02/03 13:01:18 by hitran            #+#    #+#             */
+/*   Updated: 2025/02/03 13:09:00 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-#define PLAYER_H
+#include "cub3d.h"
 
-# include "utility.h"
-
-typedef struct s_player
+void	init_ray(t_ray *rays, t_player player)
 {
-	t_dpoint	current;
-	t_dpoint	next;
-	double		angle;
-	double		speed;	
-}	t_player;
-
-#endif
+	rays->start = (t_dpoint){player.current.x, player.current.y};
+	rays->end = (t_dpoint){player.current.x, player.current.y};
+	rays->angle = rescale(player.angle);
+	rays->dir = (t_dpoint){cos(rays->angle), sin(rays->angle)};
+	rays->hit = (t_point){-1, -1};
+	rays->distance = 0;
+}

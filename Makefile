@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
+#    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/01/31 18:23:33 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/03 13:57:23 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,12 @@ MAP_DIR				= $(SRC_DIR)/map
 MMAP_DIR			= $(SRC_DIR)/minimap
 UTILS_DIR			= $(SRC_DIR)/utility
 ASSET_MANAGER_DIR	= $(SRC_DIR)/asset_manager
+RAY_DIR				= $(SRC_DIR)/ray_casting
 
 
 # Source files by directory
-CUB3D_FILES			=	init.c free.c exit.c display.c utils.c
+CUB3D_FILES			=	init.c free.c exit.c display.c utils.c \
+						init_rays.c
 
 EVENT_FILES			=	event_loop_handler.c \
 						event_close_handler.c \
@@ -45,19 +47,24 @@ UTIL_FILES			=	ft_error.c \
 						ft_convert_color.c ft_set_color.c ft_fill_color.c \
 						ft_get_pixels.c ft_copy_pixels.c
 						
-MAP_FILES			=	read_grid.c read_element.c read_map.c \
+MAP_FILES			=	read_element.c read_map.c \
 						utils.c validate_grid.c
 
+MMAP_FILES			=	display_minimap.c start_minimap.c utils.c
  
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 						am_init.c am_free.c
 
-SRC_FILES			= 	./srcs/main.c \
+RAY_FILES			=	utils.c ray_casting.c find_hit_point.c
+
+SRC_FILES			= 	./srcs/main_trung.c \
 						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
 						$(addprefix $(EVENT_DIR)/, $(EVENT_FILES)) \
 						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \
 						$(addprefix $(ASSET_MANAGER_DIR)/, $(ASSET_MANAGER_FILES)) \
 						$(addprefix $(MAP_DIR)/, $(MAP_FILES)) \
+						$(addprefix $(MMAP_DIR)/, $(MMAP_FILES)) \
+						$(addprefix $(RAY_DIR)/, $(RAY_FILES)) 
 
 # Library
 LIBFT 				= $(LIBFT_DIR)/libft.a

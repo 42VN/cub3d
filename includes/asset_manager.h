@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asset_manager.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 16:18:05 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/03 14:20:14 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define M_SPACE	"./assets/textures/mini_space.png"
 # define M_WALL		"./assets/textures/mini_wall.png"
 # define M_PLAYER	"./assets/textures/mini_player.png"
+# define M_RAY		"./assets/textures/m_ray.png"
+
 # define M_WIDTH	42
 # define M_HEIGHT	42
 

@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:30:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 11:03:35 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/03 10:40:38 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,50 @@ bool	is_done(t_map *map)
 {
 	return (map->no_fd && map->so_fd && map->we_fd && map->ea_fd
 			&& map->f_color && map->c_color);
+}
+
+int	copy_grid(char **visited, t_map *map)
+{
+	int	row;
+	int	col;
+	int	len;
+
+	row = -1;
+	while (map && map->grid && map->grid[++row])
+	{
+		visited[row] = (char *)ft_calloc(map->max_cols + 1, sizeof(char));
+		if (!visited[row])
+		{
+			ft_clean_array(&visited);
+			return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
+		}
+		col = -1;
+		len = ft_strlen(map->grid[row]);
+		while (++col < len && map->grid[row][col])
+			visited[row][col] = map->grid[row][col];
+		while (col < map->max_cols)
+			visited[row][col++] = ' ';
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	realloc_map(t_map *map)
+{
+	char	**new_array;
+
+	if (map->max_rows >= map->size)
+	{
+		map->size += BUFFER_SIZE;
+		new_array = (char **)ft_calloc(map->size, sizeof(char *));
+		if (!new_array)
+			return (EXIT_FAILURE);
+		if (copy_grid(new_array, map) == EXIT_FAILURE)
+		{
+			ft_clean_array(&new_array);
+			return (EXIT_FAILURE);
+		}
+		ft_clean_array(&map->grid);
+		map->grid = new_array;
+	}
+	return (EXIT_SUCCESS);
 }

@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   main_trung.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/03 14:21:46 by hitran           ###   ########.fr       */
+/*   Created: 2025/01/15 13:19:36 by ktieu             #+#    #+#             */
+/*   Updated: 2025/02/03 13:35:43 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	cub3d_init(t_cub *cub)
+int	main(int argc, char **argv)
 {
-	t_asset_manager	*am;
+	t_cub		cub;
 
-	// ft_bzero(cub, sizeof(t_cub));
-	// am = &cub->am;
-	// am->sprite_weapon = am_load_sprite(
-	// 	cub->mlx,
-	// 	(t_sprite){  }, "assets/sprites/weapons.png")
-	return (1);
+	int		fd;
+
+	if (argc != 2)
+		return (ft_error_ret("Usage: ./cub3D [map_path]/[map_name].cub", EXIT_FAILURE));
+	ft_bzero(&cub, sizeof(cub));
+	fd = ft_validate_map_path(argv[1]);
+	if (fd < 0)
+		return (EXIT_FAILURE);
+	if (read_map(&cub, fd))
+		return (EXIT_FAILURE);
+	close (fd);
+	start_minimap(&cub);
+	mlx_loop(cub.mlx);
+	cub3d_free(&cub);
+	return (EXIT_SUCCESS);
 }

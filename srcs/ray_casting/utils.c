@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/03 14:10:17 by hitran           ###   ########.fr       */
+/*   Created: 2025/02/03 13:55:34 by hitran            #+#    #+#             */
+/*   Updated: 2025/02/03 14:06:19 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-#define PLAYER_H
+#include "cub3d.h"
 
-# include "utility.h"
-
-typedef struct s_player
+double	rescale(double angle)
 {
-	t_dpoint	current;
-	t_dpoint	next;
-	double		angle;
-	double		speed;	
-}	t_player;
-
-#endif
+	if (angle < 0)
+		return (angle + 2 * PI);
+	else if (angle >= 2 * PI)
+		return (angle - 2 * PI);
+	else
+		return (angle);
+}

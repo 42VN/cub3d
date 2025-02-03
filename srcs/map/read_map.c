@@ -6,11 +6,29 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/31 10:53:09 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/03 10:31:16 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	read_grid(t_map *map, char *line)
+{
+	int	len;
+
+	if (!map || !line)
+		return (EXIT_FAILURE);
+	len = ft_strlen(line);
+	if (len > map->max_cols)
+		map->max_cols = len;
+	if (realloc_map(map) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	map->grid[map->max_rows] = ft_strdup(line);
+	if (!map->grid[map->max_rows])
+		return (ft_error_ret("Map reading: ft_strdup failed.", EXIT_FAILURE));
+	map->max_rows++;
+	return (EXIT_SUCCESS);
+}
 
 static int	process_line(t_cub *cub, char *line, int fd)
 {

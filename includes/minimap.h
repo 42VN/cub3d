@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 11:17:53 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/03 14:28:39 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,21 @@
 # include "cub3d.h"
 
 # define MPX 32
-# define M_TEXTURE_NO	3
+# define M_TEXTURE_NO	4
 
-# define M_SPACE	"./assets/textures/mini_space.png"
-# define M_WALL		"./assets/textures/mini_wall.png"
-# define M_PLAYER	"./assets/textures/mini_player.png"
+typedef enum e_obj_type
+{
+	SPACE,
+	WALL,
+	PLAYER,
+	RAY,
+	EMPTY
+}	t_obj_type;
+
+// # define M_SPACE	"./assets/textures/m_space.png"
+// # define M_WALL		"./assets/textures/m_wall.png"
+// # define M_PLAYER	"./assets/textures/mini_player.png"
+// # define M_PLAYER	"./assets/textures/m_ray.png"
 
 // minimap
 void	start_minimap(t_cub *cub);

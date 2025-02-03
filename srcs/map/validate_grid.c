@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/03 09:21:25 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/03 14:01:06 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ static int	is_unclosed(t_map *map, char **visited, int32_t row, int32_t col)
 		|| is_unclosed(map, visited, row, col - 1));
 }
 
-static int	check_wall_surrounded(t_map *map, double x, double y)
+static int	check_wall_surrounded(t_map *map, t_dpoint start)
 {
 	char	**visited;
 
 	visited = (char **)ft_calloc(map->max_rows + 1, sizeof(char *));
 	if (!visited)
 		return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
-	if (copy_grid(visited, map, ' ') == EXIT_FAILURE)
+	if (copy_grid(visited, map) == EXIT_FAILURE)
 	{
 		ft_clean_array(&visited);
 		return (EXIT_FAILURE);
 	}
-	if (is_unclosed(map, visited, y, x))
+	if (is_unclosed(map, visited, start.y / CELL_PX, start.x / CELL_PX))
 	{
 		ft_clean_array(&visited);
 		return (ft_error_ret("Map is unclosed by walls.", EXIT_FAILURE));
@@ -74,9 +74,9 @@ static int	validate_characters(t_cub *cub, int row)
 		{
 			if (cub->player.angle > 0)
 				return (ft_error_ret("More than 1 player.", EXIT_FAILURE));
-			cub->player.cur_x = col;
-			cub->player.cur_y = row;
+			cub->player.current = (t_dpoint){col * CELL_PX, row * CELL_PX};
 			cub->player.angle =	get_direction(cub->map.grid[row][col]);
+			cub->map.grid[row][col] = '0';
 		}
 		col++;
 	}
@@ -104,9 +104,8 @@ int	validate_grid(t_cub *cub, int fd)
 		ft_error("Player not found.");
 		return (map_error(&cub->map, NULL, fd));
 	}
-	if (check_wall_surrounded(&cub->map, cub->player.cur_x, cub->player.cur_y) == EXIT_FAILURE)
+	if (check_wall_surrounded(&cub->map, cub->player.current) == EXIT_FAILURE)
 		return (map_error(&cub->map, NULL, fd));
 	print_map(&cub->map);
-		printf("Player position: [%f, %f], direction angle: %f\n", cub->player.cur_x, cub->player.cur_y, cub->player.angle);
 	return (EXIT_SUCCESS);
 }
