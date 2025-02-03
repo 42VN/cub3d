@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/31 11:15:15 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/03 09:21:25 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 double	get_direction(char c)
 {
 	if (c == 'N')
-		return (2 * PI);
-	else if (c == 'S')
-		return (PI);
-	else if (c == 'W')
 		return (PI / 2);
-	else if (c == 'E')
+	else if (c == 'S')
 		return (3 * PI / 2);
+	else if (c == 'W')
+		return (PI);
+	else if (c == 'E')
+		return (2 * PI);
 	return (0);
 }
 
@@ -107,5 +107,6 @@ int	validate_grid(t_cub *cub, int fd)
 	if (check_wall_surrounded(&cub->map, cub->player.cur_x, cub->player.cur_y) == EXIT_FAILURE)
 		return (map_error(&cub->map, NULL, fd));
 	print_map(&cub->map);
+		printf("Player position: [%f, %f], direction angle: %f\n", cub->player.cur_x, cub->player.cur_y, cub->player.angle);
 	return (EXIT_SUCCESS);
 }
