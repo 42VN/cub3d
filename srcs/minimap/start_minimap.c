@@ -12,37 +12,12 @@
 
 #include "cub3d.h"
 
-// static void	move_player(t_cub *cub)
-// {
-// 	cub->current = cub->player.next;
-// 	cub->m_images[PLAYER]->instances[0].x = cub->current.x * MPX;
-// 	cub->m_images[PLAYER]->instances[0].y = cub->current.y * MPX;
-// }
-/*
-		NO
-	WE		EA
-		SO
-
-		W
-	A	S	D
-
-	NO
-
-	WE+W = NO+A
-	WE+S = NO+D
-	WE+A = NO+S
-	WE+D = NO+W
-
-	SO+W = NO+S
-	SO+S = NO+W
-	SO+A = NO+D
-	SO+D = NO+A
-
-	EA+W = NO+D
-	EA+S = NO+A
-	EA+A = NO+W
-	EA+D = NO+S
-*/
+static void	update_beams(t_cub *cub)
+{
+	mlx_delete_image(cub->mlx, cub->mini[RAY]);
+	cub->mini[RAY] = png_to_ray(cub, M_RAY);
+	draw_rays(cub);
+}
 
 static void	key_hook(mlx_key_data_t keydata, void *param)
 {
@@ -68,6 +43,7 @@ static void	key_hook(mlx_key_data_t keydata, void *param)
 		cub->player.angle = rescale(cub->player.angle - PI / 36);
 	else
 		return ;
+	update_beams(cub);
 	// cub->player.angle = angle;
 	// if (cub->map.grid[cub->player.next.y][cub->player.next.x] != '1')
 	// 	move_player(cub);
@@ -107,6 +83,8 @@ void	start_minimap(t_cub *cub)
 		game_error(cub, strerror(errno));
 
 	display_minimap(cub, -1, -1);
+	ray_casting(cub);
+	draw_rays(cub);
 	mlx_key_hook(cub->mlx, key_hook, cub);
 	mlx_loop_hook(cub->mlx, loop_hook, cub);
 	mlx_close_hook(cub->mlx, close_hook, cub);

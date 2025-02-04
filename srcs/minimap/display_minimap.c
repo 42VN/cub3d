@@ -29,7 +29,7 @@ static mlx_image_t	*png_to_image(t_cub *cub, const char *path)
 	return (image);
 }
 
-static mlx_image_t	*png_to_ray(t_cub *cub, const char *path)
+mlx_image_t	*png_to_ray(t_cub *cub, const char *path)
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
