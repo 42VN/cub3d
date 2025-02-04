@@ -51,7 +51,6 @@ static void	key_hook(mlx_key_data_t keydata, void *param)
 	// t_dpoint	cur;
 
 	cub = (t_cub *)param;
-	ray_casting(cub);
 	// cur = cub->player.current;
 	if (keydata.key == MLX_KEY_ESCAPE)
 		exit_cub(cub, EXIT_SUCCESS);
@@ -74,9 +73,25 @@ static void	key_hook(mlx_key_data_t keydata, void *param)
 	// 	move_player(cub);
 }
 
+static void	loop_hook(void *param)
+{
+	t_cub		*cub;
+
+	cub = (t_cub *)param;
+	// mlx_key_hook(cub->mlx, key_hook, cub);
+	ray_casting(cub);
+}
+
 static void	close_hook(void *param)
 {
 	exit_cub((t_cub *)param, EXIT_SUCCESS);
+}
+
+void	init_hooks(t_cub *cub)
+{
+	if (mlx_loop_hook(cub->mlx, loop_hook, cub) == false)
+		game_error(cub, strerror(errno));
+	mlx_close_hook(cub->mlx, close_hook, cub);
 }
 
 void	start_minimap(t_cub *cub)
@@ -86,12 +101,14 @@ void	start_minimap(t_cub *cub)
 	if (!cub->mlx)
 		game_error(cub, mlx_strerror(mlx_errno));
 
-	cub->rays = (t_ray *)ft_calloc(WIDTH, sizeof(t_ray));
+	// cub->rays = (t_ray *)ft_calloc(WIDTH, sizeof(t_ray));
+	cub->rays = (t_ray *)ft_calloc(19, sizeof(t_ray)); //5 degree * 18 = 90
 	if (cub->rays == NULL)
 		game_error(cub, strerror(errno));
 
 	display_minimap(cub, -1, -1);
 	mlx_key_hook(cub->mlx, key_hook, cub);
+	mlx_loop_hook(cub->mlx, loop_hook, cub);
 	mlx_close_hook(cub->mlx, close_hook, cub);
 	mlx_loop(cub->mlx);
 	exit_cub(cub, EXIT_SUCCESS);

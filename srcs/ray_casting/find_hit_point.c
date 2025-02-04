@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:37:29 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/04 10:16:50 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/04 11:28:58 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,4 @@ void	find_hit_point(t_ray *ray, t_cub *cub)
 			ray->v_hit = true;
 		}
 	}
-	
 }
