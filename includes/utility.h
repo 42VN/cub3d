@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utility.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/03 14:02:45 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/04 21:54:26 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int			ft_validate_elem_path(char *path);
 // COLOR
 //----------------------------------------------
 int 		ft_set_color(int *color, char **array);
+int			ft_fill_color_int(mlx_image_t *img ,int color);
 int			ft_fill_color(mlx_image_t *img ,t_color color);
 uint32_t	ft_convert_color(t_color color);
 

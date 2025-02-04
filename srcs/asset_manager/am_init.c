@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 17:04:56 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/04 22:03:48 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	am_init(t_cub *c)
 
 	am = &c->am;
 	am->sprite_weapon = am_load_sprite(c,
-		(t_sprite_options){1, 6, DIR_VERTICAL},
+		(t_sprite_options){1, 6, 0, DIR_VERTICAL},
 		(t_png_options){0, 0, 0},
 		"./assets/sprites/weapons.png");
 		
@@ -39,10 +39,10 @@ void	am_init(t_cub *c)
 	init_img(c, &am->m_map, M_WIDTH, M_HEIGHT);
 	init_img(c, &am->m_map_bg, M_WIDTH, M_HEIGHT);
 
-	if (!ft_fill_color(am->ceiling, (t_color){59, 59, 59, 255})
-		|| !ft_fill_color(am->floor, (t_color){115, 115, 115, 255})
-		|| !ft_fill_color(am->m_map, (t_color){45, 52, 54})
-		|| !ft_fill_color(am->m_map_bg, (t_color){45, 52, 54})
+	if (!ft_fill_color_int(am->ceiling, c->map.c_color)
+		|| !ft_fill_color_int(am->floor, c->map.c_color)
+		|| !ft_fill_color(am->m_map, (t_color){45, 52, 54, 255})
+		|| !ft_fill_color(am->m_map_bg, (t_color){45, 52, 54, 255})
 	)
 	{
 		cub3d_error_exit(c, "ft_fill_color");
