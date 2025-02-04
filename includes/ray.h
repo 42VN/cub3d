@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/03 14:10:09 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/04 10:14:36 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ typedef struct s_ray
 	t_dpoint	dir;
 	double		angle;
 	double		distance;
-
+	bool		v_hit;
 }	t_ray;
 
 double	rescale(double angle);
 void	ray_casting(t_cub *cub);
 void	find_hit_point(t_ray *ray, t_cub *cub);
+void	set_end_point(int32_t row, int32_t col, t_ray *ray);
 
 #endif

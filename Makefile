@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/03 13:57:23 by hitran           ###   ########.fr        #
+#    Updated: 2025/02/04 10:14:58 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ MMAP_FILES			=	display_minimap.c start_minimap.c utils.c
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 						am_init.c am_free.c
 
-RAY_FILES			=	utils.c ray_casting.c find_hit_point.c
+RAY_FILES			=	utils.c ray_casting.c find_hit_point.c set_end_point.c 
 
 SRC_FILES			= 	./srcs/main_trung.c \
 						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \

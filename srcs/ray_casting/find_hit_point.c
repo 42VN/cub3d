@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:37:29 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/03 14:42:06 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/04 10:16:50 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	init_vars(t_dpoint *distance, t_point *step, t_ray *ray)
 void	find_hit_point(t_ray *ray, t_cub *cub)
 {
 	t_dpoint	distance;
-	t_point	step;
+	t_point		step;
 
 	ray->hit.row = ray->start.y/ CELL_PX;
 	ray->hit.col = ray->start.x / CELL_PX;
@@ -49,11 +49,13 @@ void	find_hit_point(t_ray *ray, t_cub *cub)
 		{
 			distance.x += fabs(CELL_PX / ray->dir.x);
 			ray->hit.col += step.col;
+			ray->v_hit = false;
 		}
 		else
 		{
 			distance.y += fabs(CELL_PX / ray->dir.y);
 			ray->hit.row += step.row;
+			ray->v_hit = true;
 		}
 	}
 	

@@ -53,8 +53,8 @@ static void	key_hook(mlx_key_data_t keydata, void *param)
 	cub = (t_cub *)param;
 	ray_casting(cub);
 	// cur = cub->player.current;
-	// if (keydata.key == MLX_KEY_ESCAPE)
-	// 	exit_cub(cub, EXIT_SUCCESS);
+	if (keydata.key == MLX_KEY_ESCAPE)
+		exit_cub(cub, EXIT_SUCCESS);
 	// else if (keydata.key == MLX_KEY_W)
 	// 	cub->player.next.y = cur.y - 4;
 	// else if (keydata.key == MLX_KEY_S)
@@ -63,13 +63,13 @@ static void	key_hook(mlx_key_data_t keydata, void *param)
 	// 	cub->player.next = (t_point){cur.x - 1, cur.y, cur.rad};
 	// else if (keydata.key == MLX_KEY_D)
 	// 		cub->player.next = (t_point){cur.x + 1, cur.y, cur.rad};
-	if (keydata.key == MLX_KEY_LEFT)
-		angle = rescale(cub->player.angle + PI / 72);
+	else if (keydata.key == MLX_KEY_LEFT)
+		cub->player.angle = rescale(cub->player.angle + PI / 36);
 	else if (keydata.key == MLX_KEY_RIGHT)
-		angle = rescale(cub->player.angle - PI / 72);
+		cub->player.angle = rescale(cub->player.angle - PI / 36);
 	else
 		return ;
-	cub->player.angle = angle;
+	// cub->player.angle = angle;
 	// if (cub->map.grid[cub->player.next.y][cub->player.next.x] != '1')
 	// 	move_player(cub);
 }
@@ -82,13 +82,14 @@ static void	close_hook(void *param)
 void	start_minimap(t_cub *cub)
 {
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	cub->mlx = mlx_init(cub->map.max_cols * CELL_PX, cub->map.max_rows * CELL_PX,
-					"minimap", true);
+	cub->mlx = mlx_init(WIDTH, HEIGHT, "minimap", true);
 	if (!cub->mlx)
 		game_error(cub, mlx_strerror(mlx_errno));
+
 	cub->rays = (t_ray *)ft_calloc(WIDTH, sizeof(t_ray));
 	if (cub->rays == NULL)
 		game_error(cub, strerror(errno));
+
 	display_minimap(cub, -1, -1);
 	mlx_key_hook(cub->mlx, key_hook, cub);
 	mlx_close_hook(cub->mlx, close_hook, cub);

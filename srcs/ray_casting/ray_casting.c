@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:45:28 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/03 15:05:29 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/04 10:14:05 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@
 void	dda(t_ray *ray, t_cub *cub)
 {
 	find_hit_point(ray, cub);
-	ft_image_to_window(cub, cub->mini[RAY], cub->rays->hit.col * CELL_PX, cub->rays->hit.row * CELL_PX);
-	// set_end_point(ray->hit.row, ray->hit.col, ray);
+	set_end_point(ray->hit.row, ray->hit.col, ray);
+	ft_image_to_window(cub, cub->mini[RAY], cub->rays->end.x, cub->rays->end.y);
 	// set_hit_texture(ray->hit.row, ray->hit.col, ray, cub);
 	// set_distance(ray, cub);
 }
-
-
 
 double	get_ray_angle(double angle, int index)
 {
