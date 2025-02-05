@@ -26,7 +26,6 @@ int	is_movable(char **grid, double x, double y)
 
 	row = (int) (y + CELL_PX/2) / CELL_PX;
 	col = (int) (x + CELL_PX/2) / CELL_PX;
-	// printf("x = %f, y = %f, row = %d, col = %d, map = %c\n", x, y, row, col, grid[row][col]);
 	if (grid[row][col] == '0')
 		return (1);
 	return (0);
@@ -40,32 +39,37 @@ void	move_player(t_cub *cub)
 	cub->mini[PLAYER]->instances[0].y = cub->player.current.y;
 }
 
+static t_dpoint	next_point(t_dpoint cur, double angle, keys_t key)
+{
+	t_dpoint	next;
+
+	next = (t_dpoint){cur.x, cur.y};
+	if (key == MLX_KEY_W)
+		next = (t_dpoint){cur.x + cos(angle), cur.y - sin(angle)};
+	else if (key == MLX_KEY_S)
+		next = (t_dpoint){cur.x - cos(angle), cur.y + sin(angle)};
+	else if (key == MLX_KEY_A)
+		next = (t_dpoint){cur.x + cos(angle + PI / 2),
+							cur.y - sin(angle + PI / 2)};
+	else if (key == MLX_KEY_D)
+		next = (t_dpoint){cur.x + cos(angle + 3 * PI / 2),
+							cur.y - sin(angle + 3 * PI / 2)};
+	return (next);
+}
+
 static void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_cub		*cub;
-	double		angle;
 	t_dpoint	cur;
-	t_dpoint	dir;
-	t_dpoint	dir_left;
-	t_dpoint	dir_right;
 
 	cub = (t_cub *)param;
 	cur = cub->player.current;
 	cub->player.next = (t_dpoint){cur.x, cur.y};
-	dir = (t_dpoint){(cos(cub->player.angle)), (sin(cub->player.angle))};
-	dir_left = (t_dpoint){(cos(cub->player.angle + PI / 2)), (sin(cub->player.angle + PI / 2))};
-	dir_right = (t_dpoint){(cos(cub->player.angle + 3 * PI / 2)), (sin(cub->player.angle + 3 * PI / 2))};
-	printf("cos = %f, sin =%f\n",(cos(cub->player.angle)), (sin(cub->player.angle)));
 	if (keydata.key == MLX_KEY_ESCAPE)
 		exit_cub(cub, EXIT_SUCCESS);
-	else if (keydata.key == MLX_KEY_W)
-		cub->player.next = (t_dpoint){cur.x + dir.x, cur.y - dir.y};
-	else if (keydata.key == MLX_KEY_S)
-		cub->player.next = (t_dpoint){cur.x - dir.x, cur.y + dir.y};
-	else if (keydata.key == MLX_KEY_A)
-		cub->player.next = (t_dpoint){cur.x + dir_left.x, cur.y - dir_left.y};
-	else if (keydata.key == MLX_KEY_D)
-		cub->player.next = (t_dpoint){cur.x + dir_right.x, cur.y - dir_right.y};
+	else if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_S
+			|| keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_D)
+		cub->player.next = next_point(cur, cub->player.angle, keydata.key);
 	else if (keydata.key == MLX_KEY_LEFT)
 		cub->player.angle = rescale(cub->player.angle + PI / 36);
 	else if (keydata.key == MLX_KEY_RIGHT)
@@ -81,7 +85,6 @@ static void	loop_hook(void *param)
 	t_cub		*cub;
 
 	cub = (t_cub *)param;
-	// mlx_key_hook(cub->mlx, key_hook, cub);
 	ray_casting(cub);
 }
 
