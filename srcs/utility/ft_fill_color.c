@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:53:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/04 21:54:14 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/05 13:50:36 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_fill_color_int(mlx_image_t *img ,int color)
 		x = 0;
 		while (x < img->width)
 		{
-			mlx_put_pixel(img, x, y, color);
+			mlx_put_pixel(img, x, y, (unsigned int) color);
 			++x;
 		}
 		++y;

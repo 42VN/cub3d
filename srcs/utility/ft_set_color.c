@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:40:47 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/28 10:56:25 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/05 13:46:43 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	ft_set_color(int *color, char **array)
 	blue = get_color(array[2]);
 	if (red == -1 || green == -1 || blue == -1)
 		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
-	*color = (1 << 24) + (red << 16) + (green << 8) + blue;
+	*color =(red << 24) + (green << 16) + (blue << 8) + 255;
 	return (EXIT_SUCCESS);
 }

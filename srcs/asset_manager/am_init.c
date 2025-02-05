@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   am_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/04 22:03:48 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/05 13:52:41 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ void	am_init(t_cub *c)
 	init_img(c, &am->m_map, M_WIDTH, M_HEIGHT);
 	init_img(c, &am->m_map_bg, M_WIDTH, M_HEIGHT);
 
+	printf("Color: %u\n",(unsigned int) c->map.c_color);
+
 	if (!ft_fill_color_int(am->ceiling, c->map.c_color)
-		|| !ft_fill_color_int(am->floor, c->map.c_color)
+		|| !ft_fill_color_int(am->floor, c->map.f_color)
 		|| !ft_fill_color(am->m_map, (t_color){45, 52, 54, 255})
 		|| !ft_fill_color(am->m_map_bg, (t_color){45, 52, 54, 255})
 	)
