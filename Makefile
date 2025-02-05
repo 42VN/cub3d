@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/05 14:42:30 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/05 16:19:40 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,9 @@ CUB3D_FILES			=	init.c free.c exit.c display.c utils.c \
 
 EVENT_FILES			=	event_loop_handler.c \
 						event_close_handler.c \
-						event_draw_minimap.c
+						process_event.c \
+						draw_minimap.c \
+						draw_player.c
 
 UTIL_FILES			=	ft_error.c \
 						ft_validate_path.c \

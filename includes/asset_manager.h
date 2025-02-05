@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/04 16:58:52 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/05 16:41:07 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,20 @@ typedef struct s_sprite_options
 	uint32_t		rows;
 	uint32_t		cols;
 	uint32_t		offset;
+	uint16_t		offset_px;
 	e_sprite_dir	dir;
 }	t_sprite_options;
 
 
 typedef struct s_sprite
 {
-	mlx_image_t	**frames;
-	uint32_t	frame_w;
-	uint32_t	frame_h;
-	uint32_t	rows;
-	uint32_t	cols;
-	uint32_t	idx;
+	mlx_image_t			**frames;
+	uint32_t			frame_w;
+	uint32_t			frame_h;
+	uint32_t			rows;
+	uint32_t			cols;
+	uint32_t			idx;
+	t_sprite_options	options;
 }	t_sprite;
 
 typedef struct s_png_options

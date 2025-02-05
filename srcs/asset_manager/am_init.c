@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/05 14:14:47 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/05 16:21:40 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ void	am_init(t_cub *c)
 
 	am = &c->am;
 	am->sprite_weapon = am_load_sprite(c,
-		(t_sprite_options){1, 6, 0, DIR_VERTICAL},
+		(t_sprite_options){4, 6, 1, DIR_VERTICAL},
 		(t_png_options){0, 0, 0},
 		"./assets/sprites/weapon.png");
-		
 	am->m_wall = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_WALL);
 	am->m_player = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_PLAYER);
 	am->m_player = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_SPACE);
@@ -38,8 +37,6 @@ void	am_init(t_cub *c)
 	init_img(c, &am->floor, WIDTH, HEIGHT / 2);
 	init_img(c, &am->m_map, M_WIDTH, M_HEIGHT);
 	init_img(c, &am->m_map_bg, M_WIDTH, M_HEIGHT);
-
-	printf("Color: %u\n",(unsigned int) c->map.c_color);
 
 	if (!ft_fill_color_int(am->ceiling, c->map.c_color)
 		|| !ft_fill_color_int(am->floor, c->map.f_color)
