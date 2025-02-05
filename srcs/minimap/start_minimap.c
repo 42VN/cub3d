@@ -19,34 +19,61 @@ static void	update_beams(t_cub *cub)
 	draw_rays(cub);
 }
 
+int	is_movable(char **grid, double x, double y)
+{
+	int	row;
+	int	col;
+
+	row = (int) (y + CELL_PX/2) / CELL_PX;
+	col = (int) (x + CELL_PX/2) / CELL_PX;
+	// printf("x = %f, y = %f, row = %d, col = %d, map = %c\n", x, y, row, col, grid[row][col]);
+	if (grid[row][col] == '0')
+		return (1);
+	return (0);
+}
+
+void	move_player(t_cub *cub)
+{
+	cub->player.current = (t_dpoint){cub->player.next.x, cub->player.next.y};
+	update_beams(cub);
+	cub->mini[PLAYER]->instances[0].x = cub->player.current.x;
+	cub->mini[PLAYER]->instances[0].y = cub->player.current.y;
+}
+
 static void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_cub		*cub;
 	double		angle;
-	// t_dpoint	cur;
+	t_dpoint	cur;
+	t_dpoint	dir;
+	t_dpoint	dir_left;
+	t_dpoint	dir_right;
 
 	cub = (t_cub *)param;
-	// cur = cub->player.current;
+	cur = cub->player.current;
+	cub->player.next = (t_dpoint){cur.x, cur.y};
+	dir = (t_dpoint){(cos(cub->player.angle)), (sin(cub->player.angle))};
+	dir_left = (t_dpoint){(cos(cub->player.angle + PI / 2)), (sin(cub->player.angle + PI / 2))};
+	dir_right = (t_dpoint){(cos(cub->player.angle + 3 * PI / 2)), (sin(cub->player.angle + 3 * PI / 2))};
+	printf("cos = %f, sin =%f\n",(cos(cub->player.angle)), (sin(cub->player.angle)));
 	if (keydata.key == MLX_KEY_ESCAPE)
 		exit_cub(cub, EXIT_SUCCESS);
-	// else if (keydata.key == MLX_KEY_W)
-	// 	cub->player.next.y = cur.y - 4;
-	// else if (keydata.key == MLX_KEY_S)
-	// 	cub->player.next.y = cur.y + 4;
-	// else if (keydata.key == MLX_KEY_A)
-	// 	cub->player.next = (t_point){cur.x - 1, cur.y, cur.rad};
-	// else if (keydata.key == MLX_KEY_D)
-	// 		cub->player.next = (t_point){cur.x + 1, cur.y, cur.rad};
+	else if (keydata.key == MLX_KEY_W)
+		cub->player.next = (t_dpoint){cur.x + dir.x, cur.y - dir.y};
+	else if (keydata.key == MLX_KEY_S)
+		cub->player.next = (t_dpoint){cur.x - dir.x, cur.y + dir.y};
+	else if (keydata.key == MLX_KEY_A)
+		cub->player.next = (t_dpoint){cur.x + dir_left.x, cur.y - dir_left.y};
+	else if (keydata.key == MLX_KEY_D)
+		cub->player.next = (t_dpoint){cur.x + dir_right.x, cur.y - dir_right.y};
 	else if (keydata.key == MLX_KEY_LEFT)
 		cub->player.angle = rescale(cub->player.angle + PI / 36);
 	else if (keydata.key == MLX_KEY_RIGHT)
 		cub->player.angle = rescale(cub->player.angle - PI / 36);
 	else
 		return ;
-	update_beams(cub);
-	// cub->player.angle = angle;
-	// if (cub->map.grid[cub->player.next.y][cub->player.next.x] != '1')
-	// 	move_player(cub);
+	if (is_movable(cub->map.grid, cub->player.next.x, cub->player.next.y))
+		move_player(cub);
 }
 
 static void	loop_hook(void *param)

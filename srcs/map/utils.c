@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:30:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/03 10:40:38 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/05 14:01:03 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	print_map(t_map *map)
 		map->f_color >> 8 & 255, map->f_color & 255);
 	printf("CE color: %d, %d, %d\n", map->c_color >> 16 & 255,
 		map->c_color >> 8 & 255, map->c_color & 255);
-	printf("Map grid: \n");
+	// printf("FL color: %d, CE color: %d\n", map->f_color, map->c_color);
+	// printf("Map grid: \n");
 	i = 0;
 	while (map->grid[i])
 		printf("%s\n", map->grid[i++]);
