@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:27:01 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 17:38:00 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/05 14:15:14 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,5 @@ void	cub3d_display(t_cub *c)
 	ft_image_to_window(c, am->floor, 0, HEIGHT / 2);
 	ft_image_to_window(c, am->m_map_bg, M_WIDTH, M_HEIGHT);
 	ft_image_to_window(c, am->m_map, M_WIDTH, M_HEIGHT);
-
-	// debugging
-	ft_image_to_window(c, am->sprite_weapon->frames[am->sprite_weapon->idx], M_WIDTH, M_HEIGHT);
+	ft_image_to_window(c, am->sprite_weapon->frames[am->sprite_weapon->idx], WIDTH / 2, 0);
 }

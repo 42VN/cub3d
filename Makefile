@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
+#    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/05 13:57:40 by hitran           ###   ########.fr        #
+#    Updated: 2025/02/05 14:42:30 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC 				= cc
-CFLAGS 			= -g -fsanitize=address
+CFLAGS 			= -g #-fsanitize=address
 MLX42_FLAGS		= -ldl -lglfw -pthread -lm
 INCLUDES 		= -I./includes -I./libs/libft -I./libs/MLX42/include/MLX42
 RM 				= rm -rf
@@ -57,7 +57,7 @@ ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 
 RAY_FILES			=	utils.c ray_casting.c find_hit_point.c set_end_point.c draw_rays.c
 
-SRC_FILES			= 	./srcs/main_trung.c \
+SRC_FILES			= 	./srcs/main.c \
 						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
 						$(addprefix $(EVENT_DIR)/, $(EVENT_FILES)) \
 						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \

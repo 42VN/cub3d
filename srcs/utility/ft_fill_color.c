@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:53:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 16:04:59 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/05 13:50:36 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utility.h"
+
+int	ft_fill_color_int(mlx_image_t *img ,int color)
+{
+	uint32_t	x;
+	uint32_t	y;
+
+	if (!img)
+		return (0);
+	y = 0;
+	while (y < img->height)
+	{
+		x = 0;
+		while (x < img->width)
+		{
+			mlx_put_pixel(img, x, y, (unsigned int) color);
+			++x;
+		}
+		++y;
+	}
+	return (1);
+}
 
 int	ft_fill_color(mlx_image_t *img ,t_color color)
 {

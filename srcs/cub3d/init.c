@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 18:37:43 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/05 13:40:12 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	cub3d_init(t_cub *c)
 {
 	t_asset_manager	*am;
 
-	ft_bzero(c, sizeof(t_cub));
 	am = &c->am;
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	c->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
