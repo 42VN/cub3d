@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:37:29 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/04 11:28:58 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/06 15:26:09 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void	find_hit_point(t_ray *ray, t_cub *cub)
 	t_dpoint	distance;
 	t_point		step;
 
-	ray->hit.row = ray->start.y/ CELL_PX;
-	ray->hit.col = ray->start.x / CELL_PX;
+	ray->hit = (t_point){ray->start.y / CELL_PX, ray->start.x / CELL_PX};
 	init_vars(&distance, &step, ray);
 	while (cub->map.grid[ray->hit.row][ray->hit.col] != '1')
 	{
