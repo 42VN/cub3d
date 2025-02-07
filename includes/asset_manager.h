@@ -6,12 +6,13 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/07 14:11:53 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/07 14:46:54 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASSET_MANAGER_H
 #define ASSET_MANAGER_H
+
 
 # define M_PX		32
 # define M_SPACE	"./assets/textures/mini_space.png"
@@ -19,8 +20,17 @@
 # define M_PLAYER	"./assets/textures/mini_player.png"
 # define M_RAY		"./assets/textures/m_ray.png"
 
-# define M_WIDTH	42
-# define M_HEIGHT	42
+#ifdef WIDTH
+ # define M_WIDTH (WIDTH / 5)
+ # define M_HEIGHT M_WIDTH
+#elif HEIGHT
+ # define M_WIDTH (HEIGHT / 5)
+ # define M_HEIGHT M_WIDTH
+#else
+ # define M_WIDTH 200
+ # define M_HEIGHT 200
+#endif
+
 
 # include "utility.h"
 # include "MLX42.h"
