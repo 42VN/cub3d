@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:27:01 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/05 16:53:36 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/07 14:31:11 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	cub3d_display(t_cub *c)
 	ft_image_to_window(c, am->m_map_bg, M_WIDTH, M_HEIGHT);
 	ft_image_to_window(c, am->m_map, M_WIDTH, M_HEIGHT);
 	ft_image_to_window(c, player,
-		WIDTH / 2 - player->width,
-		HEIGHT - player->height);
+		WIDTH / 2 - (player->width / 2),
+		HEIGHT - player->height + 10);
 }
