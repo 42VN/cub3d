@@ -48,7 +48,7 @@ UTIL_FILES			=	ft_error.c \
 						ft_readline.c ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c \
 						ft_convert_color.c ft_set_color.c ft_fill_color.c \
 						ft_get_pixels.c ft_copy_pixels.c \
-						ft_destroy_imgs.c
+						ft_destroy_imgs.c ft_init_array.c
 						
 MAP_FILES			=	read_element.c read_map.c \
 						utils.c validate_grid.c \
@@ -61,7 +61,7 @@ ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 
 RAY_FILES			=	utils.c ray_casting.c find_hit_point.c set_end_point.c draw_rays.c
 
-SRC_FILES			= 	./srcs/main.c \
+SRC_FILES			= 	./srcs/main_trung.c \
 						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
 						$(addprefix $(EVENT_DIR)/, $(EVENT_FILES)) \
 						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \

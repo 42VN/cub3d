@@ -88,4 +88,6 @@ char		*ft_readline(int fd, int *eof, int size);
 int			ft_is_all_white_spaces(char *s);
 int			ft_array_len(char **array);
 void		ft_clean_array(char ***str);
+char		**ft_init_array(int row, int col);
+
 #endif

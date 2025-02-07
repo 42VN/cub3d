@@ -25,28 +25,65 @@ double	get_direction(char c)
 	return (0);
 }
 
-static int	is_unclosed(t_map *map, char **visited, int32_t row, int32_t col)
+static int	inside_check(t_map *map, char **visited, int32_t row, int32_t col)
 {
-	if (row < 0 || row >= map->max_rows || col < 0 || col >= map->max_cols
-		|| visited[row][col] == ' ')
-		return (1);
+	if (row < 0 || col < 0 || !visited[row]
+		|| !visited[row][col] || visited[row][col] == ' ')
+		return (1);		
 	if (visited[row][col] == '1')
 		return (0);
 	visited[row][col] = '1';
-	return (is_unclosed(map, visited, row + 1, col)
-		|| is_unclosed(map, visited, row - 1, col)
-		|| is_unclosed(map, visited, row, col + 1)
-		|| is_unclosed(map, visited, row, col - 1));
+	return (inside_check(map, visited, row + 1, col)
+		|| inside_check(map, visited, row - 1, col)
+		|| inside_check(map, visited, row, col + 1)
+		|| inside_check(map, visited, row, col - 1));
+}
+
+static int	outside_check(t_map *map, char **visited, int32_t row, int32_t col)
+{
+	if (row < 0 || col < 0 || !visited[row]
+		|| !visited[row][col] || visited[row][col] == '1')
+		return (0);
+	if (visited[row][col] == '0')
+		return (1);		
+	visited[row][col] = '1';
+	return (outside_check(map, visited, row + 1, col)
+		|| outside_check(map, visited, row - 1, col)
+		|| outside_check(map, visited, row, col + 1)
+		|| outside_check(map, visited, row, col - 1));
+}
+
+static int	is_unclosed(t_map *map, char **visited, int32_t row, int32_t col)
+{
+	return (inside_check(map, visited, row + 1, col + 1) 
+			|| outside_check(map, visited, 0, 0));
+}
+
+int	grid2visited(char **visited, t_map *map)
+{
+	int	row;
+	int	col;
+
+	row = -1;
+	while (map && map->grid && map->grid[++row])
+	{
+		col = -1;
+		while (map->grid[row][++col])
+		{
+			visited[row+1][col+1] = map->grid[row][col];
+		}
+	}
+	return (EXIT_SUCCESS);
 }
 
 static int	check_wall_surrounded(t_map *map, t_dpoint start)
 {
 	char	**visited;
 
-	visited = (char **)ft_calloc(map->max_rows + 1, sizeof(char *));
+	visited = ft_init_array(map->max_rows + 2, map->max_cols + 2);
 	if (!visited)
 		return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
-	if (copy_grid(visited, map) == EXIT_FAILURE)
+	if (grid2visited(visited, map) == EXIT_FAILURE)
 	{
 		ft_clean_array(&visited);
 		return (EXIT_FAILURE);
