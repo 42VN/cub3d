@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:50:43 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/05 16:45:20 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/07 18:30:52 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static void calc_offset(t_sprite *s, int *offset_x, int *offset_y, int i)
 {
 	int	offset;
-
+	
 	offset = s->options.offset_px;
 	if (s->options.dir == DIR_HORIZONTAL)
 	{
@@ -30,12 +30,13 @@ static void calc_offset(t_sprite *s, int *offset_x, int *offset_y, int i)
 		*offset_x = 0;
 		*offset_y = (s->frame_h * i) + offset;
 	}
+	// printf("OffsetX: %d, OffsetY: %d, Offset:%d\n", *offset_x, *offset_y, offset);
 	// printf("Offset %d: x[%d], y[%d], offset_px[%d]\n",i, *offset_x, *offset_y, s->options.offset_px);
 	// printf("Frame %d: w[%d], h[%d]\n", s->fra);
 
 }
 
-static void	init_frames(
+static int	init_frames(
 	t_cub *c,
 	mlx_image_t *img,
 	t_sprite *s,
@@ -49,17 +50,20 @@ static void	init_frames(
 	int				offset_y;
 
 	frame_count = (options.dir == DIR_HORIZONTAL) ? options.cols : options.rows;
-	// printf("Frame: w[%d], h[%d]\n", s->frame_w, s->frame_h);
 	for (i = 0; i < frame_count; i++)
 	{
 		s->frames[i] = mlx_new_image(c->mlx, s->frame_w, s->frame_h);
 		if (!s->frames[i])
 			cub3d_error_exit(c, "init_sprite: init_frames: mlx_new_image");
-		calc_offset(s, &offset_x, &offset, i);
+		calc_offset(s, &offset_x, &offset_y, i);
 		img->pixels = ft_get_pixels(img, offset_x, offset_y);
-		ft_copy_pixels(s->frames[i], img, s->frame_w, s->frame_h);
-		img->pixels = original; // Restore original pointer
+		if (!img->pixels)
+			return (ft_error("am_load_sprite: init_sprite: init_frames: ft_get_pixels"), 0);
+		if (!ft_copy_pixels(s->frames[i], img, s->frame_w, s->frame_h))
+			return (ft_error("am_load_sprite: init_sprite: init_frames: ft_copy_pixels"), 0);
+		img->pixels = original;
 	}
+	return (1);
 }
 
 
@@ -88,10 +92,12 @@ static t_sprite	*init_sprite(
 		s->frame_h = (image->height / options.rows);
 		frame_count = options.rows;
 	}
+	// printf("Frame: w:%d, h:%d, o:%d\n", s->frame_w, s->frame_h, s->options.offset_px);
 	s->frames = (mlx_image_t **)ft_calloc(frame_count + 1, sizeof(mlx_image_t *));
 	if (!s->frames)
 		return (0);
-	init_frames(c, image, s, options);
+	if (!init_frames(c, image, s, options))
+		return (ft_destroy_img(c, s->frames), NULL);
 	return (s);
 }	
 
@@ -120,6 +126,7 @@ t_sprite	*am_load_sprite(
 		return (NULL);
 	}
 	res->options = options;
-	init_sprite(c, res, options, img);
+	if (!init_sprite(c, res, options, img))
+		return (NULL);
 	return (res);
 }

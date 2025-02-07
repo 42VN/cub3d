@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/04 21:54:26 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/07 17:23:33 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <errno.h>
 # include <string.h>
 # include "fcntl.h"
+
+typedef struct s_cub t_cub;
 
 typedef struct s_color
 {
@@ -72,11 +74,12 @@ uint32_t	ft_convert_color(t_color color);
 // PIXELS
 //----------------------------------------------
 uint8_t		*ft_get_pixels(mlx_image_t *img, int32_t x, int32_t y);
-void		ft_copy_pixels(
+int			ft_copy_pixels(
 				mlx_image_t *dst,
 				mlx_image_t *src,
 				int32_t offset_x,
 				int32_t offset_y);
+void		ft_destroy_img(t_cub *c, mlx_image_t **imgs);
 
 //----------------------------------------------
 // UTILITY

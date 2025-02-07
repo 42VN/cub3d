@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/05 16:19:40 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/07 17:18:48 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,10 +47,12 @@ UTIL_FILES			=	ft_error.c \
 						ft_validate_path.c \
 						ft_readline.c ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c \
 						ft_convert_color.c ft_set_color.c ft_fill_color.c \
-						ft_get_pixels.c ft_copy_pixels.c
+						ft_get_pixels.c ft_copy_pixels.c \
+						ft_destroy_imgs.c
 						
 MAP_FILES			=	read_element.c read_map.c \
-						utils.c validate_grid.c
+						utils.c validate_grid.c \
+						draw_map.c draw_minimap.c
 
 MMAP_FILES			=	display_minimap.c start_minimap.c utils.c
  

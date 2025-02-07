@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:19:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 18:37:39 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/07 17:40:36 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (read_map(&cub, fd))
 		return (EXIT_FAILURE);
+	cub.map.width = cub.map.max_cols * M_PX;
+	cub.map.height = cub.map.max_rows * M_PX;
 	close (fd);
 	cub3d_init(&cub);
 	mlx_loop(cub.mlx);

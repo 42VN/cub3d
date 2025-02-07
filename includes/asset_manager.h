@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/07 14:46:54 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/07 16:07:24 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,19 @@
 # define M_PLAYER	"./assets/textures/mini_player.png"
 # define M_RAY		"./assets/textures/m_ray.png"
 
-#ifdef WIDTH
- # define M_WIDTH (WIDTH / 5)
- # define M_HEIGHT M_WIDTH
-#elif HEIGHT
- # define M_WIDTH (HEIGHT / 5)
- # define M_HEIGHT M_WIDTH
-#else
- # define M_WIDTH 200
- # define M_HEIGHT 200
-#endif
+// #ifdef WIDTH
+//  # define M_WIDTH (WIDTH / 5)
+//  # define M_HEIGHT M_WIDTH
+// #elif HEIGHT
+//  # define M_WIDTH (HEIGHT / 5)
+//  # define M_HEIGHT M_WIDTH
+// #else
+//  # define M_WIDTH 200
+//  # define M_HEIGHT 200
+// #endif
+
+# define M_WIDTH 200
+# define M_HEIGHT 200
 
 
 # include "utility.h"
@@ -82,6 +85,7 @@ typedef struct s_asset_manager
 	mlx_image_t	*ceiling;
 	mlx_image_t	*floor;
 	mlx_image_t	*door;
+	mlx_image_t	*map;
 	mlx_image_t	*m_wall;
 	mlx_image_t	*m_space;
 	mlx_image_t	*m_player;
