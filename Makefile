@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/13 07:36:20 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/13 14:48:48 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,11 @@ EVENT_FILES			=	event_loop_handler.c \
 						event_key_handler.c \
 						draw_map.c \
 						draw_minimap.c \
-						draw_player.c
+						draw_player.c \
+						correct_pos.c
 
 UTIL_FILES			=	ft_error.c \
-						ft_validate_path.c \
+						ft_validate_path.c ft_is_valid_pos.c\
 						ft_max.c \
 						ft_readline.c ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c \
 						ft_convert_color.c ft_set_color.c ft_fill_color.c \
@@ -57,7 +58,7 @@ MAP_FILES			=	read_element.c read_map.c \
 
 MMAP_FILES			=	#display_minimap.c start_minimap.c utils.c
  
-ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
+ASSET_MANAGER_FILES	=	am_load_png.c am_load_png_ray.c am_load_sprite.c \
 						am_init.c am_free.c
 
 RAY_FILES			=	utils.c ray_casting.c find_hit_point.c set_end_point.c draw_rays.c

@@ -6,18 +6,18 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 07:28:20 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 07:39:20 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 11:54:25 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// static void	update_beams(t_cub *cub)
-// {
-// 	mlx_delete_image(cub->mlx, cub->mini[RAY]);
-// 	cub->mini[RAY] = png_to_ray(cub, M_RAY);
-// 	draw_rays(cub);
-// }
+static void	update_beams(t_cub *cub)
+{
+	mlx_delete_image(cub->mlx, cub->am.m_ray);
+	cub->am.m_ray = am_load_png_ray(cub, M_RAY);
+	draw_rays(cub);
+}
 
 int	is_movable(char **grid, double x, double y)
 {
@@ -31,13 +31,6 @@ int	is_movable(char **grid, double x, double y)
 	return (0);
 }
 
-void	move_player(t_cub *cub)
-{
-	cub->player.current = (t_dpoint){cub->player.next.x, cub->player.next.y};
-	// update_beams(cub);
-	cub->am.m_player->instances[0].x = cub->player.current.x;
-	cub->am.m_player->instances[0].y = cub->player.current.y;
-}
 
 static t_dpoint	next_point(t_dpoint cur, double angle, keys_t key)
 {
@@ -79,5 +72,5 @@ void	event_key_handler(mlx_key_data_t keydata, void *data)
 	else
 		return ;
 	if (is_movable(c->map.grid, c->player.next.x, c->player.next.y))
-		move_player(c);
+		c->player.current = (t_dpoint){c->player.next.x, c->player.next.y};
 }

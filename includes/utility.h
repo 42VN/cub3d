@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 05:21:53 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 12:01:37 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int			ft_multi_error_ret(char *str1, char *str2, int return_code);
 //----------------------------------------------
 int			ft_validate_map_path(char *path);
 int			ft_validate_elem_path(char *path);
-
 //----------------------------------------------
 // COLOR
 //----------------------------------------------
@@ -85,6 +84,7 @@ void		ft_del_pixels(
 				int32_t offset_x,
 				int32_t offset_y);
 void		ft_destroy_img(t_cub *c, mlx_image_t **imgs);
+int			ft_is_valid_pos(t_cub *c, int32_t x, int32_t y);
 
 //----------------------------------------------
 // UTILITY

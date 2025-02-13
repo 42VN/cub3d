@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 07:38:56 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 14:49:13 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_ray(t_ray *rays, t_player player);
 //-------------------------------------------
 // EVENTS
 //-------------------------------------------
+void	correct_pos(t_cub *c);
 void	draw_map(t_cub *c);
 void	draw_minimap(t_cub *c);
 void	event_loop_handler(void	*data);

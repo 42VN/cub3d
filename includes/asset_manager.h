@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/07 16:07:24 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 11:49:14 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_asset_manager
 	mlx_image_t	*floor;
 	mlx_image_t	*door;
 	mlx_image_t	*map;
+	mlx_image_t	*m_ray;
 	mlx_image_t	*m_wall;
 	mlx_image_t	*m_space;
 	mlx_image_t	*m_player;
@@ -104,6 +105,7 @@ void		am_free(mlx_t *mlx, t_asset_manager *am);
 // UTILITY FUNCTIONS
 //-------------------------------------------------
 mlx_image_t	*am_load_png(t_cub *cub, t_png_options options, const char *path);
+mlx_image_t	*am_load_png_ray(t_cub *cub, const char *path);
 t_sprite	*am_load_sprite(t_cub *c, t_sprite_options options, t_png_options png_options, char *path);
 
 #endif

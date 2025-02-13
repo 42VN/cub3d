@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   ft_is_valid_pos.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 18:47:41 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 11:56:26 by ktieu            ###   ########.fr       */
+/*   Created: 2025/02/13 11:59:32 by ktieu             #+#    #+#             */
+/*   Updated: 2025/02/13 12:12:40 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/**
- * Function to free and exit the game.
- * If there is no error, pass in NULL for str
- */
-void	cub3d_error_exit(t_cub *c, char *str)
+int	ft_is_valid_pos(t_cub *c, int32_t x, int32_t y)
 {
-	if (str)
-		ft_error(str);
-	cub3d_free(c);
-	exit(EXIT_FAILURE);
-}
+	int32_t	row;
+	int32_t	col;
 
-void	cub3d_exit(t_cub *c, int status)
-{
-	cub3d_free(c);
-	exit(status);
+	if (x < 0 || (uint32_t)x >= c->map.width
+		|| y < 0 || (uint32_t)y >= c->map.height
+	)
+		return (false);
+	row = y / CELL_PX;
+	col = x / CELL_PX;
+	if (c->map.grid[row][col] == '1')
+		return (0);
+	return (1);
 }
