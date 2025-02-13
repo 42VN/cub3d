@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/12 22:22:51 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 07:50:50 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int	ft_fill_map(t_cub *c, mlx_image_t *map_img, char **grid)
 	int32_t			col;
 	
 	row = 0;
+    printf("Max: %d-%d", c->map.max_rows, c->map.max_cols);
 	while (row < c->map.max_rows)
 	{
 		col = 0;

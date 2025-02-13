@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/13 05:27:24 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/13 07:36:20 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ CUB3D_FILES			=	init.c free.c exit.c display.c utils.c \
 
 EVENT_FILES			=	event_loop_handler.c \
 						event_close_handler.c \
-						process_event.c \
+						event_key_handler.c \
 						draw_map.c \
 						draw_minimap.c \
 						draw_player.c
@@ -55,7 +55,7 @@ UTIL_FILES			=	ft_error.c \
 MAP_FILES			=	read_element.c read_map.c \
 						utils.c validate_grid.c
 
-MMAP_FILES			=	display_minimap.c start_minimap.c utils.c
+MMAP_FILES			=	#display_minimap.c start_minimap.c utils.c
  
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 						am_init.c am_free.c
