@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_grid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/12 21:55:45 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 10:25:58 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,75 +25,94 @@ double	get_direction(char c)
 	return (0);
 }
 
-static int	inside_check(t_map *map, char **visited, int32_t row, int32_t col)
+static int	inside_check(t_map *map, char **temp, int32_t row, int32_t col)
 {
-	if (row < 0 || col < 0 || !visited[row]
-		|| !visited[row][col] || visited[row][col] == ' ')
+	if (row < 0 || col < 0 || !temp[row]
+		|| !temp[row][col] || temp[row][col] == ' ')
 		return (1);		
-	if (visited[row][col] == '1')
+	if (temp[row][col] == '1')
 		return (0);
-	visited[row][col] = '1';
-	return (inside_check(map, visited, row + 1, col)
-		|| inside_check(map, visited, row - 1, col)
-		|| inside_check(map, visited, row, col + 1)
-		|| inside_check(map, visited, row, col - 1));
+	temp[row][col] = '1';
+	return (inside_check(map, temp, row + 1, col)
+		|| inside_check(map, temp, row - 1, col)
+		|| inside_check(map, temp, row, col + 1)
+		|| inside_check(map, temp, row, col - 1));
 }
 
-static int	outside_check(t_map *map, char **visited, int32_t row, int32_t col)
+static int	outside_check(t_map *map, char **temp, int32_t row, int32_t col)
 {
-	if (row < 0 || col < 0 || !visited[row]
-		|| !visited[row][col] || visited[row][col] == '1')
+	if (row < 0 || col < 0 || !temp[row]
+		|| !temp[row][col] || temp[row][col] == '1')
 		return (0);
-	if (visited[row][col] == '0')
+	if (temp[row][col] == '0')
 		return (1);		
-	visited[row][col] = '1';
-	return (outside_check(map, visited, row + 1, col)
-		|| outside_check(map, visited, row - 1, col)
-		|| outside_check(map, visited, row, col + 1)
-		|| outside_check(map, visited, row, col - 1));
+	temp[row][col] = '1';
+	return (outside_check(map, temp, row + 1, col)
+		|| outside_check(map, temp, row - 1, col)
+		|| outside_check(map, temp, row, col + 1)
+		|| outside_check(map, temp, row, col - 1));
 }
 
-static int	is_unclosed(t_map *map, char **visited, int32_t row, int32_t col)
-{
-	return (inside_check(map, visited, row + 1, col + 1) 
-			|| outside_check(map, visited, 0, 0));
-}
+// int	grid2temp(char **temp, t_map *map)
+// {
+// 	int	row;
+// 	int	col;
 
-int	grid2visited(char **visited, t_map *map)
-{
-	int	row;
-	int	col;
+// 	row = -1;
+// 	while (map && map->grid && map->grid[++row])
+// 	{
+// 		col = -1;
+// 		while (map->grid[row][++col])
+// 		{
+// 			temp[row+1][col+1] = map->grid[row][col];
+// 		}
+// 	}
+// 	return (EXIT_SUCCESS);
+// }
 
+char	**assign_newgrid(t_map *map, int offset)
+{
+	int		row;
+	int		col;
+	char	**res;
+
+	res = ft_init_array(map->max_rows + offset + 1, map->max_cols + offset + 1);
+	if (!res)
+	{
+		ft_error("ft_init_array");
+		return (NULL);
+	}
 	row = -1;
 	while (map && map->grid && map->grid[++row])
 	{
 		col = -1;
 		while (map->grid[row][++col])
 		{
-			visited[row+1][col+1] = map->grid[row][col];
+			res[row + offset][col + offset] = map->grid[row][col];
 		}
 	}
-	return (EXIT_SUCCESS);
+	return (res);
 }
 
 static int	check_wall_surrounded(t_map *map, t_dpoint start)
 {
-	char	**visited;
+	char	**temp;
 
-	visited = ft_init_array(map->max_rows + 2, map->max_cols + 2);
-	if (!visited)
+	temp = assign_newgrid(map, 1); //->max_rows + 2, map->max_cols + 2);
+	if (!temp)
 		return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
-	if (grid2visited(visited, map) == EXIT_FAILURE)
+	if (inside_check(map, temp, start.y / CELL_PX + 1, start.x / CELL_PX + 1) 
+		|| outside_check(map, temp, 0, 0))
 	{
-		ft_clean_array(&visited);
-		return (EXIT_FAILURE);
-	}
-	if (is_unclosed(map, visited, start.y / CELL_PX, start.x / CELL_PX))
-	{
-		ft_clean_array(&visited);
+		ft_clean_array(&temp);
 		return (ft_error_ret("Map is unclosed by walls.", EXIT_FAILURE));
 	}
-	ft_clean_array(&visited);
+	ft_clean_array(&temp);
+	temp = assign_newgrid(map, 0); //->max_rows + 2, map->max_cols + 2);
+	if (!temp)
+		return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
+	ft_clean_array(&map->grid);
+	map->grid = temp;
 	return (EXIT_SUCCESS);
 }
 
