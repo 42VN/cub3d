@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 14:49:13 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 15:28:54 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_cub
 	int32_t			mouse_x;
 	int32_t			mouse_y;
 	t_asset_manager	am;
+	mlx_image_t		**mini;
 }	t_cub;
 
 void	cub3d_init(t_cub *cub);

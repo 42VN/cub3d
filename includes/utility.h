@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 12:01:37 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 15:29:01 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ char		*ft_readline(int fd, int *eof, int size);
 int			ft_is_all_white_spaces(char *s);
 int			ft_array_len(char **array);
 void		ft_clean_array(char ***str);
-char		**ft_init_array(int row, int col);
 int			ft_max(int a, int b);
 
 #endif

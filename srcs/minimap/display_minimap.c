@@ -41,7 +41,7 @@ mlx_image_t	*png_to_ray(t_cub *cub, const char *path)
 	mlx_delete_texture(texture);
 	if (!image)
 		game_error(cub, mlx_strerror(mlx_errno));
-	if (!mlx_resize_image(image, 4, 4)) // RAY CELL 4x4
+	if (!mlx_resize_image(image, 1, 1)) // RAY CELL 4x4
 		game_error(cub, mlx_strerror(mlx_errno));
 	return (image);
 }

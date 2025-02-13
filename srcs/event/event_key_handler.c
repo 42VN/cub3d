@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 07:28:20 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 11:54:25 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 15:35:07 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,30 @@ static void	update_beams(t_cub *cub)
 	draw_rays(cub);
 }
 
-int	is_movable(char **grid, double x, double y)
+static int	is_movable(char **grid, double x, double y)
 {
-	int	row;
-	int	col;
+	int	row1;
+	int	col1;
+	int	row2;
+	int	col2;
 
-	row = (int) (y + CELL_PX/2) / CELL_PX;
-	col = (int) (x + CELL_PX/2) / CELL_PX;
-	if (grid[row][col] == '0')
+	row1 = (int) (y + CELL_PX/3 + 1) / CELL_PX;
+	col1 = (int) (x + CELL_PX/3 + 1) / CELL_PX;
+	row2 = (int) (y + 2*CELL_PX/3) / CELL_PX;
+	col2 = (int) (x + 2*CELL_PX/3) / CELL_PX;
+	if (grid[row1][col1] == '0' && grid[row2][col1] == '0' && grid[row1][col2] == '0' && grid[row2][col2] == '0')
 		return (1);
 	return (0);
 }
 
+
+static void	move_player(t_cub *cub)
+{
+	cub->player.current = (t_dpoint){cub->player.next.x, cub->player.next.y};
+	update_beams(cub);
+	// cub->mini[PLAYER]->instances[0].x = cub->player.current.x;
+	// cub->mini[PLAYER]->instances[0].y = cub->player.current.y;
+}
 
 static t_dpoint	next_point(t_dpoint cur, double angle, keys_t key)
 {
@@ -72,5 +84,6 @@ void	event_key_handler(mlx_key_data_t keydata, void *data)
 	else
 		return ;
 	if (is_movable(c->map.grid, c->player.next.x, c->player.next.y))
-		c->player.current = (t_dpoint){c->player.next.x, c->player.next.y};
+		// c->player.current = (t_dpoint){c->player.next.x, c->player.next.y};
+		move_player(c);
 }
