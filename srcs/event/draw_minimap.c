@@ -6,28 +6,54 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:13:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/05 15:13:09 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 05:12:49 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	event_draw_minimap(t_cub *cub, int32_t y, int32_t x)
+static void	get_x(t_cub *c, int32_t *x, int32_t *offset_x)
 {
-	int	len;
+	int32_t	start_x;
 
-	while (++y < cub->map.max_rows)
+	*offset_x = M_WIDTH;
+	start_x = c->player.next.x - (M_WIDTH / 2);
+	*x = ft_max(start_x, 0);
+	if (*x + M_WIDTH > c->map.width)
 	{
-		x = -1;
-		len = ft_strlen(cub->map.grid[y]);
-		while (++x < len)
-		{
-			if (cub->map.grid[y][x] == '1')
-				ft_image_to_window(cub, cub->am.m_wall, x, y);
-			else if (cub->map.grid[y][x] != ' ')
-				ft_image_to_window(cub, cub->am.m_space, x, y);
-		}
+		*x = ft_max(c->map.width - M_WIDTH, 0);
+		if (*x == 0)
+			*offset_x = c->map.width;
 	}
-	ft_image_to_window(cub, cub->am.m_player, cub->player.current.x / CELL_PX,
-						cub->player.current.y / CELL_PX);
+}
+
+static void	get_y(t_cub *c, int32_t *y, int32_t *offset_y)
+{
+	int32_t	start_Y;
+
+	*offset_y = M_HEIGHT;
+	start_Y = c->player.next.y - (M_HEIGHT / 2);
+	*y = ft_max(start_Y, 0);
+	if (*y + M_HEIGHT > c->map.height)
+	{
+		*y = ft_max(c->map.height - M_HEIGHT, 0);
+		if (*y == 0)
+			*offset_y = c->map.height;
+	}
+}
+
+
+void	draw_minimap(t_cub *c)
+{
+	uint8_t	*original = c->am.map->pixels;
+	int32_t	x;
+	int32_t	y;
+	int32_t	offset_x;
+	int32_t	offset_y;
+
+	get_x(c, &x, &offset_x);
+	get_y(c, &y, &offset_y);
+	c->am.map->pixels = ft_get_pixels(c->am.map, x, y);
+	ft_copy_pixels(c->am.m_map, c->am.map, offset_x, offset_y);
+	c->am.map->pixels = original;
 }

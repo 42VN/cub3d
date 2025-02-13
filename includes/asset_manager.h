@@ -15,6 +15,7 @@
 
 
 # define M_PX		32
+# define M_OFFSET	10
 # define M_SPACE	"./assets/textures/mini_space.png"
 # define M_WALL		"./assets/textures/mini_wall.png"
 # define M_PLAYER	"./assets/textures/mini_player.png"

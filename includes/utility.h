@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/07 17:23:33 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 05:21:53 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ int			ft_copy_pixels(
 				mlx_image_t *src,
 				int32_t offset_x,
 				int32_t offset_y);
+void		ft_del_pixels(
+				uint8_t *start_px,
+				uint32_t img_width,
+				int32_t offset_x,
+				int32_t offset_y);
 void		ft_destroy_img(t_cub *c, mlx_image_t **imgs);
 
 //----------------------------------------------
@@ -89,5 +94,6 @@ int			ft_is_all_white_spaces(char *s);
 int			ft_array_len(char **array);
 void		ft_clean_array(char ***str);
 char		**ft_init_array(int row, int col);
+int			ft_max(int a, int b);
 
 #endif

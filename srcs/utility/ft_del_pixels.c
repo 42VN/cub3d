@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_copy_pixels.c                                   :+:      :+:    :+:   */
+/*   ft_del_pixels.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 17:25:48 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 06:26:59 by ktieu            ###   ########.fr       */
+/*   Created: 2025/02/12 22:48:01 by ktieu             #+#    #+#             */
+/*   Updated: 2025/02/13 05:38:00 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utility.h"
 
 /**
- * Copy pixels from src to dst until provided offsets (x and y)
+ * Delete a memory representing a section of pixels
+ * 
+ * Description:
+ * -	A pixel is represented as 4 bytes in memory 
+ * -	pos: 			the current position in the memory
+ * -	start_px + pos:	the pointer to the (offset + pos)
  */
-int	ft_copy_pixels(
-	mlx_image_t *dst,
-	mlx_image_t *src,
-	int32_t copy_till_x,
-	int32_t copy_till_y)
+void	ft_del_pixels(
+	uint8_t *start_px,
+	uint32_t img_width,
+	int32_t offset_x,
+	int32_t offset_y)
 {
 	int32_t		x;
 	int32_t		y;
-	uint32_t	*src_pixel;
-	uint32_t	*dst_pixel;
+	uint32_t	pos;
+	uint32_t	*px;
 
 	y = 0;
-	while (y < copy_till_y)
+	while (y < offset_y)
 	{
 		x = 0;
-		while (x  < copy_till_x)
+		while (x < offset_x)
 		{
-			src_pixel = (uint32_t *) ft_get_pixels(src, x, y);
-			if (!src_pixel)
-				return (0);
-			dst_pixel = (uint32_t *) ft_get_pixels(dst, x, y);
-			if (!dst_pixel)
-				return (0);
-			*dst_pixel = *src_pixel;
+			pos = (y * img_width + x) * sizeof(int32_t);
+			px = (uint32_t *)(start_px + pos);
+			*px = 0;
 			++x;
 		}
-		++y;	
+		++y;
 	}
-	return (1);
 }

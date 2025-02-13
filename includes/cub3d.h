@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/03 15:10:26 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/13 06:32:17 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	init_ray(t_ray *rays, t_player player);
 //-------------------------------------------
 // EVENTS
 //-------------------------------------------
+void	draw_map(t_cub *c);
+void	draw_minimap(t_cub *c);
 void	event_loop_handler(void	*data);
 void	event_close_handler(void *data);
 

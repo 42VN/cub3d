@@ -24,8 +24,8 @@ void	cub3d_display(t_cub *c)
 	player = am->sprite_weapon->frames[am->sprite_weapon->idx];
 	ft_image_to_window(c, am->ceiling, 0, 0);
 	ft_image_to_window(c, am->floor, 0, HEIGHT / 2);
-	ft_image_to_window(c, am->m_map_bg, 10, 10);
-	ft_image_to_window(c, am->m_map, 10, 10);
+	ft_image_to_window(c, am->m_map_bg, M_OFFSET, M_OFFSET);
+	ft_image_to_window(c, am->m_map, M_OFFSET, M_OFFSET);
 	ft_image_to_window(c, player,
 		WIDTH / 2 - (player->width / 2),
 		HEIGHT - player->height + 10);

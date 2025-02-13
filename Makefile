@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/07 17:18:48 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/13 05:27:24 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,19 +40,20 @@ CUB3D_FILES			=	init.c free.c exit.c display.c utils.c \
 EVENT_FILES			=	event_loop_handler.c \
 						event_close_handler.c \
 						process_event.c \
+						draw_map.c \
 						draw_minimap.c \
 						draw_player.c
 
 UTIL_FILES			=	ft_error.c \
 						ft_validate_path.c \
+						ft_max.c \
 						ft_readline.c ft_is_all_white_spaces.c ft_array_len.c ft_clean_array.c \
 						ft_convert_color.c ft_set_color.c ft_fill_color.c \
-						ft_get_pixels.c ft_copy_pixels.c \
+						ft_get_pixels.c ft_copy_pixels.c ft_del_pixels.c\
 						ft_destroy_imgs.c ft_init_array.c
 						
 MAP_FILES			=	read_element.c read_map.c \
-						utils.c validate_grid.c \
-						draw_map.c draw_minimap.c
+						utils.c validate_grid.c
 
 MMAP_FILES			=	display_minimap.c start_minimap.c utils.c
  
@@ -61,7 +62,7 @@ ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 
 RAY_FILES			=	utils.c ray_casting.c find_hit_point.c set_end_point.c draw_rays.c
 
-SRC_FILES			= 	./srcs/main_trung.c \
+SRC_FILES			= 	./srcs/main.c \
 						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
 						$(addprefix $(EVENT_DIR)/, $(EVENT_FILES)) \
 						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \

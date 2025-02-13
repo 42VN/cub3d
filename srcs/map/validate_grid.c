@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_grid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/03 14:01:06 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/12 21:55:45 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ static int	validate_characters(t_cub *cub, int row)
 			if (cub->player.angle > 0)
 				return (ft_error_ret("More than 1 player.", EXIT_FAILURE));
 			cub->player.current = (t_dpoint){col * CELL_PX, row * CELL_PX};
+			cub->player.next = (t_dpoint){col * CELL_PX, row * CELL_PX};
 			cub->player.angle =	get_direction(cub->map.grid[row][col]);
 			cub->map.grid[row][col] = '0';
 		}

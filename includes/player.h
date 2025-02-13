@@ -20,7 +20,7 @@ typedef struct s_player
 	t_dpoint	current;
 	t_dpoint	next;
 	double		angle;
-	double		speed;	
+	double		speed;
 }	t_player;
 
 #endif
