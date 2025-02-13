@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 12:16:38 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/13 07:37:01 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 14:56:06 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_ray(t_ray *ray, t_cub *cub)
 	
 	for (int i = 0; i < steps; i++)
 	{
-		// ft_image_to_window(cub, cub->mini[RAY], (int32_t)x, (int32_t)y);
+		ft_image_to_window(cub, cub->mini[RAY], (int32_t)x, (int32_t)y);
 		x += x_inc;
 		y += y_inc;
 	}
@@ -36,9 +36,9 @@ void	draw_rays(t_cub *cub)
 {
 	int index = 0;
 
-	while (index < 18)
+	while (index < WIDTH)
 	{
 		draw_ray(&cub->rays[index], cub);
-		index++;
+		index += WIDTH/18;
 	}
 }

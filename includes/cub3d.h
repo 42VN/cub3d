@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 07:38:56 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 12:36:42 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_cub
 	int32_t			mouse_x;
 	int32_t			mouse_y;
 	t_asset_manager	am;
+	mlx_image_t		**mini;
 }	t_cub;
 
 void	cub3d_init(t_cub *cub);

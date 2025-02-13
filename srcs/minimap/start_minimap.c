@@ -19,19 +19,23 @@ static void	update_beams(t_cub *cub)
 	draw_rays(cub);
 }
 
-int	is_movable(char **grid, double x, double y)
+static int	is_movable(char **grid, double x, double y)
 {
-	int	row;
-	int	col;
+	int	row1;
+	int	col1;
+	int	row2;
+	int	col2;
 
-	row = (int) (y + CELL_PX/2) / CELL_PX;
-	col = (int) (x + CELL_PX/2) / CELL_PX;
-	if (grid[row][col] == '0')
+	row1 = (int) (y + CELL_PX/3 + 1) / CELL_PX;
+	col1 = (int) (x + CELL_PX/3 + 1) / CELL_PX;
+	row2 = (int) (y + 2*CELL_PX/3) / CELL_PX;
+	col2 = (int) (x + 2*CELL_PX/3) / CELL_PX;
+	if (grid[row1][col1] == '0' && grid[row2][col1] == '0' && grid[row1][col2] == '0' && grid[row2][col2] == '0')
 		return (1);
 	return (0);
 }
 
-void	move_player(t_cub *cub)
+static void	move_player(t_cub *cub)
 {
 	cub->player.current = (t_dpoint){cub->player.next.x, cub->player.next.y};
 	update_beams(cub);
@@ -93,7 +97,7 @@ static void	close_hook(void *param)
 	exit_cub((t_cub *)param, EXIT_SUCCESS);
 }
 
-void	init_hooks(t_cub *cub)
+static void	init_hooks(t_cub *cub)
 {
 	if (mlx_loop_hook(cub->mlx, loop_hook, cub) == false)
 		game_error(cub, strerror(errno));
@@ -107,8 +111,8 @@ void	start_minimap(t_cub *cub)
 	if (!cub->mlx)
 		game_error(cub, mlx_strerror(mlx_errno));
 
-	// cub->rays = (t_ray *)ft_calloc(WIDTH, sizeof(t_ray));
-	cub->rays = (t_ray *)ft_calloc(19, sizeof(t_ray)); //5 degree * 18 = 90
+	cub->rays = (t_ray *)ft_calloc(WIDTH, sizeof(t_ray));
+	// cub->rays = (t_ray *)ft_calloc(19, sizeof(t_ray)); //5 degree * 18 = 90
 	if (cub->rays == NULL)
 		game_error(cub, strerror(errno));
 

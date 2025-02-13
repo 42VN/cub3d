@@ -6,17 +6,17 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:14:46 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/04 11:28:43 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/13 12:32:32 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	horizontal_hit(int32_t col, t_ray *ray)
+static void	horizontal_hit(t_ray *ray)
 {
 	double	dy;
 
-	ray->end.x = col * CELL_PX;
+	ray->end.x = ray->hit.col * CELL_PX;
 	if (ray->end.x < ray->start.x)
 		ray->end.x += CELL_PX;
 	dy = fabs((ray->end.x - ray->start.x) * ray->dir.y / ray->dir.x);
@@ -26,11 +26,11 @@ static void	horizontal_hit(int32_t col, t_ray *ray)
 		ray->end.y = ray->start.y + dy;
 }
 
-static void	vertical_hit(int32_t row, t_ray *ray)
+static void	vertical_hit(t_ray *ray)
 {
 	double	dx;
 
-	ray->end.y = row * CELL_PX;
+	ray->end.y = ray->hit.row * CELL_PX;
 	if (ray->end.y < ray->start.y)
 		ray->end.y += CELL_PX;
 	dx = fabs((ray->end.y - ray->start.y) * ray->dir.x / ray->dir.y);
@@ -40,10 +40,10 @@ static void	vertical_hit(int32_t row, t_ray *ray)
 		ray->end.x = ray->start.x - dx;
 }
 
-void	set_end_point(int32_t row, int32_t col, t_ray *ray)
+void	set_end_point(t_ray *ray)
 {
-	if (ray->v_hit == true)
-		vertical_hit(row, ray);
+	if (ray->hit_direction == VIRTICAL)
+		vertical_hit(ray);
 	else
-		horizontal_hit(col, ray);
+		horizontal_hit(ray);
 }

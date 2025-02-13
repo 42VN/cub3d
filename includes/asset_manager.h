@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asset_manager.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/07 16:07:24 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 15:20:44 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define M_OFFSET	10
 # define M_SPACE	"./assets/textures/mini_space.png"
 # define M_WALL		"./assets/textures/mini_wall.png"
-# define M_PLAYER	"./assets/textures/mini_player.png"
+# define M_PLAYER	"./assets/textures/mini_player2.png"
 # define M_RAY		"./assets/textures/m_ray.png"
 
 // #ifdef WIDTH

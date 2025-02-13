@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/13 12:05:43 by hitran           ###   ########.fr        #
+#    Updated: 2025/02/13 12:33:36 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,14 +55,14 @@ UTIL_FILES			=	ft_error.c \
 MAP_FILES			=	read_element.c read_grid.c read_map.c \
 						utils.c is_enclosed.c
 
-MMAP_FILES			=	#display_minimap.c start_minimap.c utils.c
+MMAP_FILES			=	display_minimap.c start_minimap.c utils.c
  
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_sprite.c \
 						am_init.c am_free.c
 
 RAY_FILES			=	utils.c ray_casting.c find_hit_point.c set_end_point.c draw_rays.c
 
-SRC_FILES			= 	./srcs/main.c \
+SRC_FILES			= 	./srcs/main_trung.c \
 						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
 						$(addprefix $(EVENT_DIR)/, $(EVENT_FILES)) \
 						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \

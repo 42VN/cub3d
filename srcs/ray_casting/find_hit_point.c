@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:37:29 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/06 15:26:09 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/13 14:36:31 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	init_vars(t_dpoint *distance, t_point *step, t_ray *ray)
 	t_dpoint	cur;
 	
 	cur = (t_dpoint){fmod(ray->start.x, CELL_PX), fmod(ray->start.y, CELL_PX)};
-	*distance = (t_dpoint){DBL_MAX, DBL_MAX};
+	*distance = (t_dpoint){0, 0};
 	*step = (t_point){1, 1};
 	if (ray->dir.x > 0)
 		distance->x = fabs((CELL_PX - cur.x) / ray->dir.x);
@@ -42,19 +42,20 @@ void	find_hit_point(t_ray *ray, t_cub *cub)
 
 	ray->hit = (t_point){ray->start.y / CELL_PX, ray->start.x / CELL_PX};
 	init_vars(&distance, &step, ray);
-	while (cub->map.grid[ray->hit.row][ray->hit.col] != '1')
+	while (cub->map.grid[ray->hit.row][ray->hit.col] != '1'
+			&& cub->map.grid[ray->hit.row][ray->hit.col] != 'D')
 	{
 		if (distance.x < distance.y)
 		{
 			distance.x += fabs(CELL_PX / ray->dir.x);
 			ray->hit.col += step.col;
-			ray->v_hit = false;
+			ray->hit_direction = HORIZONTAL;
 		}
 		else
 		{
 			distance.y += fabs(CELL_PX / ray->dir.y);
 			ray->hit.row += step.row;
-			ray->v_hit = true;
+			ray->hit_direction = VIRTICAL;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/04 12:23:41 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/13 13:00:13 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum e_obj_type
 // # define M_SPACE	"./assets/textures/m_space.png"
 // # define M_WALL		"./assets/textures/m_wall.png"
 // # define M_PLAYER	"./assets/textures/mini_player.png"
-// # define M_PLAYER	"./assets/textures/m_ray.png"
+// # define M_RAY	"./assets/textures/m_ray.png"
 
 // minimap
 void	start_minimap(t_cub *cub);

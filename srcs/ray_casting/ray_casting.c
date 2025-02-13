@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:45:28 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/06 15:25:02 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/13 12:40:57 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ t_ray	*init_a_ray(t_cub *cub, int index)
 void	dda(t_ray *ray, t_cub *cub)
 {
 	find_hit_point(ray, cub);
-	set_end_point(ray->hit.row, ray->hit.col, ray);
-	// set_hit_texture(ray->hit.row, ray->hit.col, ray, cub);
+	set_end_point(ray);
+	// set_hit_texture(ray, cub);
 	// set_distance(ray, cub);
 }
 
@@ -50,14 +50,13 @@ void	ray_casting(t_cub *cub)
 	t_ray	*ray;
 	int		index;
 
-	index = 0;
-	// while (index < WIDTH)
+	index = -1;
 	if (!cub || !cub->rays)
 		return ;
-	while (index < 18) //index < rays lenght
+	// while (index < 18) //index < rays lenght
+	while (++index < WIDTH)
 	{
 		ray = init_a_ray(cub, index);
 		dda(ray, cub);
-		index++;
 	}
 }
