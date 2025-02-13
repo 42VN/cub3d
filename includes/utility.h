@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utility.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 05:21:53 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/13 12:05:28 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ char		*ft_readline(int fd, int *eof, int size);
 int			ft_is_all_white_spaces(char *s);
 int			ft_array_len(char **array);
 void		ft_clean_array(char ***str);
-char		**ft_init_array(int row, int col);
 int			ft_max(int a, int b);
 
 #endif
