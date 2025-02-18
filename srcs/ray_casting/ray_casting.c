@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:45:28 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/18 09:43:49 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/18 14:09:18 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ t_ray	*init_a_ray(t_cub *cub, int index)
 							cub->player.current.y + CELL_PX / 2};
 	ray->end = (t_dpoint){ray->start.x, ray->start.y};
 	ray->angle = get_ray_angle(cub->player.angle, (double)index);
-	ray->dir.x = cos(ray->angle);
-	ray->dir.y = sin(ray->angle);
+	ray->dir = (t_dpoint){cos(ray->angle), sin(ray->angle)};
 	return (ray);
 }
 
@@ -38,8 +37,8 @@ void	dda(t_ray *ray, t_cub *cub)
 {
 	find_hit_point(ray, cub);
 	set_end_point(ray);
-	// set_hit_texture(ray, cub);
-	// set_distance(ray, cub);
+	set_hit_texture(ray, cub);
+	set_distance(ray, cub);
 }
 
 void	ray_casting(t_cub *cub)
@@ -50,7 +49,6 @@ void	ray_casting(t_cub *cub)
 	index = -1;
 	if (!cub || !cub->rays)
 		return ;
-	// while (index < 18) //index < rays lenght
 	while (++index < WIDTH)
 	{
 		ray = init_a_ray(cub, index);

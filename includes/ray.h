@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 12:32:49 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/18 11:26:27 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_ray
 	double		angle;
 	double		distance;
 	t_hit_dir	hit_direction;
+	mlx_image_t	*image;
+	int			im_location;
 }	t_ray;
 
 double	rescale(double angle);

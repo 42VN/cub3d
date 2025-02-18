@@ -1,66 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_hit_texture.c                                  :+:      :+:    :+:   */
+/*   set_image.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoatran <hoatran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 19:42:17 by hoatran           #+#    #+#             */
-/*   Updated: 2024/09/25 15:08:43 by hoatran          ###   ########.fr       */
+/*   Created: 2025/02/18 11:07:06 by hitran            #+#    #+#             */
+/*   Updated: 2025/02/18 14:11:29 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
-static void	set_wall_texture(t_ray *ray, mlx_image_t *walls[])
+static void	set_texture(t_ray *ray, mlx_image_t **image)
 {
-	double	pos_index;
-
-	if (ray->hit_side == 0)
+	if (ray->hit_direction == VIRTICAL)
 	{
-		ray->hit_texture = walls[3];
-		if (ray->x_end < ray->x_start)
-			ray->hit_texture = walls[1];
-		pos_index = fmod(ray->y_end, MAP_CELL_SIZE);
-		ray->hit_texture_pos_x = pos_index * ray->hit_texture->width
-			/ MAP_CELL_SIZE;
+		ray->image = image[EA];
+		if (ray->end.x < ray->start.x)
+			ray->image = image[WE];
+		ray->im_location = fmod(ray->end.y, CELL_PX);
 	}
 	else
 	{
-		ray->hit_texture = walls[0];
-		if (ray->y_end < ray->y_start)
-			ray->hit_texture = walls[2];
-		pos_index = fmod(ray->x_end, MAP_CELL_SIZE);
-		ray->hit_texture_pos_x = pos_index * ray->hit_texture->width
-			/ MAP_CELL_SIZE;
+		ray->image = image[NO];
+		if (ray->end.y > ray->start.y)
+			ray->image = image[SO];
+		ray->im_location = fmod(ray->end.x, CELL_PX);
 	}
 }
 
-static void	set_door_texture(t_ray *ray, t_door	*door)
+void	set_image(t_ray *ray, t_cub *cub)
 {
-	int32_t	row;
-	int32_t	col;
-	int32_t	pos_index;
-
-	row = door->frame_index / door->sprite->col_count;
-	col = door->frame_index % door->sprite->col_count;
-	ray->hit_texture = door->sprite->frames[row][col];
-	if (ray->hit_side == 0)
-		pos_index = (int32_t)ray->y_end % MAP_CELL_SIZE;
-	else
-		pos_index = (int32_t)ray->x_end % MAP_CELL_SIZE;
-	ray->hit_texture_pos_x = pos_index * door->sprite->frame_w / MAP_CELL_SIZE;
-}
-
-void	set_hit_texture(int32_t row, int32_t col, t_ray *ray, t_cub3D *cub3d)
-{
-	t_door	*door;
-
-	if (cub3d->map->grid[row][col] == MAP_DOOR)
-	{
-		door = get_door(row, col, cub3d);
-		set_door_texture(ray, door);
-	}
-	else if (cub3d->map->grid[row][col] == MAP_WALL)
-		set_wall_texture(ray, cub3d->asset.walls);
+	if (cub->map.grid[ray->hit.row][ray->hit.row] == 'D')
+		set_texture(ray, cub->am.door);
+	else if (cub->map.grid[ray->hit.row][ray->hit.row] == '1')
+		set_texture(ray, cub->am.walls);
 }
