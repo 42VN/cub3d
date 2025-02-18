@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:45:28 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/13 12:40:57 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/18 09:43:49 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 double	get_ray_angle(double angle, double index)
 {
-	double res;
-
-	res = rescale(angle + (PI / 2 ) * (0.5 - index /(19 - 1)));
-	return (res);
+	return (rescale(angle + (PI / 2 ) * (0.5 - index /(WIDTH - 1))));
 }
 
 t_ray	*init_a_ray(t_cub *cub, int index)
