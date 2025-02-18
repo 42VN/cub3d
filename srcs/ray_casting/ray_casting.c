@@ -30,17 +30,6 @@ t_ray	*init_a_ray(t_cub *cub, int index)
 	return (ray);
 }
 
-/**
- * DDA: Digital Differential Analyzer
- */
-void	dda(t_ray *ray, t_cub *cub)
-{
-	find_hit_point(ray, cub);
-	set_end_point(ray);
-	set_hit_texture(ray, cub);
-	set_distance(ray, cub);
-}
-
 void	ray_casting(t_cub *cub)
 {
 	t_ray	*ray;
@@ -52,6 +41,7 @@ void	ray_casting(t_cub *cub)
 	while (++index < WIDTH)
 	{
 		ray = init_a_ray(cub, index);
-		dda(ray, cub);
+		find_hit_point(ray, cub);
+		process_ray_hit(ray, cub);
 	}
 }
