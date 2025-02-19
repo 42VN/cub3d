@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/19 13:49:09 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/19 13:50:57 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ ASSET_MANAGER_FILES	=	am_load_png.c am_load_png_ray.c am_load_sprite.c \
 
 RAY_FILES			=	ray_casting.c find_hit_point.c process_ray_hit.c draw_rays.c
 
-SRC_FILES			= 	./srcs/main_trung.c \
+SRC_FILES			= 	./srcs/main.c \
 						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
 						$(addprefix $(EVENT_DIR)/, $(EVENT_FILES)) \
 						$(addprefix $(UTILS_DIR)/, $(UTIL_FILES)) \

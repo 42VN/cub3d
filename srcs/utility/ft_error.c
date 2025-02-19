@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:35:22 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 11:56:20 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/19 14:12:59 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	ft_error(char *str)
 	else if (errno)
 		ft_printf_fd(2, "\n[Error System]\n%s: %s\n\n", str, strerror(errno));
 	else
-		ft_printf_fd(2, "\n[Error]\n%s\n\n", str);
+		ft_printf_fd(2, "\n[Error]\n%s\n", str);
 }

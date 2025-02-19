@@ -6,11 +6,18 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:32:20 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/19 13:27:14 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/19 13:54:48 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	update_beams(t_cub *cub)
+{
+	mlx_delete_image(cub->mlx, cub->am.m_ray);
+	cub->am.m_ray = am_load_png_ray(cub, M_RAY);
+	draw_rays(cub);
+}
 
 
 static t_dpoint	next_point(t_dpoint cur, double angle, keys_t key)
@@ -56,6 +63,7 @@ static void process_key(t_cub *c)
 		c->player.angle = rescale(c->player.angle + PI / 36);
 	if (mlx_is_key_down(c->mlx, MLX_KEY_RIGHT))
 		c->player.angle = rescale(c->player.angle - PI / 36);
+	update_beams(c);
 }
 
 static void process_inputs(t_cub *c)
