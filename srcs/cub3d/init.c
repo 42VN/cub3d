@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 15:34:20 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/19 13:35:26 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	hook_init(t_cub *c)
 {
-    mlx_key_hook(c->mlx, event_key_handler, c);
 	if (!mlx_loop_hook(c->mlx, event_loop_handler, c))
 	{
 		cub3d_error_exit(c, "cub3d_init: mlx_loop_hook");

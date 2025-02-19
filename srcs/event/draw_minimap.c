@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:13:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 05:12:49 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/19 13:41:11 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	get_x(t_cub *c, int32_t *x, int32_t *offset_x)
 	int32_t	start_x;
 
 	*offset_x = M_WIDTH;
-	start_x = c->player.next.x - (M_WIDTH / 2);
+	start_x = c->player.current.x - (M_WIDTH / 2);
 	*x = ft_max(start_x, 0);
 	if (*x + M_WIDTH > c->map.width)
 	{
@@ -32,7 +32,7 @@ static void	get_y(t_cub *c, int32_t *y, int32_t *offset_y)
 	int32_t	start_Y;
 
 	*offset_y = M_HEIGHT;
-	start_Y = c->player.next.y - (M_HEIGHT / 2);
+	start_Y = c->player.current.y - (M_HEIGHT / 2);
 	*y = ft_max(start_Y, 0);
 	if (*y + M_HEIGHT > c->map.height)
 	{

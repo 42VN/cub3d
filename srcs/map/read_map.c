@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/13 12:03:26 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 13:41:17 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static int	validate_characters(t_cub *cub, int row)
 		{
 			if (cub->player.angle > 0)
 				return (ft_error_ret("More than 1 player.", EXIT_FAILURE));
+            cub->player.prev = (t_dpoint){col * CELL_PX, row * CELL_PX};
 			cub->player.current = (t_dpoint){col * CELL_PX, row * CELL_PX};
-			cub->player.next = (t_dpoint){col * CELL_PX, row * CELL_PX};
 			cub->player.angle =	get_direction(cub->map.grid[row][col]);
 			cub->map.grid[row][col] = '0';
 		}
