@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 11:55:43 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 13:29:04 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef enum e_elem_type
 
 typedef struct s_map
 {
-	int		no_fd;
-	int		so_fd;
-	int		we_fd;
-	int		ea_fd;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
 	int		f_color;
 	int		c_color;
 

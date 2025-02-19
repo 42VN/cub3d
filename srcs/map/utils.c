@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:30:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 12:03:32 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 13:34:32 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	clean_map(t_map *map)
 {
 	if (!map || !map->grid)
 		return ;
-	if (map->no_fd > 2)
-		close (map->no_fd);
-	if (map->so_fd > 2)
-		close (map->so_fd);
-	if (map->we_fd > 2)
-		close (map->we_fd);
-	if (map->ea_fd > 2)
-		close (map->ea_fd);
+	if (map->no_path)
+		ft_free_null(&map->no_path);
+	if (map->so_path)
+		ft_free_null(&map->so_path);
+	if (map->we_path)
+		ft_free_null(&map->we_path);
+	if (map->ea_path)
+		ft_free_null(&map->ea_path);
 	if (map->grid)
 		ft_clean_array(&map->grid);
 }
@@ -43,10 +43,10 @@ void	print_map(t_map *map)
 
 	if (!map)
 		return ;
-	printf("NO fd: %d\n", map->no_fd);
-	printf("SO fd: %d\n", map->so_fd);
-	printf("WE fd: %d\n", map->we_fd);
-	printf("EA fd: %d\n", map->ea_fd);
+	printf("NO path: %s\n", map->no_path);
+	printf("SO path: %s\n", map->so_path);
+	printf("WE path: %s\n", map->we_path);
+	printf("EA path: %s\n", map->ea_path);
 	printf("FL color: %d, %d, %d\n", map->f_color >> 16 & 255,
 		map->f_color >> 8 & 255, map->f_color & 255);
 	printf("CE color: %d, %d, %d\n", map->c_color >> 16 & 255,
@@ -60,6 +60,6 @@ void	print_map(t_map *map)
 
 bool	is_done(t_map *map)
 {
-	return (map->no_fd && map->so_fd && map->we_fd && map->ea_fd
+	return (map->no_path && map->so_path && map->we_path && map->ea_path
 			&& map->f_color && map->c_color);
 }

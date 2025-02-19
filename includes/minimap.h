@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 13:00:13 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 10:10:38 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	display_minimap(t_cub *cub, int32_t row, int32_t col);
 void	exit_cub(t_cub *cub, int32_t stt);
 void	game_error(t_cub *cub, const char *message);
 mlx_image_t	*png_to_ray(t_cub *cub, const char *path);
+void	draw_scene(t_cub *cub);
 
 #endif
