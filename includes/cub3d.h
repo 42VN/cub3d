@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/19 14:39:16 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 23:45:04 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	cub3d_display(t_cub *c);
 void	cub3d_free(t_cub *c);
 void	cub3d_exit(t_cub *c, int status);
 void	cub3d_error_exit(t_cub *c, char *str);
-void	init_ray(t_ray *rays, t_player player);
+int		init_rays(t_ray **rays, t_player player);
 
 //-------------------------------------------
 // EVENTS
@@ -58,7 +58,6 @@ void	draw_map(t_cub *c);
 void	draw_minimap(t_cub *c);
 void	event_loop_handler(void	*data);
 void	event_close_handler(void *data);
-void	event_key_handler(mlx_key_data_t keydata, void *data);
 
 void	ft_image_to_window(
 			t_cub *cub,

@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/19 14:17:52 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/19 23:39:44 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ static int	ft_fill_map_ele(t_cub *c, mlx_image_t *map_img, char ele)
 	if (ele == '1')
 	{
 		if (!ft_copy_pixels(map_img, c->am.m_wall, M_PX, M_PX))
+			return (ft_error("am_init: init_img: ft_fill_map: ft_copy_pixels"), 0);
+	}
+	if (ele == 'D')
+	{
+		if (!ft_copy_pixels(map_img, c->am.m_door, M_PX, M_PX))
 			return (ft_error("am_init: init_img: ft_fill_map: ft_copy_pixels"), 0);
 	}
 	return (1);
@@ -63,10 +68,15 @@ void	am_init(t_cub *c)
 		(t_sprite_options){4, 6, 1, DIR_VERTICAL},
 		(t_png_options){0, 0, 0},
 		"./assets/sprites/weapon2.png");
+	// am->sprite_door = am_load_sprite(c,
+	// 		(t_sprite_options){1, 4, 0, DIR_VERTICAL},
+	// 		(t_png_options){0, 0, 0},
+	// 		"./assets/sprites/door.png");
 	am->m_ray = am_load_png_ray(c, M_RAY);
 	am->m_wall = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_WALL);
 	am->m_player = am_load_png(c, (t_png_options){1, M_PLAYER_SIZE, M_PLAYER_SIZE}, M_PLAYER);
 	am->m_space = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_SPACE);
+	am->m_door = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_DOOR);
 	// am->walls[NO] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.no_path);
 	// am->walls[SO] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.so_path);
 	// am->walls[EA] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.ea_path);

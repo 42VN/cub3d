@@ -23,14 +23,14 @@
 
 int	init_rays(t_ray **rays, t_player player)
 {
-	int	index;
+	// int	index;
 
-	index = -1;
-	while (++index < WIDTH)
-	{
-		rays[index] = (t_ray *)ft_calloc(1, sizeof(t_ray));
-		if (!rays[index])
-			return (EXIT_FAILURE);
-		// init_ray(rays[index], player, index);
-	}
+	// index = -1;
+	// while (++index < WIDTH)
+	// {
+	// 	rays[index] = (t_ray *)ft_calloc(1, sizeof(t_ray));
+	// 	if (!rays[index])
+	// 		return (EXIT_FAILURE);
+	// 	// init_ray(rays[index], player, index);
+	// }
 }
