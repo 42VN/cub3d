@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 12:16:38 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/13 14:56:06 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 14:02:17 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	draw_rays(t_cub *cub)
 
 	while (index < WIDTH)
 	{
-		draw_ray(&cub->rays[index], cub);
+		draw_ray(cub->rays[index], cub);
 		index += WIDTH/18;
 	}
 }

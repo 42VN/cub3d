@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:45:28 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/19 09:44:10 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 14:10:04 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,15 @@ double	get_ray_angle(double angle, double index)
 	return (rescale(angle + (PI / 2 ) * (0.5 - index /(WIDTH - 1))));
 }
 
-t_ray	*init_a_ray(t_cub *cub, int index)
+void	init_a_ray(t_cub *cub, int index)
 {
-	t_ray	*ray;
-
-	ray = cub->rays + index;
-	ray->start = (t_dpoint){cub->player.current.x + CELL_PX / 2,
+	cub->rays[index]->start = (t_dpoint){cub->player.current.x + CELL_PX / 2,
 							cub->player.current.y + CELL_PX / 2};
-	ray->end = (t_dpoint){ray->start.x, ray->start.y};
-	ray->angle = get_ray_angle(cub->player.angle, (double)index);
-	ray->dir = (t_dpoint){cos(ray->angle), sin(ray->angle)};
-	return (ray);
+	cub->rays[index]->end = (t_dpoint){cub->rays[index]->start.x,
+										cub->rays[index]->start.y};
+	cub->rays[index]->angle = get_ray_angle(cub->player.angle, (double)index);
+	cub->rays[index]->dir = (t_dpoint){cos(cub->rays[index]->angle),
+										sin(cub->rays[index]->angle)};
 }
 
 void	ray_casting(t_cub *cub)
@@ -50,8 +48,8 @@ void	ray_casting(t_cub *cub)
 		return ;
 	while (++index < WIDTH)
 	{
-		ray = init_a_ray(cub, index);
-		find_hit_point(ray, cub);
-		process_ray_hit(ray, cub);
+		init_a_ray(cub, index);
+		find_hit_point(cub->rays[index], cub);
+		process_ray_hit(cub->rays[index], cub);
 	}
 }

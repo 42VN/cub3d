@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:14:46 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/19 09:45:01 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 14:22:30 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	horizontal_hit(t_ray *ray, t_cub *cub)
 		ray->end.y = ray->start.y + dy;
 	if (cub->map.grid[ray->hit.row][ray->hit.row] == 'D')
 		ray->image = cub->am.door;
-	else if (cub->map.grid[ray->hit.row][ray->hit.row] == '1')
+	else //if (cub->map.grid[ray->hit.row][ray->hit.row] == '1')
 	{
 		if (ray->end.y < ray->start.y)
 			ray->image = cub->am.walls[NO];
@@ -50,7 +50,7 @@ static void	vertical_hit(t_ray *ray, t_cub *cub)
 		ray->end.x = ray->start.x - dx;
 	if (cub->map.grid[ray->hit.row][ray->hit.row] == 'D')
 		ray->image = cub->am.door;
-	else if (cub->map.grid[ray->hit.row][ray->hit.row] == '1')
+	else //if (cub->map.grid[ray->hit.row][ray->hit.row] == '1')
 	{
 		if (ray->end.x > ray->start.x)
 			ray->image = cub->am.walls[EA];
@@ -75,5 +75,7 @@ void	process_ray_hit(t_ray *ray, t_cub *cub)
 		vertical_hit(ray, cub);
 	else
 		horizontal_hit(ray, cub);
+	if (!ray->image)
+		printf("image\n");
 	calculate_distance(ray, cub);
 }

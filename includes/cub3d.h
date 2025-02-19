@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 15:28:54 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/19 14:39:16 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_cub
 {
 	t_map			map;
 	t_player		player;
-	t_ray			*rays;
+	t_ray			**rays;
 	mlx_t			*mlx;
 	int32_t			mouse_x;
 	int32_t			mouse_y;
