@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   am_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 11:58:47 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/19 13:35:22 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ void	am_init(t_cub *c)
 	am->m_wall = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_WALL);
 	am->m_player = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_PLAYER);
 	am->m_space = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_SPACE);
+	am->walls[NO] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.no_path);
+	am->walls[SO] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.so_path);
+	am->walls[EA] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.ea_path);
+	am->walls[WE] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.we_path);
 	init_img(c, &am->ceiling, WIDTH, HEIGHT / 2);
 	init_img(c, &am->floor, WIDTH, HEIGHT / 2);
 	init_img(c, &am->map, c->map.width, c->map.height);

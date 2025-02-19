@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/31 10:31:04 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 13:29:52 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,20 @@ static int	parse_color(t_map *map, char **splitted_line, int elem_type)
 	return (EXIT_SUCCESS);
 }
 
-static int	save_element(t_map *map, char	**splitted_line,
-			int elem_type)
+static int	save_element(t_map *map, char	**splitted_line, int elem_type)
 {
-	int	fd;
-
 	if (elem_type == F || elem_type == C)
 		return (parse_color(map, splitted_line, elem_type));
-	fd = ft_validate_elem_path(splitted_line[1]);
-	if (fd < 0)
+	if (ft_validate_png_path(splitted_line[1]) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (elem_type == NO)
-		map->no_fd = fd;
+		map->no_path = ft_strdup(splitted_line[1]);
 	else if (elem_type == SO)
-		map->so_fd = fd;
+		map->so_path = ft_strdup(splitted_line[1]);
 	else if (elem_type == WE)
-		map->we_fd = fd;
+		map->we_path = ft_strdup(splitted_line[1]);
 	else if (elem_type == EA)
-		map->ea_fd = fd;
+		map->ea_path = ft_strdup(splitted_line[1]);
 	return (EXIT_SUCCESS);
 }
 
