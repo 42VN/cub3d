@@ -6,11 +6,21 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:45:28 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/18 14:09:18 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/19 09:44:10 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+double	rescale(double angle)
+{
+	if (angle < 0)
+		return (angle + 2 * PI);
+	else if (angle >= 2 * PI)
+		return (angle - 2 * PI);
+	else
+		return (angle);
+}
 
 double	get_ray_angle(double angle, double index)
 {
