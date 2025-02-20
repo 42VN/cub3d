@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
+#    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/20 13:29:11 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/20 13:44:49 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ MAP_FILES			=	read_element.c read_grid.c read_map.c \
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_png_ray.c am_load_sprite.c \
 						am_init.c am_free.c
 
-RAY_FILES			=	ray_casting.c find_hit_point.c process_ray_hit.c draw_rays.c
+RAY_FILES			=	ray_casting.c find_hit_point.c process_ray_hit.c 
 
 SRC_FILES			= 	./srcs/main.c \
 						$(addprefix $(CUB3D_DIR)/, $(CUB3D_FILES)) \
