@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   correct_pos.c                                      :+:      :+:    :+:   */
+/*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 14:48:02 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/19 13:44:39 by ktieu            ###   ########.fr       */
+/*   Created: 2025/02/20 11:19:59 by ktieu             #+#    #+#             */
+/*   Updated: 2025/02/20 11:20:00 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	correct_y(t_cub *c, t_player *player, int x, int32_t y)
 	}
 }
 
-void	correct_pos(t_cub *c)
+void	collision(t_cub *c)
 {
 	t_player	*player;
 

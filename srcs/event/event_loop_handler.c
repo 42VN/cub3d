@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:32:20 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/19 23:48:09 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 11:21:35 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	event_loop_handler(void *data)
 
 	c = (t_cub *)data;
 	process_inputs(c);
-	correct_pos(c);
+	collision(c);
     draw_map(c);
 	draw_minimap(c);
 }
