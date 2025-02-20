@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 11:28:09 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:49:19 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ typedef struct s_player
 	t_dpoint	current;
 	double		angle;
 	double		speed;
+	double		elapsed_time;
 }	t_player;
 
 typedef struct s_door
 {
 	int32_t			x;
 	int32_t			y;
-	int32_t			frame_index;
+	double			elapsed_time;
 }	t_door;
 
 #endif
