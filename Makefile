@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/20 11:20:12 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/20 13:29:11 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,10 @@ EVENT_FILES			=	event_loop_handler.c \
 						draw_map.c \
 						draw_minimap.c \
 						draw_player.c \
-						collision.c
+						collision.c \
+						key_inputs.c \
+						mouse_inputs.c \
+						inputs.c
 
 UTIL_FILES			=	ft_error.c \
 						ft_validate_path.c ft_is_valid_pos.c\

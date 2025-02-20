@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 12:55:15 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:29:05 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ int		init_rays(t_ray **rays, t_player player);
 //-------------------------------------------
 // EVENTS
 //-------------------------------------------
+void 	key_inputs(t_cub *c);
+void 	mouse_inputs(t_cub *c);
+void 	inputs(t_cub *c);
 void	collision(t_cub *c);
 void	draw_map(t_cub *c);
 void	draw_minimap(t_cub *c);
