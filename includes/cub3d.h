@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 11:20:31 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 12:55:15 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@
 #include "utility.h"
 #include "player.h"
 #include "ray.h"
-#include "minimap.h"
 
 typedef struct s_cub
 {
 	t_map			map;
+	t_door			door;
 	t_player		player;
 	t_ray			**rays;
 	mlx_t			*mlx;

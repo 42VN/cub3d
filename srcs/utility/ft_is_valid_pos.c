@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:59:32 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/19 13:45:25 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 12:54:54 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_is_valid_pos(t_cub *c, int32_t x, int32_t y)
 	row = y / CELL_PX;
 	col = x / CELL_PX;
 	if (c->map.grid[row][col] == '1')
+		return (0);
+	if (c->map.grid[row][col] == 'D')
 		return (0);
 	return (1);
 }
