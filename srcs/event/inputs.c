@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:08:01 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 13:29:20 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:54:17 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void inputs(t_cub *c)
 {
-	mouse_inputs(c);
     key_inputs(c);
+	mouse_inputs(c);
+	animate(c);
 }

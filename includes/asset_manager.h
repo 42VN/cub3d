@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 13:01:43 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 23:46:31 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_sprite_options
 	uint32_t		rows;
 	uint32_t		cols;
 	uint32_t		offset;
-	uint16_t		offset_px;
 	e_sprite_dir	dir;
+	uint16_t		offset_px;
 }	t_sprite_options;
 
 
@@ -71,6 +71,7 @@ typedef struct s_sprite
 	uint32_t			rows;
 	uint32_t			cols;
 	uint32_t			idx;
+	double				elapsed_time;
 	t_sprite_options	options;
 }	t_sprite;
 
@@ -84,7 +85,8 @@ typedef struct s_png_options
 typedef struct s_asset_manager
 {
 	t_sprite	*sprite_weapon;
-	mlx_image_t	*sprite_door;
+	t_sprite	*sprite_door;
+	mlx_image_t	*player;
 	mlx_image_t	*walls[4];
 	mlx_image_t	*ceiling;
 	mlx_image_t	*floor;

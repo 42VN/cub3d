@@ -6,14 +6,11 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:50:43 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/07 18:30:52 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 00:03:08 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// offset_x = (options.dir == DIR_HORIZONTAL) ? s->frame_w * i : 0;
-// offset_y = (options.dir == DIR_VERTICAL) ? s->frame_h * i : 0;
 
 static void calc_offset(t_sprite *s, int *offset_x, int *offset_y, int i)
 {
@@ -22,13 +19,13 @@ static void calc_offset(t_sprite *s, int *offset_x, int *offset_y, int i)
 	offset = s->options.offset_px;
 	if (s->options.dir == DIR_HORIZONTAL)
 	{
-		*offset_x = (s->frame_w * i) + offset;
-		*offset_y = 0;
+		*offset_x = (s->frame_w * i);
+		*offset_y = offset;
 	}
 	if (s->options.dir == DIR_VERTICAL)
 	{
-		*offset_x = 0;
-		*offset_y = (s->frame_h * i) + offset;
+		*offset_x = offset;
+		*offset_y = (s->frame_h * i);
 	}
 	// printf("OffsetX: %d, OffsetY: %d, Offset:%d\n", *offset_x, *offset_y, offset);
 	// printf("Offset %d: x[%d], y[%d], offset_px[%d]\n",i, *offset_x, *offset_y, s->options.offset_px);

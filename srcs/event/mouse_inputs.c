@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:28:32 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 13:35:01 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:01:14 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,13 @@ static void mouse_move_inputs(t_cub *c)
 
 static void mouse_press_inputs(t_cub *c)
 {
-	
+	double	elapsed_time;
+
+	elapsed_time = c->mlx->delta_time;
+	if (mlx_is_mouse_down(c->mlx, MLX_MOUSE_BUTTON_LEFT))
+	{
+		animate_player(c, elapsed_time);
+	}
 }
 
 

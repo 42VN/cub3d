@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:27:43 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 13:27:57 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:14:38 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	update_beams(t_cub *cub)
 {
 	mlx_delete_image(cub->mlx, cub->am.m_ray);
 	cub->am.m_ray = am_load_png_ray(cub, M_RAY);
-	draw_rays(cub);
+	// draw_rays(cub);
 }
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:00:31 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/19 23:45:59 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:28:23 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	cub3d_init(t_cub *c)
 	{
 		cub3d_error_exit(c, "cub3d_init: mlx_init");
 	}
-	// c->rays = (t_ray *)ft_calloc(WIDTH, sizeof(t_ray));
-	// init_ray(c->rays, c->player);
+	init_rays(c);
 	mlx_get_mouse_pos(c->mlx, &c->mouse_x, &c->mouse_y);
 	am_init(c);
 	hook_init(c);
