@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 13:29:05 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:46:03 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	cub3d_display(t_cub *c);
 void	cub3d_free(t_cub *c);
 void	cub3d_exit(t_cub *c, int status);
 void	cub3d_error_exit(t_cub *c, char *str);
-int		init_rays(t_ray **rays, t_player player);
+void	init_rays(t_cub *cub);
 
 //-------------------------------------------
 // EVENTS

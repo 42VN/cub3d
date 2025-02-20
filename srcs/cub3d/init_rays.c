@@ -12,25 +12,18 @@
 
 #include "cub3d.h"
 
-// void	init_ray(t_ray *ray, t_player player, int index)
-// {
-// 	ray->start = (t_dpoint){player.current.x + CELL_PX / 2,
-// 							player.current.y + CELL_PX / 2};
-// 	ray->end = (t_dpoint){ray->start.x, ray->start.y};
-// 	ray->angle = get_ray_angle(player.angle, (double)index);
-// 	ray->dir = (t_dpoint){cos(ray->angle), sin(ray->angle)};
-// }
-
-int	init_rays(t_ray **rays, t_player player)
+void	init_rays(t_cub *cub)
 {
-	// int	index;
+	int	index;
 
-	// index = -1;
-	// while (++index < WIDTH)
-	// {
-	// 	rays[index] = (t_ray *)ft_calloc(1, sizeof(t_ray));
-	// 	if (!rays[index])
-	// 		return (EXIT_FAILURE);
-	// 	// init_ray(rays[index], player, index);
-	// }
+	cub->rays = (t_ray **)ft_calloc(WIDTH, sizeof(t_ray *));
+	if (!cub->rays)
+		cub3d_error_exit(cub, "init_rays");
+	index = -1;
+	while (++index < WIDTH)
+	{
+		cub->rays[index] = (t_ray *)ft_calloc(1, sizeof(t_ray));
+		if (!cub->rays[index])
+			cub3d_error_exit(cub, "init_rays");
+	}
 }
