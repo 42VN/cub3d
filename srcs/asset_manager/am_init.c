@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 12:48:13 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/21 13:52:06 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ static void	init_imgs(t_cub *c, t_asset_manager *am)
 	init_img(c, &am->map, c->map.width, c->map.height);
 	init_img(c, &am->m_map, M_WIDTH, M_HEIGHT);
 	init_img(c, &am->m_map_bg, M_WIDTH, M_HEIGHT);
-	am->walls[NO] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.no_path);
-	am->walls[SO] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.so_path);
-	am->walls[EA] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.ea_path);
-	am->walls[WE] = am_load_png(c, (t_png_options){1, WIDTH, HEIGHT}, c->map.we_path);
+	am->walls[NO] = am_load_png(c, (t_png_options){0, CELL_PX, CELL_PX}, c->map.no_path);
+	am->walls[SO] = am_load_png(c, (t_png_options){0, CELL_PX, CELL_PX}, c->map.so_path);
+	am->walls[EA] = am_load_png(c, (t_png_options){0, CELL_PX, CELL_PX}, c->map.ea_path);
+	am->walls[WE] = am_load_png(c, (t_png_options){0, CELL_PX, CELL_PX}, c->map.we_path);
 	if (!ft_fill_color_int(am->ceiling, c->map.c_color)
 		|| !ft_fill_color_int(am->floor, c->map.f_color)
 		|| !ft_fill_color(am->m_map_bg, (t_color){45, 52, 54, 255})

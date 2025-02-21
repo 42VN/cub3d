@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:32:20 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 12:49:32 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/21 13:52:21 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	draw(t_cub *c)
 	draw_map(c);
 	draw_minimap(c);
 	draw_player(c);
+	draw_scene(c);
 }
 
 
