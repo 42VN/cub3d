@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 00:08:10 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 13:58:53 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/21 14:40:34 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,26 @@ void	clear_image(mlx_image_t *image)
 
 static void	copy_pixel(
 	t_cub *cub,
-	int x,
-	int y_pixel,
-	int image_pos_y
+	int32_t x,
+	int32_t y_pixel,
+	int32_t image_pos_y
 )
 {
-	uint8_t	*dest_pixels;
-	uint8_t	*src_pixels;
+	uint32_t	*dest_pixels;
+	uint32_t	*src_pixels;
 
 	if ((uint8_t)image_pos_y < cub->rays[x]->image->height - 1)
 	{
-		dest_pixels = (uint8_t *)ft_get_pixels(cub->am.scene, x, y_pixel);
-		src_pixels = (uint8_t *)ft_get_pixels(cub->rays[x]->image,
+		dest_pixels = (uint32_t *)ft_get_pixels(cub->am.scene, x, y_pixel);
+		src_pixels = (uint32_t *)ft_get_pixels(cub->rays[x]->image,
 				cub->rays[x]->im_position,
 				image_pos_y);
 		*dest_pixels = *src_pixels;
 	}
 	else
 	{
-		dest_pixels = (uint8_t *)ft_get_pixels(cub->am.scene, x, y_pixel);
-		src_pixels = (uint8_t *)ft_get_pixels(cub->rays[x]->image,
+		dest_pixels = (uint32_t *)ft_get_pixels(cub->am.scene, x, y_pixel);
+		src_pixels = (uint32_t *)ft_get_pixels(cub->rays[x]->image,
 				cub->rays[x]->im_position,
 				cub->rays[x]->image->height - 1);
 		*dest_pixels = *src_pixels;
@@ -64,8 +64,8 @@ static void	draw_texture(t_cub *cub, int i, double wall_height,
 double scale)
 {
 	double		texture_y;
-	int		image_pos_y;
-	int		start_y;
+	int32_t		image_pos_y;
+	int32_t		start_y;
 	double		texture_offset;
 
 	texture_offset = 0;
