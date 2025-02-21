@@ -6,13 +6,13 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 00:08:10 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 14:40:34 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 15:19:48 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	clear_image(mlx_image_t *image)
+static void	clear_image(mlx_image_t *image)
 {
 	uint32_t	x;
 	uint32_t	y;
@@ -48,7 +48,7 @@ static void	copy_pixel(
 		src_pixels = (uint32_t *)ft_get_pixels(cub->rays[x]->image,
 				cub->rays[x]->im_position,
 				image_pos_y);
-		*dest_pixels = *src_pixels;
+		*(uint32_t *)dest_pixels = *(uint32_t *)src_pixels;
 	}
 	else
 	{
@@ -56,7 +56,7 @@ static void	copy_pixel(
 		src_pixels = (uint32_t *)ft_get_pixels(cub->rays[x]->image,
 				cub->rays[x]->im_position,
 				cub->rays[x]->image->height - 1);
-		*dest_pixels = *src_pixels;
+		*(uint32_t *)dest_pixels = *(uint32_t *)src_pixels;
 	}
 }
 
@@ -89,7 +89,7 @@ double scale)
 
 void	draw_scene(t_cub *cub)
 {
-	int	i;
+	int		i;
 	double	wall_height;
 	double	scale;
 	double	camera_plane_dist;

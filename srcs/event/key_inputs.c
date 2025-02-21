@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:27:43 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 14:14:38 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 15:23:18 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static t_dpoint	next_point(t_dpoint cur, double angle, keys_t key)
 		next = (t_dpoint){cur.x - cos(angle), cur.y + sin(angle)};
 	else if (key == MLX_KEY_A)
 		next = (t_dpoint){cur.x + cos(angle + PI / 2),
-							cur.y - sin(angle + PI / 2)};
+						cur.y - sin(angle + PI / 2)};
 	else if (key == MLX_KEY_D)
 		next = (t_dpoint){cur.x + cos(angle + 3 * PI / 2),
-							cur.y - sin(angle + 3 * PI / 2)};
+						cur.y - sin(angle + 3 * PI / 2)};
 	return (next);
 }
 

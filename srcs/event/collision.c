@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 11:19:59 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 11:20:00 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 15:16:10 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,18 @@ static int	is_collision(t_cub *c, int x, int32_t y)
 	return (false);
 }
 
-
 static void	correct_x(t_cub *c, t_player *player, int x, int32_t y)
 {
 	const int32_t	row = y / CELL_PX;
 	const int32_t	col = x / CELL_PX;
 
-    if (player->prev.x > x) // trai
+	if (player->prev.x > x)
 	{
 		player->current.x = (col + 1) * CELL_PX;
 	}
 	else if (player->prev.x < x)
 	{
-		player->current.x= (col + 1) * CELL_PX - 1 - M_PLAYER_SIZE;
+		player->current.x = (col + 1) * CELL_PX - 1 - M_PLAYER_SIZE;
 	}
 }
 
@@ -49,7 +48,7 @@ static void	correct_y(t_cub *c, t_player *player, int x, int32_t y)
 	const int32_t	row = y / CELL_PX;
 	const int32_t	col = x / CELL_PX;
 
-    if (player->prev.y > player->current.y)
+	if (player->prev.y > player->current.y)
 	{
 		player->current.y = (row + 1) * CELL_PX;
 	}

@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:29:54 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/07 17:59:56 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 15:35:50 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ uint8_t	*ft_get_pixels(mlx_image_t *img, int32_t x, int32_t y)
 {
 	int32_t	offset;
 
-	if (x < 0 || x >= img->width || y < 0 || y >= img->height) {
-        ft_printf_fd(2, "ft_get_pixels: out of bounds [x=%d, y=%d] [w=%d, h=%d]\n"
-			, x, y, img->width, img->height);
-        return (NULL);
-    }
+	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
+	{
+		ft_printf_fd(
+			2, "ft_get_pixels: out of bounds [x=%d, y=%d] [w=%d, h=%d]\n",
+			x, y, img->width, img->height);
+		return (NULL);
+	}
 	offset = (y * img->width + x) * sizeof(int32_t);
 	return (img->pixels + offset);
 }

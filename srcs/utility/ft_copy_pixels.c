@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:25:48 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/13 06:26:59 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 15:29:16 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_copy_pixels(
 	while (y < copy_till_y)
 	{
 		x = 0;
-		while (x  < copy_till_x)
+		while (x < copy_till_x)
 		{
 			src_pixel = (uint32_t *) ft_get_pixels(src, x, y);
 			if (!src_pixel)
@@ -41,7 +41,7 @@ int	ft_copy_pixels(
 			*dst_pixel = *src_pixel;
 			++x;
 		}
-		++y;	
+		++y;
 	}
 	return (1);
 }

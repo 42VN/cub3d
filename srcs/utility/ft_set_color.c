@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:40:47 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/05 13:46:43 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/21 15:31:19 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	ft_set_color(int *color, char **array)
 	blue = get_color(array[2]);
 	if (red == -1 || green == -1 || blue == -1)
 		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
-	*color =(red << 24) + (green << 16) + (blue << 8) + 255;
+	*color = (red << 24) + (green << 16) + (blue << 8) + 255;
 	return (EXIT_SUCCESS);
 }

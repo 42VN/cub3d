@@ -6,15 +6,15 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:08:01 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 13:54:17 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 15:22:42 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void inputs(t_cub *c)
+void	inputs(t_cub *c)
 {
-    key_inputs(c);
+	key_inputs(c);
 	mouse_inputs(c);
 	animate(c);
 }

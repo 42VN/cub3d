@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:38:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 10:17:12 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 15:00:11 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ static void	am_free_sprite(mlx_t *mlx, t_sprite *s)
 		}
 		free(s);
 	}
+}
+
+static void	am_free_walls(mlx_t *mlx, t_asset_manager *am)
+{
+	if (am->walls[0])
+		mlx_delete_image(mlx, am->walls[0]);
+	if (am->walls[1])
+		mlx_delete_image(mlx, am->walls[1]);
+	if (am->walls[2])
+		mlx_delete_image(mlx, am->walls[2]);
+	if (am->walls[3])
+		mlx_delete_image(mlx, am->walls[3]);
 }
 
 static void	am_free_imgs(mlx_t *mlx, t_asset_manager *am)
@@ -48,14 +60,7 @@ static void	am_free_imgs(mlx_t *mlx, t_asset_manager *am)
 		mlx_delete_image(mlx, am->m_space);
 	if (am->m_wall)
 		mlx_delete_image(mlx, am->m_wall);
-	if (am->walls[0])
-		mlx_delete_image(mlx, am->walls[0]);
-	if (am->walls[1])
-		mlx_delete_image(mlx, am->walls[1]);
-	if (am->walls[2])
-		mlx_delete_image(mlx, am->walls[2]);
-	if (am->walls[3])
-		mlx_delete_image(mlx, am->walls[3]);
+	am_free_walls(mlx, am);
 }
 
 void	am_free(mlx_t *mlx, t_asset_manager *am)
