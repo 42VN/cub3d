@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:14:46 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/21 12:46:59 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/21 15:35:33 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ static void	horizontal_hit(t_ray *ray, t_cub *cub)
 		ray->end.y = ray->start.y - dy;
 	else
 		ray->end.y = ray->start.y + dy;
-	if (cub->map.grid[ray->hit.row][ray->hit.row] == 'D')
+	if (cub->map.grid[ray->hit.row][ray->hit.col] == 'D')
 		ray->image = cub->am.door;
 	else
 	{
-		if (ray->end.y < ray->start.y)
-			ray->image = cub->am.walls[NO];
+		if (ray->end.x > ray->start.x)
+			ray->image = cub->am.walls[WE];
 		else
-			ray->image = cub->am.walls[SO];
+			ray->image = cub->am.walls[EA];
 	}
-	ray->im_position = fmod(ray->end.x, CELL_PX);
+	ray->im_position = fmod(ray->end.y, CELL_PX) * ray->image->width/CELL_PX;
 }
 
 static void	vertical_hit(t_ray *ray, t_cub *cub)
@@ -48,16 +48,16 @@ static void	vertical_hit(t_ray *ray, t_cub *cub)
 		ray->end.x = ray->start.x + dx;
 	else
 		ray->end.x = ray->start.x - dx;
-	if (cub->map.grid[ray->hit.row][ray->hit.row] == 'D')
+	if (cub->map.grid[ray->hit.row][ray->hit.col] == 'D')
 		ray->image = cub->am.door;
 	else
 	{
-		if (ray->end.x > ray->start.x)
-			ray->image = cub->am.walls[EA];
+		if (ray->end.y < ray->start.y)
+			ray->image = cub->am.walls[SO];
 		else
-			ray->image = cub->am.walls[WE];
+			ray->image = cub->am.walls[NO];
 	}
-	ray->im_position = fmod(ray->end.y, CELL_PX);
+	ray->im_position = fmod(ray->end.x, CELL_PX) * ray->image->width/CELL_PX;
 }
 
 void	calculate_distance(t_ray *ray, t_cub *cub)
