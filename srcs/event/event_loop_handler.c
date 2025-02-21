@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_loop_handler.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:32:20 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 23:08:45 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 12:49:32 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	event_loop_handler(void *data)
 	c = (t_cub *)data;
 	inputs(c);
 	collision(c);
+	ray_casting(c);
     draw(c);
 }
 

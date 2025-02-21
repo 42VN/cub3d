@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:14:46 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/21 10:29:21 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/21 12:46:59 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	horizontal_hit(t_ray *ray, t_cub *cub)
 	else
 		ray->end.y = ray->start.y + dy;
 	if (cub->map.grid[ray->hit.row][ray->hit.row] == 'D')
-		ray->image = cub->am.sprite_door;
+		ray->image = cub->am.door;
 	else
 	{
 		if (ray->end.y < ray->start.y)
@@ -49,7 +49,7 @@ static void	vertical_hit(t_ray *ray, t_cub *cub)
 	else
 		ray->end.x = ray->start.x - dx;
 	if (cub->map.grid[ray->hit.row][ray->hit.row] == 'D')
-		ray->image = cub->am.sprite_door;
+		ray->image = cub->am.door;
 	else
 	{
 		if (ray->end.x > ray->start.x)
