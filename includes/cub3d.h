@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 23:06:37 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 00:10:01 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	collision(t_cub *c);
 void	draw_map(t_cub *c);
 void	draw_minimap(t_cub *c);
 void	draw_player(t_cub *c);
+void	draw_scene(t_cub *c);
 
 void	animate(t_cub *c);
 void	animate_player(t_cub *c, double elapsed_time);

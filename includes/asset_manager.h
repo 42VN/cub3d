@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 23:46:31 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 10:15:45 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_asset_manager
 	mlx_image_t	*ceiling;
 	mlx_image_t	*floor;
 	mlx_image_t	*map;
+	mlx_image_t	*scene;
 	mlx_image_t	*m_ray;
 	mlx_image_t	*m_wall;
 	mlx_image_t	*m_space;

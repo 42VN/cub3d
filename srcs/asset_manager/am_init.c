@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 23:14:32 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 10:16:26 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	init_imgs(t_cub *c, t_asset_manager *am)
 	init_img(c, &am->player, am->sprite_weapon->frame_w, am->sprite_weapon->frame_h);
 	init_img(c, &am->ceiling, WIDTH, HEIGHT / 2);
 	init_img(c, &am->floor, WIDTH, HEIGHT / 2);
+	init_img(c, &am->scene, WIDTH, HEIGHT);
 	init_img(c, &am->map, c->map.width, c->map.height);
 	init_img(c, &am->m_map, M_WIDTH, M_HEIGHT);
 	init_img(c, &am->m_map_bg, M_WIDTH, M_HEIGHT);

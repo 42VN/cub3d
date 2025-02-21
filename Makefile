@@ -6,7 +6,7 @@
 #    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/20 23:06:44 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/21 00:08:20 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ EVENT_FILES			=	event_loop_handler.c \
 						draw_map.c \
 						draw_minimap.c \
 						draw_player.c \
+						draw_scene.c \
 						collision.c \
 						key_inputs.c \
 						mouse_inputs.c \

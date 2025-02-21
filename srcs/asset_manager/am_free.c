@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:38:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/01/31 16:06:29 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 10:17:12 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ static void	am_free_imgs(mlx_t *mlx, t_asset_manager *am)
 		mlx_delete_image(mlx, am->ceiling);
 	if (am->floor)
 		mlx_delete_image(mlx, am->floor);
+	if (am->scene)
+		mlx_delete_image(mlx, am->scene);
+	if (am->player)
+		mlx_delete_image(mlx, am->player);
 	if (am->m_map)
 		mlx_delete_image(mlx, am->m_map);
 	if (am->m_map_bg)
