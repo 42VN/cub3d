@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:28:32 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 14:01:14 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 14:28:28 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,15 @@ static void mouse_press_inputs(t_cub *c)
 	elapsed_time = c->mlx->delta_time;
 	if (mlx_is_mouse_down(c->mlx, MLX_MOUSE_BUTTON_LEFT))
 	{
+		c->player.is_attacking = 1;
 		animate_player(c, elapsed_time);
 	}
+	else
+	{
+		c->player.is_attacking = 0;
+		c->am.sprite_weapon->idx = 0;
+	}
+	
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:38:48 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 23:58:59 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/21 14:26:02 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	animate_player(t_cub *c, double elapsed_time)
 	t_sprite			*player;
 
 	player = c->am.sprite_weapon;
+	if (c->player.is_attacking == 0)
+		return ;
 	player->elapsed_time += elapsed_time;
 	if (player->elapsed_time >= 0.099)
 	{
