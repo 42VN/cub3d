@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/19 23:42:59 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/24 14:59:22 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef enum e_hit_dir
 {
 	HORIZONTAL,
-	VIRTICAL
+	VERTICAL
 }	t_hit_dir;
 
 typedef struct s_ray
@@ -37,7 +37,6 @@ typedef struct s_ray
 double	rescale(double angle);
 void	ray_casting(t_cub *cub);
 void	find_hit_point(t_ray *ray, t_cub *cub);
-void	draw_rays(t_cub *cub);
 void	process_ray_hit(t_ray *ray, t_cub *cub);
 
 #endif
