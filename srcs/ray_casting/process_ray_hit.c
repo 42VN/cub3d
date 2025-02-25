@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:14:46 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 12:00:12 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 13:44:00 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	set_vertical_image(t_ray *ray, t_cub *cub)
 		else
 			ray->image = cub->am.walls[EA];
 	}
-	ray->im_position = fmod(ray->end.y, CELL_PX) * ray->image->width/CELL_PX;
+	ray->im_position = fmod(ray->end.y, CELL_PX) * ray->image->width / CELL_PX;
 }
 
 static void	set_horizontal_end(t_ray *ray)
@@ -76,7 +76,7 @@ static void	set_horizontal_image(t_ray *ray, t_cub *cub)
 		else
 			ray->image = cub->am.walls[NO];
 	}
-	ray->im_position = fmod(ray->end.x, CELL_PX) * ray->image->width/CELL_PX;
+	ray->im_position = fmod(ray->end.x, CELL_PX) * ray->image->width / CELL_PX;
 }
 
 void	process_ray_hit(t_ray *ray, t_cub *cub)
@@ -89,7 +89,7 @@ void	process_ray_hit(t_ray *ray, t_cub *cub)
 	else
 	{
 		set_horizontal_end(ray);
-		set_horizontal_image(ray,cub);
+		set_horizontal_image(ray, cub);
 	}
 	if (fpclassify(ray->dir.x) == FP_ZERO)
 		ray->distance = fabs(ray->end.y - ray->start.y);

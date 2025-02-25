@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:37:29 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 10:47:12 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 13:39:49 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 static void	init_vars(t_distance *distance, t_point *step, t_ray *ray)
 {
 	t_dpoint	cur;
-	
+
 	cur = (t_dpoint){fmod(ray->start.x, CELL_PX), fmod(ray->start.y, CELL_PX)};
 	*distance = (t_distance){DBL_MAX, DBL_MAX};
 	*step = (t_point){1, 1};

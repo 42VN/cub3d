@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 09:58:26 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 13:38:35 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	inside_check(t_map *map, char **temp, int32_t row, int32_t col)
 {
 	if (row < 0 || col < 0 || !temp[row]
 		|| !temp[row][col] || temp[row][col] == ' ')
-		return (1);		
+		return (1);
 	if (temp[row][col] == '1')
 		return (0);
 	temp[row][col] = '1';
@@ -32,7 +32,7 @@ static int	outside_check(t_map *map, char **temp, int32_t row, int32_t col)
 		|| !temp[row][col] || temp[row][col] == '1')
 		return (0);
 	if (temp[row][col] == '0')
-		return (1);		
+		return (1);
 	temp[row][col] = '1';
 	return (outside_check(map, temp, row + 1, col)
 		|| outside_check(map, temp, row - 1, col)
@@ -93,7 +93,7 @@ bool	is_enclosed(t_map *map, t_dpoint start)
 	temp = assign_newgrid(map, 1);
 	if (!temp)
 		return (ft_error_ret("ft_calloc failed.", false));
-	if (inside_check(map, temp, start.y / CELL_PX + 1, start.x / CELL_PX + 1) 
+	if (inside_check(map, temp, start.y / CELL_PX + 1, start.x / CELL_PX + 1)
 		|| outside_check(map, temp, 0, 0))
 	{
 		ft_clean_array(&temp);

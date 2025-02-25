@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 09:55:46 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 13:38:04 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	is_done(t_map *map)
 {
 	return (map->no_path && map->so_path && map->we_path && map->ea_path
-			&& map->f_color && map->c_color);
+		&& map->f_color && map->c_color);
 }
 
 static int	process_line(t_cub *cub, char *line, int fd)
