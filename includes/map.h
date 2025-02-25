@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/20 11:27:56 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/25 09:59:22 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_map
 int		read_map(t_cub *cub, int fd);
 int 	read_element(t_map *map,char *line);
 int		read_grid(t_map *map, char *line);
+int		validate_grid(t_cub *cub, int fd);
 bool	is_enclosed(t_map *map, t_dpoint start);
 
 //--------------------------------------------

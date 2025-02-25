@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:26 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/13 12:05:09 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 09:58:26 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	outside_check(t_map *map, char **temp, int32_t row, int32_t col)
 		|| outside_check(map, temp, row, col - 1));
 }
 
-char	**init_array(int row, int col)
+static char	**init_array(int row, int col)
 {
 	char	**array;
 	int		index;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_element.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/19 14:18:26 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/25 09:58:05 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ static int	save_element(t_map *map, char	**splitted_line, int elem_type)
 	return (EXIT_SUCCESS);
 }
 
-static int	parse_element(t_map *map, char **splitted_line,
-			int elem_type)
+static int	parse_element(t_map *map, char **splitted_line, int elem_type)
 {
 	if (is_done(map))
 	{
