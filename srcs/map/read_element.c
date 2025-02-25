@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 09:58:05 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 14:00:04 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	save_element(t_map *map, char	**splitted_line, int elem_type)
 {
 	if (elem_type == F || elem_type == C)
 		return (parse_color(map, splitted_line, elem_type));
-	if (ft_validate_png_path(splitted_line[1]) == EXIT_FAILURE)
+	if (validate_png(splitted_line[1]) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (elem_type == NO)
 		map->no_path = ft_strdup(splitted_line[1]);

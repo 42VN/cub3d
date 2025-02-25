@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/19 13:27:04 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 14:08:39 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ int			ft_multi_error_ret(char *str1, char *str2, int return_code);
 // PATH
 //----------------------------------------------
 int			ft_validate_map_path(char *path);
-// int			ft_validate_elem_path(char *path);
-int			ft_validate_png_path(char *path);
 
 //----------------------------------------------
 // COLOR

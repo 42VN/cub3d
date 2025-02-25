@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/25 10:00:15 by hitran           ###   ########.fr        #
+#    Updated: 2025/02/25 14:05:18 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ UTIL_FILES			=	ft_error.c \
 						ft_destroy_imgs.c
 						
 MAP_FILES			=	read_element.c read_grid.c read_map.c \
-						validate_grid.c is_enclosed.c map_error.c print_map.c
+						validate_grid.c is_enclosed.c map_error.c print_map.c \
+						validate_png.c
 
  
 ASSET_MANAGER_FILES	=	am_load_png.c am_load_png_ray.c am_load_sprite.c \

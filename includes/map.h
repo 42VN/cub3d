@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/25 09:59:22 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 14:05:48 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int 	read_element(t_map *map,char *line);
 int		read_grid(t_map *map, char *line);
 int		validate_grid(t_cub *cub, int fd);
 bool	is_enclosed(t_map *map, t_dpoint start);
+int		validate_png(char *path);
 
 //--------------------------------------------
 // UTILS
