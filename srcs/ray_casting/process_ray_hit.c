@@ -6,62 +6,69 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:14:46 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/24 14:48:11 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 12:00:12 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	set_vertical_end(t_ray *ray) //vertical
+/*
+ * Determines the intersection point of the ray with a vertical wall.
+ * Calculates ray->end.x as the vertical grid line at ray->hit.col. Then adjusts
+ * for leftward movement by setting the right edge of the cell.
+ * Calculates delta_x as the distance from the starting point to the end point.
+ * Uses tan(ray->angle) to compute delta_y (the distance along the Y-axis).
+ */
+static void	set_vertical_end(t_ray *ray)
 {
-	double	dy;
+	double	delta_x;
+	double	delta_y;
 
 	ray->end.x = ray->hit.col * CELL_PX;
-	if (ray->end.x < ray->start.x) //left direction
-		ray->end.x += CELL_PX; // set the right edge
-	dy = fabs((ray->end.x - ray->start.x) * ray->dir.y / ray->dir.x);
-	if (ray->dir.y > 0) //up
-		ray->end.y = ray->start.y - dy;
+	if (ray->end.x < ray->start.x)
+		ray->end.x += CELL_PX;
+	delta_x = ray->end.x - ray->start.x;
+	delta_y = fabs(delta_x * tan(ray->angle));
+	if (ray->dir.y > 0)
+		ray->end.y = ray->start.y - delta_y;
 	else
-		ray->end.y = ray->start.y + dy;
-	// if (ray->end.y < 0)
-	// 	ray->end.y = 0;
+		ray->end.y = ray->start.y + delta_y;
 }
 
 static void	set_vertical_image(t_ray *ray, t_cub *cub)
 {
 	if (cub->map.grid[ray->hit.row][ray->hit.col] == 'D')
-		ray->image = cub->am.door;
+		ray->image = cub->am.m_door;
 	else
 	{
-		if (ray->end.x > ray->start.x) //right direction
+		if (ray->end.x > ray->start.x)
 			ray->image = cub->am.walls[WE];
-		else //left direction
+		else
 			ray->image = cub->am.walls[EA];
 	}
 	ray->im_position = fmod(ray->end.y, CELL_PX) * ray->image->width/CELL_PX;
 }
 
-static void	set_horizontal_end(t_ray *ray) //horizontal
+static void	set_horizontal_end(t_ray *ray)
 {
-	double	dx;
+	double	delta_x;
+	double	delta_y;
 
 	ray->end.y = ray->hit.row * CELL_PX;
-	if (ray->end.y < ray->start.y) //up direction
-		ray->end.y += CELL_PX; //set the lower edge
-	dx = fabs((ray->end.y - ray->start.y) * ray->dir.x / ray->dir.y);
+	if (ray->end.y < ray->start.y)
+		ray->end.y += CELL_PX;
+	delta_y = ray->end.y - ray->start.y;
+	delta_x = fabs(delta_y / tan(ray->angle));
 	if (ray->dir.x > 0)
-		ray->end.x = ray->start.x + dx;
+		ray->end.x = ray->start.x + delta_x;
 	else
-		ray->end.x = ray->start.x - dx;
-	if (ray->end.x < 0)
-		ray->end.x = 0;
+		ray->end.x = ray->start.x - delta_x;
 }
 
 static void	set_horizontal_image(t_ray *ray, t_cub *cub)
 {
 	if (cub->map.grid[ray->hit.row][ray->hit.col] == 'D')
-		ray->image = cub->am.door;
+		ray->image = cub->am.m_door;
 	else
 	{
 		if (ray->end.y < ray->start.y)
@@ -84,9 +91,8 @@ void	process_ray_hit(t_ray *ray, t_cub *cub)
 		set_horizontal_end(ray);
 		set_horizontal_image(ray,cub);
 	}
-	// printf("im_pos = %d\n", ray->im_position);
-	if (fabs(ray->dir.x - 0.0) < 1e-9)
-		ray->distance = fabs((ray->end.y - ray->start.y) / ray->dir.y);
+	if (fpclassify(ray->dir.x) == FP_ZERO)
+		ray->distance = fabs(ray->end.y - ray->start.y);
 	else
 		ray->distance = fabs((ray->end.x - ray->start.x) / ray->dir.x);
 	ray->distance *= fabs(cos(rescale(cub->player.angle - ray->angle)));

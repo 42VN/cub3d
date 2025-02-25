@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/24 14:59:22 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/25 10:26:37 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #define RAY_H
 
 # include "utility.h"
+
+typedef struct s_distance
+{
+	double	to_vertical_line;
+	double	to_horizontal_line;
+}	t_distance;
 
 typedef enum e_hit_dir
 {
