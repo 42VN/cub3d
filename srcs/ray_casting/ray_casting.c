@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:45:28 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 13:43:08 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:19:19 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	init_ray(t_ray *ray, t_player player, int index)
 	ray->start = (t_dpoint){player.current.x + os, player.current.y + os};
 	ray->end = (t_dpoint){ray->start.x, ray->start.y};
 	ray->hit = (t_point){ray->start.y / CELL_PX, ray->start.x / CELL_PX};
-	ray->distance = 0;
 }
 
 void	ray_casting(t_cub *cub)
@@ -50,6 +49,7 @@ void	ray_casting(t_cub *cub)
 		return ;
 	while (++index < WIDTH)
 	{
+		ft_bzero(cub->rays[index], sizeof(t_ray));
 		init_ray(cub->rays[index], cub->player, index);
 		find_hit_point(cub->rays[index], cub);
 		process_ray_hit(cub->rays[index], cub);
