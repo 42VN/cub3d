@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:51:53 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/27 10:44:28 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 13:58:05 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	validate_characters(t_cub *cub, int row)
 	col = 0;
 	while (cub->map.grid[row][col])
 	{
-		if (!ft_strchr(" 01DNSEW", cub->map.grid[row][col]))
+		if (!ft_strchr(" 01NSEW", cub->map.grid[row][col]))
 			return (ft_error_ret("Map contains invalid characters",
 					EXIT_FAILURE));
 		else if (ft_strchr("NSEW", cub->map.grid[row][col]))

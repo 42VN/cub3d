@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:37:29 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 13:39:49 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 13:56:34 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	init_vars(t_distance *distance, t_point *step, t_ray *ray)
  * determine which edge (horizontal or vertical) the ray will hit first.
  *
  * The ray advances by always moving in the direction of the smaller distance 
- * until it collides with a wall or a door ('1' or 'D') in the map.
+ * until it collides with a wall in the map.
  */
 void	find_hit_point(t_ray *ray, t_cub *cub)
 {
@@ -60,8 +60,7 @@ void	find_hit_point(t_ray *ray, t_cub *cub)
 	t_point		step;
 
 	init_vars(&distance, &step, ray);
-	while (cub->map.grid[ray->hit.row][ray->hit.col] != '1'
-			&& cub->map.grid[ray->hit.row][ray->hit.col] != 'D')
+	while (cub->map.grid[ray->hit.row][ray->hit.col] != '1')
 	{
 		if (distance.to_vertical_line < distance.to_horizontal_line)
 		{
