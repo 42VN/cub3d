@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_inputs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:28:32 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:35:40 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/27 15:04:23 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static void	mouse_press_inputs(t_cub *c)
 		c->am.sprite_weapon->idx = 0;
 	}
 }
-
 
 void	mouse_inputs(t_cub *c)
 {
