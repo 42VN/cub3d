@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:38:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/26 15:43:25 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 10:37:35 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ static void	am_free_sprite(mlx_t *mlx, t_sprite *s)
 	int	i;
 
 	i = 0;
-	if (s && s->frames)
+	if (!s)
+		return ;
+	if (s->frames)
 	{
 		while (s->frames[i])
 		{
 			mlx_delete_image(mlx, s->frames[i]);
 			++i;
 		}
-		free(s);
+		free(s->frames);
 	}
+	free (s);
 }
 
 static void	am_free_walls(mlx_t *mlx, t_asset_manager *am)
