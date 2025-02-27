@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:38:48 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 15:15:18 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/27 14:03:07 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,15 @@ void	animate_player(t_cub *c, double elapsed_time)
 	}
 	if (c->am.sprite_weapon->options.dir == DIR_HORIZONTAL)
 	{
-		if (player->idx == (int32_t)player->cols - 1)
+		if (player->idx == player->cols - 1)
 			player->idx = 0;
 	}
 	else
 	{
-		if (player->idx == (int32_t)player->rows - 1)
+		if (player->idx == player->rows - 1)
 			player->idx = 0;
 	}
 	player->elapsed_time = 0.0;
-}
-
-void	animate_door(t_cub *c, double elapsed_time)
-{
-	return ;
 }
 
 void	animate(t_cub *c)

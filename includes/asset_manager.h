@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asset_manager.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/26 15:29:27 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:09:49 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define M_SPACE		"./assets/textures/mini_space.png"
 # define M_WALL			"./assets/textures/mini_wall.png"
 # define M_PLAYER		"./assets/textures/mini_player3.png"
-# define M_DOOR			"./assets/textures/m_door.png"
 
 // #ifdef WIDTH
 //  # define M_WIDTH (WIDTH / 5)
@@ -58,7 +57,7 @@ typedef struct s_sprite_options
 	uint32_t		cols;
 	uint32_t		offset;
 	e_sprite_dir	dir;
-	uint16_t		offset_px;
+	uint32_t		offset_px;
 }	t_sprite_options;
 
 
@@ -84,9 +83,7 @@ typedef struct s_png_options
 typedef struct s_asset_manager
 {
 	t_sprite	*sprite_weapon;
-	t_sprite	*sprite_door;
 	mlx_image_t	*player;
-	mlx_image_t	*door;
 	mlx_image_t	*walls[4];
 	mlx_image_t	*ceiling;
 	mlx_image_t	*floor;
@@ -97,7 +94,6 @@ typedef struct s_asset_manager
 	mlx_image_t	*m_player;
 	mlx_image_t	*m_map;
 	mlx_image_t	*m_map_bg;
-	mlx_image_t	*m_door;
 }	t_asset_manager;
 
 //-------------------------------------------------

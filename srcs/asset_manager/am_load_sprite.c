@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:50:43 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 15:11:31 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/27 14:07:42 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static t_sprite	*init_sprite(
 {
 	uint32_t	frame_count;
 
+	frame_count = 0;
 	s->rows = options.rows;
 	s->cols = options.cols;
 	if (options.dir == DIR_HORIZONTAL)
@@ -91,8 +92,7 @@ static t_sprite	*init_sprite(
 		s->frame_h = (img->height / options.rows);
 		frame_count = options.rows;
 	}
-	s->frames = (mlx_image_t **)ft_calloc(
-			frame_count + 1, sizeof(mlx_image_t *));
+	s->frames = (mlx_image_t **)ft_calloc(frame_count + 1, sizeof(mlx_image_t *));
 	if (!s->frames)
 		return (0);
 	if (!init_frames(c, img, s, options))

@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 11:19:59 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 15:16:10 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/27 14:01:41 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ static int	is_collision(t_cub *c, int x, int32_t y)
 	return (false);
 }
 
-static void	correct_x(t_cub *c, t_player *player, int x, int32_t y)
+static void	correct_x(t_player *player, int x)
 {
-	const int32_t	row = y / CELL_PX;
 	const int32_t	col = x / CELL_PX;
 
 	if (player->prev.x > x)
@@ -43,10 +42,9 @@ static void	correct_x(t_cub *c, t_player *player, int x, int32_t y)
 	}
 }
 
-static void	correct_y(t_cub *c, t_player *player, int x, int32_t y)
+static void	correct_y(t_player *player, int32_t y)
 {
 	const int32_t	row = y / CELL_PX;
-	const int32_t	col = x / CELL_PX;
 
 	if (player->prev.y > player->current.y)
 	{
@@ -64,12 +62,12 @@ void	collision(t_cub *c)
 
 	player = &c->player;
 	if (is_collision(c, player->current.x, player->prev.y))
-		correct_x(c, player, player->current.x, player->prev.y);
+		correct_x(player, player->current.x);
 	if (is_collision(c, player->prev.x, player->current.y))
-		correct_y(c, player, player->prev.x, player->current.y);
+		correct_y(player, player->current.y);
 	if (is_collision(c, player->current.x, player->current.y))
 	{
-		correct_x(c, player, player->current.x, player->current.y);
-		correct_y(c, player, player->current.x, player->current.y);
+		correct_x(player, player->current.x);
+		correct_y(player, player->current.y);
 	}
 }

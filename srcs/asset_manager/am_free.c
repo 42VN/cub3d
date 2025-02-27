@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   am_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:38:36 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 10:37:35 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 13:56:54 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ static void	am_free_imgs(mlx_t *mlx, t_asset_manager *am)
 		mlx_delete_image(mlx, am->scene);
 	if (am->player) 
 		mlx_delete_image(mlx, am->player);
-	if (am->door) 
-		mlx_delete_image(mlx, am->door);
-	if (am->m_door) 
-		mlx_delete_image(mlx, am->m_door);
 	if (am->m_map)
 		mlx_delete_image(mlx, am->m_map);
 	if (am->map)
@@ -78,8 +74,6 @@ void	am_free(mlx_t *mlx, t_asset_manager *am)
 	{
 		if (am->sprite_weapon)
 			am_free_sprite(mlx, am->sprite_weapon);
-		if (am->sprite_door)
-			am_free_sprite(mlx, am->sprite_door);
 		am_free_imgs(mlx, am);
 	}
 }

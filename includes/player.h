@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 14:22:12 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/27 13:56:29 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,5 @@ typedef struct s_player
 	double		speed;
 	int			is_attacking;
 }	t_player;
-
-typedef struct s_door
-{
-	int32_t			x;
-	int32_t			y;
-}	t_door;
 
 #endif

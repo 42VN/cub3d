@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 13:38:04 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:10:28 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	is_done(t_map *map)
 		&& map->f_color && map->c_color);
 }
 
-static int	process_line(t_cub *cub, char *line, int fd)
+static int	process_line(t_cub *cub, char *line)
 {
 	if (!is_done(&cub->map))
 		return (read_element(&cub->map, line));
@@ -53,7 +53,7 @@ int	read_map(t_cub *cub, int fd)
 			free(line);
 			break ;
 		}
-		if (process_line(cub, line, fd) == EXIT_FAILURE)
+		if (process_line(cub, line) == EXIT_FAILURE)
 			return (map_error(&cub->map, line, fd));
 		free(line);
 	}

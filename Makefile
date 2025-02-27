@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
+#    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/25 14:05:18 by hitran           ###   ########.fr        #
+#    Updated: 2025/02/27 13:58:45 by ktieu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC 				= cc
-CFLAGS 			= -g #-fsanitize=address
+CFLAGS 			= -g -Wall -Wextra -Werror#-fsanitize=address
 MLX42_FLAGS		= -ldl -lglfw -pthread -lm
 INCLUDES 		= -I./includes -I./libs/libft -I./libs/MLX42/include/MLX42
 RM 				= rm -rf
