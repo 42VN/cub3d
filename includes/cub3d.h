@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:38:47 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:41:57 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ void	draw_minimap(t_cub *c);
 void	draw_player(t_cub *c);
 void	draw_scene(t_cub *c);
 
-void	animate(t_cub *c);
-void	animate_player(t_cub *c, double elapsed_time);
+void	animate_player(t_cub *c, t_sprite *player, double elapsed_time);
 
 void	event_loop_handler(void	*data);
 void	event_close_handler(void *data);
