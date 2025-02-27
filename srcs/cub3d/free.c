@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:51:23 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 09:26:43 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 10:12:41 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	cub3d_free(t_cub *c)
 		am_free(c->mlx, &c->am);
 		clean_rays(&c->rays);
 		clean_map(&c->map);
+		if (c->mlx)
+			mlx_terminate(c->mlx);
 	}
 }
