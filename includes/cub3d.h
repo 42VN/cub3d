@@ -6,12 +6,12 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:36:22 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/27 14:37:27 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
 # define WIDTH 1280
 # define HEIGHT 960
@@ -19,16 +19,16 @@
 # define FOV 1.04719755120 //= PI / 3
 # define CELL_PX 32
 
-#include <stdio.h>
-#include <float.h>
-#include <math.h>
+# include <stdio.h>
+# include <float.h>
+# include <math.h>
 
-#include "libft.h"
-#include "asset_manager.h"
-#include "map.h"
-#include "utility.h"
-#include "player.h"
-#include "ray.h"
+# include "libft.h"
+# include "asset_manager.h"
+# include "map.h"
+# include "utility.h"
+# include "player.h"
+# include "ray.h"
 
 typedef struct s_cub
 {
@@ -52,9 +52,9 @@ void	init_rays(t_cub *cub);
 //-------------------------------------------
 // EVENTS
 //-------------------------------------------
-void 	key_inputs(t_cub *c);
-void 	mouse_inputs(t_cub *c);
-void 	inputs(t_cub *c);
+void	key_inputs(t_cub *c);
+void	mouse_inputs(t_cub *c);
+void	inputs(t_cub *c);
 
 void	collision(t_cub *c);
 

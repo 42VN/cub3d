@@ -6,12 +6,12 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:50:53 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/25 10:26:37 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:19:44 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_H
-#define RAY_H
+# define RAY_H
 
 # include "utility.h"
 

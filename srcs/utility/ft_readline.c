@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:39:40 by hitran            #+#    #+#             */
-/*   Updated: 2025/01/27 09:56:33 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:29:47 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	process_read(char *line, int fd, int *eof, int size)
 		line[index++] = c;
 		if (index >= size)
 		{
-			size += BUFFER_SIZE;
+			size += GRID_BUFFER;
 			line = realloc_buffer(line, size);
 			if (!line)
 				return (ft_error_ret("realloc_buffer", EXIT_FAILURE));

@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/25 14:05:48 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:19:27 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "utility.h"
 
 typedef struct s_cub	t_cub;
-
 
 typedef enum e_elem_type
 {
@@ -37,10 +36,8 @@ typedef struct s_map
 	char	*ea_path;
 	int		f_color;
 	int		c_color;
-
 	int		width;
 	int		height;
-
 	char	**grid;
 	int		size;
 	int		max_rows;
@@ -51,7 +48,7 @@ typedef struct s_map
 // READ
 //--------------------------------------------
 int		read_map(t_cub *cub, int fd);
-int 	read_element(t_map *map,char *line);
+int		read_element(t_map *map, char *line);
 int		read_grid(t_map *map, char *line);
 int		validate_grid(t_cub *cub, int fd);
 bool	is_enclosed(t_map *map, t_dpoint start);
