@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_valid_pos.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:59:32 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:03:49 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/27 14:35:31 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	ft_is_valid_pos(t_cub *c, int32_t x, int32_t y)
 	row = y / CELL_PX;
 	col = x / CELL_PX;
 	if (c->map.grid[row][col] == '1')
-		return (0);
-	if (c->map.grid[row][col] == 'D')
 		return (0);
 	return (1);
 }
