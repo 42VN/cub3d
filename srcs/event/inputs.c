@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inputs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:08:01 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 15:22:42 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/27 14:43:25 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,4 @@ void	inputs(t_cub *c)
 {
 	key_inputs(c);
 	mouse_inputs(c);
-	animate(c);
 }
