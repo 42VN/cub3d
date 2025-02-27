@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   am_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 15:03:52 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:29:33 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ void	am_init(t_cub *c)
 			(t_sprite_options){1, 4, 0, DIR_VERTICAL},
 			(t_png_options){0, 0, 0},
 			"./assets/sprites/door.png");
-	am->m_ray = am_load_png_ray(c, M_RAY);
 	am->m_wall = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_WALL);
 	am->m_player = am_load_png(c,
 			(t_png_options){1, M_PLAYER_SIZE, M_PLAYER_SIZE}, M_PLAYER);

@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 12:45:58 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:29:27 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define M_SPACE		"./assets/textures/mini_space.png"
 # define M_WALL			"./assets/textures/mini_wall.png"
 # define M_PLAYER		"./assets/textures/mini_player3.png"
-# define M_RAY			"./assets/textures/m_ray.png"
 # define M_DOOR			"./assets/textures/m_door.png"
 
 // #ifdef WIDTH
@@ -93,7 +92,6 @@ typedef struct s_asset_manager
 	mlx_image_t	*floor;
 	mlx_image_t	*map;
 	mlx_image_t	*scene;
-	mlx_image_t	*m_ray;
 	mlx_image_t	*m_wall;
 	mlx_image_t	*m_space;
 	mlx_image_t	*m_player;
@@ -112,7 +110,7 @@ void		am_free(mlx_t *mlx, t_asset_manager *am);
 // UTILITY FUNCTIONS
 //-------------------------------------------------
 mlx_image_t	*am_load_png(t_cub *cub, t_png_options options, const char *path);
-mlx_image_t	*am_load_png_ray(t_cub *cub, const char *path);
+// mlx_image_t	*am_load_png_ray(t_cub *cub, const char *path);
 t_sprite	*am_load_sprite(t_cub *c, t_sprite_options options, t_png_options png_options, char *path);
 
 #endif
