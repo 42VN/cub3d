@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+         #
+#    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/27 13:58:45 by ktieu            ###   ########.fr        #
+#    Updated: 2025/02/27 14:39:53 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC 				= cc
-CFLAGS 			= -g -Wall -Wextra -Werror#-fsanitize=address
+CFLAGS 			= -g -Wall -Wextra -Werror
 MLX42_FLAGS		= -ldl -lglfw -pthread -lm
 INCLUDES 		= -I./includes -I./libs/libft -I./libs/MLX42/include/MLX42
 RM 				= rm -rf
@@ -57,7 +57,7 @@ UTIL_FILES			=	ft_error.c \
 						ft_destroy_imgs.c
 						
 MAP_FILES			=	read_element.c read_grid.c read_map.c \
-						validate_grid.c is_enclosed.c map_error.c print_map.c \
+						validate_grid.c is_enclosed.c map_error.c \
 						validate_png.c
 
  

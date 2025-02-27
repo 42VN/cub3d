@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:23:02 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:38:47 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WIDTH 1280
 # define HEIGHT 960
 # define PI 3.14159265359
-# define FOV 1.04719755120 //= PI / 3
+# define FOV 1.04719755120
 # define CELL_PX 32
 
 # include <stdio.h>
