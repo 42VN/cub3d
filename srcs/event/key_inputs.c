@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_inputs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:27:43 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 09:27:41 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:17:21 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ static t_dpoint	next_point(t_dpoint cur, double angle, keys_t key)
 		next = (t_dpoint){cur.x - cos(angle), cur.y + sin(angle)};
 	else if (key == MLX_KEY_A)
 		next = (t_dpoint){cur.x + cos(angle + PI / 2),
-						cur.y - sin(angle + PI / 2)};
+			cur.y - sin(angle + PI / 2)};
 	else if (key == MLX_KEY_D)
 		next = (t_dpoint){cur.x + cos(angle + 3 * PI / 2),
-						cur.y - sin(angle + 3 * PI / 2)};
+			cur.y - sin(angle + 3 * PI / 2)};
 	return (next);
 }
 
-void key_inputs(t_cub *c)
+void	key_inputs(t_cub *c)
 {
 	t_dpoint	cur;
 
 	cur = c->player.current;
-	c->player.prev =  c->player.current;
+	c->player.prev = c->player.current;
 	if (mlx_is_key_down(c->mlx, MLX_KEY_ESCAPE))
 		cub3d_exit(c, EXIT_SUCCESS);
 	if (mlx_is_key_down(c->mlx, MLX_KEY_W))

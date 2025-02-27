@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:50:43 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:07:42 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/02/27 14:16:27 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ static t_sprite	*init_sprite(
 	mlx_image_t *img
 )
 {
-	uint32_t	frame_count;
+	uint32_t	frames;
 
-	frame_count = 0;
+	frames = 0;
 	s->rows = options.rows;
 	s->cols = options.cols;
 	if (options.dir == DIR_HORIZONTAL)
@@ -83,16 +83,16 @@ static t_sprite	*init_sprite(
 		s->options.offset_px = (img->width / options.cols) * (options.offset);
 		s->frame_w = (img->width / options.cols);
 		s->frame_h = (img->height / options.rows);
-		frame_count = options.cols;
+		frames = options.cols;
 	}
 	else if (options.dir == DIR_VERTICAL)
 	{
 		s->options.offset_px = (img->height / options.rows) * (options.offset);
 		s->frame_w = (img->width / options.cols);
 		s->frame_h = (img->height / options.rows);
-		frame_count = options.rows;
+		frames = options.rows;
 	}
-	s->frames = (mlx_image_t **)ft_calloc(frame_count + 1, sizeof(mlx_image_t *));
+	s->frames = (mlx_image_t **)ft_calloc(frames + 1, sizeof(mlx_image_t *));
 	if (!s->frames)
 		return (0);
 	if (!init_frames(c, img, s, options))
