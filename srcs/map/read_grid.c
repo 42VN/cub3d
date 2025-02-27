@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/13 12:00:17 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:29:05 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	realloc_map(t_map *map)
 
 	if (map->max_rows >= map->size)
 	{
-		map->size += BUFFER_SIZE;
+		map->size += GRID_BUFFER;
 		new_array = (char **)ft_calloc(map->size, sizeof(char *));
 		if (!new_array)
 			return (EXIT_FAILURE);

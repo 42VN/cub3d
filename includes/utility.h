@@ -6,15 +6,15 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:22:08 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:28:44 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILITY_H
 # define UTILITY_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
+# ifndef GRID_BUFFER
+#  define GRID_BUFFER 100
 # endif 
 
 # include "MLX42.h"
