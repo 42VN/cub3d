@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:51:53 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 13:37:49 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/27 10:44:28 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ int	validate_grid(t_cub *cub, int fd)
 	}
 	if (!is_enclosed(&cub->map, cub->player.current))
 		return (map_error(&cub->map, NULL, fd));
-	print_map(&cub->map);
 	return (EXIT_SUCCESS);
 }
