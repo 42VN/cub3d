@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/27 14:29:14 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/28 15:19:28 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int	read_map(t_cub *cub, int fd)
 	int		eof;
 
 	eof = 0;
-	cub->map.grid = (char **)ft_calloc(GRID_BUFFER, sizeof(char *));
+	cub->map.size = GRID_BUFFER;
+	cub->map.grid = (char **)ft_calloc(cub->map.size + 1, sizeof(char *));
 	if (!cub->map.grid)
 		return (ft_error_ret("Map allocation failed.", 1));
-	cub->map.size = GRID_BUFFER;
 	while (1)
 	{
-		line = ft_readline(fd, &eof, GRID_BUFFER);
+		line = ft_readline(fd, &eof);
 		if (!line)
 			return (EXIT_FAILURE);
 		if (eof)

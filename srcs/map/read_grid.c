@@ -6,54 +6,51 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/27 14:29:05 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/28 15:18:00 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	copy_grid(char **visited, t_map *map)
+static int	copy_grid(char **new_grid, t_map *map)
 {
 	int	row;
 	int	col;
 	int	len;
 
 	row = -1;
-	while (map && map->grid && map->grid[++row])
+	while (++row < map->size - GRID_BUFFER)
 	{
-		visited[row] = (char *)ft_calloc(map->max_cols + 1, sizeof(char));
-		if (!visited[row])
-		{
-			ft_clean_array(&visited);
-			return (ft_error_ret("ft_calloc failed.", EXIT_FAILURE));
-		}
+		new_grid[row] = (char *)ft_calloc(map->max_cols + 1, sizeof(char));
+		if (!new_grid[row])
+			return (ft_error_ret("copy_grid", EXIT_FAILURE));
 		col = -1;
 		len = ft_strlen(map->grid[row]);
 		while (++col < len && map->grid[row][col])
-			visited[row][col] = map->grid[row][col];
+			new_grid[row][col] = map->grid[row][col];
 		while (col < map->max_cols)
-			visited[row][col++] = ' ';
+			new_grid[row][col++] = ' ';
 	}
 	return (EXIT_SUCCESS);
 }
 
 static int	realloc_map(t_map *map)
 {
-	char	**new_array;
+	char	**new_grid;
 
 	if (map->max_rows >= map->size)
 	{
 		map->size += GRID_BUFFER;
-		new_array = (char **)ft_calloc(map->size, sizeof(char *));
-		if (!new_array)
+		new_grid = (char **)ft_calloc(map->size + 1, sizeof(char *));
+		if (!new_grid)
 			return (EXIT_FAILURE);
-		if (copy_grid(new_array, map) == EXIT_FAILURE)
+		if (copy_grid(new_grid, map) == EXIT_FAILURE)
 		{
-			ft_clean_array(&new_array);
+			ft_clean_array(&new_grid);
 			return (EXIT_FAILURE);
 		}
 		ft_clean_array(&map->grid);
-		map->grid = new_array;
+		map->grid = new_grid;
 	}
 	return (EXIT_SUCCESS);
 }

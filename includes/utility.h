@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:28:44 by hitran           ###   ########.fr       */
+/*   Updated: 2025/02/28 15:19:08 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int			ft_is_valid_pos(t_cub *c, int32_t x, int32_t y);
 //----------------------------------------------
 // UTILITY
 //----------------------------------------------
-char		*ft_readline(int fd, int *eof, int size);
+char		*ft_readline(int fd, int *eof);
 int			ft_is_all_white_spaces(char *s);
 int			ft_array_len(char **array);
 void		ft_clean_array(char ***str);
