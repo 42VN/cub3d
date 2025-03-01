@@ -23,9 +23,6 @@ static void	hook_init(t_cub *c)
 
 void	cub3d_init(t_cub *c)
 {
-	t_asset_manager	*am;
-
-	am = &c->am;
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	c->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (!c->mlx)
