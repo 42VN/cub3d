@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/27 14:39:53 by hitran           ###   ########.fr        #
+#    Updated: 2025/02/27 15:19:38 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,8 @@ MLX42				= $(MLX42_DIR)/build/libmlx42.a
 
 # Executables
 NAME 				= cub3D
+NAME_BONUS			= cub3D_bonus
+
 
 # Targets
 all : mandatory
@@ -88,8 +90,11 @@ mandatory : .mandatory
 .mandatory: $(LIBFT) $(MLX42) $(SRC_FILES)
 	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_FILES) $(LIBFT) $(MLX42) $(MLX42_FLAGS) -o $(NAME)
 	@touch .mandatory
-	@$(RM) .bonus
 
+bonus: .bonus
+.bonus: $(LIBFT) $(MLX42) $(SRC_FILES)
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_FILES) $(LIBFT) $(MLX42) $(MLX42_FLAGS) -o $(NAME_BONUS)
+	@touch .bonus
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -104,13 +109,13 @@ $(MLX42): .mlx42
 	@touch .mlx42
 
 clean:
+	$(RM) $(OBJ_DIR)
 	$(MAKE) clean -C $(LIBFT_DIR)
-	$(RM) .bonus .mandatory 
 
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
-	$(RM) $(NAME) $(MLX42_DIR) .bonus .mandatory .mlx42
+	$(RM) $(NAME) $(NAME_BONUS) $(MLX42_DIR) .bonus .mandatory .mlx42
 	
 re: fclean all
 
-.PHONY: all clean fclean re mandatory 
+.PHONY: all clean fclean re mandatory bonus
