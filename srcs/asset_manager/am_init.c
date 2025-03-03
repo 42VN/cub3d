@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   am_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:12:13 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/03/03 09:29:58 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	init_imgs(t_cub *c, t_asset_manager *am)
 			(t_png_options){0, CELL_PX, CELL_PX}, c->map.we_path);
 	if (!ft_fill_color_int(am->ceiling, c->map.c_color)
 		|| !ft_fill_color_int(am->floor, c->map.f_color)
-		|| !ft_fill_color(am->m_map_bg, (t_color){45, 52, 54, 255, 0})
+		|| !ft_fill_color(am->m_map_bg, (t_color){45, 52, 54, 255})
 		|| !ft_fill_map(c, am->map, c->map.grid)
 	)
 		cub3d_error_exit(c, "ft_fill_color");

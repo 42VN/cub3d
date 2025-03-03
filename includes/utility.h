@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/28 15:19:08 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/03 09:29:08 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_color
 	uint32_t	red;
 	uint32_t	green;
 	uint32_t	blue;
-	int			done;
 }	t_color;
 
 typedef struct s_dpoint
