@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/28 15:18:00 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/03 09:25:21 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static int	copy_grid(char **new_grid, t_map *map)
 	int	len;
 
 	row = -1;
-	while (++row < map->size - GRID_BUFFER)
+	if (!map || !map->grid)
+		return (EXIT_FAILURE);
+	while (map->grid[++row])
 	{
 		new_grid[row] = (char *)ft_calloc(map->max_cols + 1, sizeof(char));
 		if (!new_grid[row])
