@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:15:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/03/04 14:29:01 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 14:32:12 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		validate_png(char *path);
 //--------------------------------------------
 void	clean_map(t_map *map);
 int		map_error(t_map *map, char *line, int fd);
-bool	is_done(t_map *map);
+bool	elements_done(t_map *map);
 int		count_commas(char *str);
 
 #endif

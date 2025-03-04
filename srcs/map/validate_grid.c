@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:51:53 by hitran            #+#    #+#             */
-/*   Updated: 2025/03/04 12:45:44 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 14:32:24 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	validate_grid(t_cub *cub, int fd)
 	int	row;
 
 	row = 0;
-	if (!is_done(&cub->map) || !cub->map.grid[0])
+	if (!elements_done(&cub->map) || !cub->map.grid[0])
 	{
 		ft_error("Invalid map.");
 		return (map_error(&cub->map, NULL, fd));

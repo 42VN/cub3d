@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:54:24 by hitran            #+#    #+#             */
-/*   Updated: 2025/03/04 14:27:20 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 14:32:21 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,10 @@ int	count_commas(char *str)
 		str++;
 	}
 	return (count);
+}
+
+bool	elements_done(t_map *map)
+{
+	return (map->no_path && map->so_path && map->we_path && map->ea_path
+		&& map->f_color && map->c_color);
 }
