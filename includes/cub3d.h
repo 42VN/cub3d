@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/03/04 14:48:10 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 15:51:06 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <stdio.h>
 # include <float.h>
 # include <math.h>
-
 # include "libft.h"
 # include "asset_manager.h"
 # include "map.h"
@@ -54,22 +53,14 @@ void	init_rays(t_cub *cub);
 void	key_inputs(t_cub *c);
 void	mouse_inputs(t_cub *c);
 void	inputs(t_cub *c);
-
 void	collision(t_cub *c);
-
 void	draw_map(t_cub *c);
 void	draw_minimap(t_cub *c);
 void	draw_player(t_cub *c);
 void	draw_scene(t_cub *c);
-
 void	animate_player(t_cub *c, t_sprite *player, double elapsed_time);
-
 void	event_loop_handler(void	*data);
 void	event_close_handler(void *data);
-
-void	ft_image_to_window(
-			t_cub *cub,
-			mlx_image_t *img,
-			int32_t x, int32_t y);
+void	ft_image_to_window(t_cub *cub, mlx_image_t *img, int32_t x, int32_t y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:37:09 by ktieu             #+#    #+#             */
-/*   Updated: 2025/03/03 09:29:08 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 15:46:45 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define UTILITY_H
 
 # ifndef GRID_BUFFER
-#  define GRID_BUFFER 100
+#  define GRID_BUFFER 1000
 # endif 
 
 # include "MLX42.h"

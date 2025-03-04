@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/03/04 14:13:16 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 15:45:48 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define M_SPACE		"./assets/textures/mini_space.png"
 # define M_WALL			"./assets/textures/mini_wall.png"
 # define M_PLAYER		"./assets/textures/mini_player.png"
-# define M_WIDTH 200
-# define M_HEIGHT 200
+# define M_WIDTH 		200
+# define M_HEIGHT 		200
 
 # include "utility.h"
 # include "MLX42.h"
@@ -91,7 +91,6 @@ void		am_free(mlx_t *mlx, t_asset_manager *am);
 // UTILITY FUNCTIONS
 //-------------------------------------------------
 mlx_image_t	*am_load_png(t_cub *cub, t_png_options options, const char *path);
-// mlx_image_t	*am_load_png_ray(t_cub *cub, const char *path);
 t_sprite	*am_load_sprite(t_cub *c, t_sprite_options options,
 				t_png_options png_options, char *path);
 

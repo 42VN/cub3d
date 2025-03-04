@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 00:08:10 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/21 15:19:48 by ktieu            ###   ########.fr       */
+/*   Updated: 2025/03/04 15:47:32 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	draw_scene(t_cub *cub)
 	double	camera_plane_dist;
 
 	i = 0;
-	camera_plane_dist = (WIDTH / 2) / tan(PI / 6);
+	camera_plane_dist = (WIDTH / 2) / tan(FOV / 2);
 	clear_image(cub->am.scene);
 	while (i < WIDTH)
 	{
