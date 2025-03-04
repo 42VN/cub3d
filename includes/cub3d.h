@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:20:47 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:41:57 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 14:48:10 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_cub
 	int32_t			mouse_x;
 	int32_t			mouse_y;
 	t_asset_manager	am;
-	mlx_image_t		**mini;
 }	t_cub;
 
 void	cub3d_init(t_cub *cub);
