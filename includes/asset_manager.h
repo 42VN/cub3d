@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:16:08 by ktieu             #+#    #+#             */
-/*   Updated: 2025/02/27 14:30:29 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 14:13:16 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define M_PX		    32
 # define M_SPACE		"./assets/textures/mini_space.png"
 # define M_WALL			"./assets/textures/mini_wall.png"
-# define M_PLAYER		"./assets/textures/mini_player3.png"
+# define M_PLAYER		"./assets/textures/mini_player.png"
 # define M_WIDTH 200
 # define M_HEIGHT 200
 

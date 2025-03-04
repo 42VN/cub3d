@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_error.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:54:24 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 09:54:26 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 14:27:20 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,20 @@ int	map_error(t_map *map, char *line, int fd)
 		free(line);
 	close(fd);
 	return (EXIT_FAILURE);
+}
+
+int	count_commas(char *str)
+{
+	int	count;
+
+	count = 0;
+	if (!str)
+		return (0);
+	while (*str)
+	{
+		if (*str == ',')
+			count++;
+		str++;
+	}
+	return (count);
 }

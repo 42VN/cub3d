@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/28 15:19:28 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 14:19:51 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	process_line(t_cub *cub, char *line)
 		if (!line[0] && cub->map.grid && !cub->map.grid[0])
 			return (EXIT_SUCCESS);
 		else if (!line[0] && cub->map.grid && cub->map.grid[0])
-			return (ft_error_ret("Map contains empty lines.", EXIT_FAILURE));
+			return (ft_error_ret("Invalid elements or map.", EXIT_FAILURE));
 		return (read_grid(&cub->map, line));
 	}
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:17:25 by hitran            #+#    #+#             */
-/*   Updated: 2025/02/25 14:00:04 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/04 14:27:12 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static int	parse_color(t_map *map, char **splitted_line, int elem_type)
 {
 	char	**array;
 
+	if (count_commas(splitted_line[1]) != 2)
+		return (ft_error_ret("Invalid color format.", EXIT_FAILURE));
 	array = ft_split(splitted_line[1], ',');
 	if (!array)
 		return (ft_error_ret("ft_split failed.", EXIT_FAILURE));
@@ -74,7 +76,12 @@ static int	save_element(t_map *map, char	**splitted_line, int elem_type)
 
 static int	parse_element(t_map *map, char **splitted_line, int elem_type)
 {
-	if (is_done(map))
+	if ((elem_type == NO && map->no_path)
+		|| (elem_type == SO && map->so_path)
+		|| (elem_type == WE && map->we_path)
+		|| (elem_type == EA && map->ea_path)
+		|| (elem_type == F && map->f_color)
+		|| (elem_type == C && map->c_color))
 	{
 		ft_clean_array(&splitted_line);
 		return (ft_error_ret("Elements duplicated.", EXIT_FAILURE));

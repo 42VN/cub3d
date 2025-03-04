@@ -6,7 +6,7 @@
 #    By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:21:50 by hitran            #+#    #+#              #
-#    Updated: 2025/02/27 15:19:38 by hitran           ###   ########.fr        #
+#    Updated: 2025/03/04 14:27:31 by hitran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ UTIL_FILES			=	ft_error.c \
 						ft_destroy_imgs.c
 						
 MAP_FILES			=	read_element.c read_grid.c read_map.c \
-						validate_grid.c is_enclosed.c map_error.c \
+						validate_grid.c is_enclosed.c utils.c \
 						validate_png.c
 
  
