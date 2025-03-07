@@ -6,7 +6,7 @@
 /*   By: hitran <hitran@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:28:06 by ktieu             #+#    #+#             */
-/*   Updated: 2025/03/03 09:29:58 by hitran           ###   ########.fr       */
+/*   Updated: 2025/03/07 13:04:38 by hitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	am_init(t_cub *c)
 	am->sprite_weapon = am_load_sprite(c,
 			(t_sprite_options){4, 6, 1, DIR_VERTICAL, 0},
 			(t_png_options){0, 0, 0},
-			"./assets/sprites/weapon2.png");
+			"./assets/sprites/weapon.png");
 	am->m_wall = am_load_png(c, (t_png_options){1, M_PX, M_PX}, M_WALL);
 	am->m_player = am_load_png(c,
 			(t_png_options){1, M_PLAYER_SIZE, M_PLAYER_SIZE}, M_PLAYER);
